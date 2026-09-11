@@ -1,0 +1,47 @@
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.timeline__row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline__year {
+  font-family: var(--font-display);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  padding-top: 2px;
+}
+
+.timeline__body {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.timeline__company {
+  font-weight: 500;
+}
+
+.timeline__role {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 480px) {
+  .timeline__row {
+    grid-template-columns: 56px 1fr;
+  }
+  .timeline__body {
+    flex-direction: column;
+    gap: 2px;
+  }
+}

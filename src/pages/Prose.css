@@ -1,0 +1,41 @@
+.prose {
+  padding-top: 64px;
+  max-width: 620px;
+}
+
+.prose__heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+  margin: 0 0 24px;
+}
+
+.prose p {
+  color: var(--ink-soft);
+  margin: 0 0 18px;
+  max-width: var(--measure);
+}
+
+.fun-list {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.fun-list li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fun-list__title {
+  font-weight: 500;
+}
+
+.fun-list__desc {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}

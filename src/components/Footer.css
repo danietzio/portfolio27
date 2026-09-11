@@ -1,0 +1,22 @@
+.footer {
+  border-top: 1px solid var(--line);
+  margin-top: 64px;
+}
+
+.footer__inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 28px var(--gutter) 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.footer__social {
+  display: flex;
+  gap: 24px;
+}

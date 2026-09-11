@@ -1,0 +1,48 @@
+.project-detail {
+  padding-top: 48px;
+}
+
+.project-detail__back {
+  display: inline-block;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+}
+
+.project-detail__header {
+  max-width: var(--measure);
+}
+
+.project-detail__subtitle {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin: 0 0 10px;
+}
+
+.project-detail__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin: 0 0 16px;
+}
+
+.project-detail__summary {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.project-detail__cover {
+  width: 100%;
+  border-radius: 4px;
+  margin: 40px 0;
+  display: block;
+}
+
+.project-detail__body {
+  max-width: var(--measure);
+}
+
+.project-detail__body p {
+  margin: 0 0 18px;
+}
