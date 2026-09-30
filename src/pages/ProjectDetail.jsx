@@ -1,66 +1,381 @@
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { projects } from '../data/content.js';
 import './ProjectDetail.css';
 
-// Renders an image if `src` is set, otherwise the dashed placeholder
-// box (.figure-placeholder) with instructions from content.js.
-function SectionFigure({ image, wide = true }) {
-  if (!image) return null;
+/* ── hooks ─────────────────────────────────────────────────── */
+
+// True once the element has entered the viewport (fires once).
+function useInView(threshold = 0.35) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInView(true);
+      return;
+    }
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+}
+
+// Counts 0 → target when in view.
+function useCountUp(target, inView, duration = 1400) {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setValue(target);
+      return;
+    }
+    let raf;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+      setValue(Math.round(eased * target));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, target, duration]);
+  return value;
+}
+
+/* ── lightbox ──────────────────────────────────────────────── */
+
+const LightboxContext = createContext(() => {});
+
+function Lightbox({ item, onClose }) {
+  useEffect(() => {
+    if (!item) return;
+    const onKey = (e) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [item, onClose]);
+
+  if (!item) return null;
+  const isVideo = /\.(mp4|webm)$/i.test(item.src);
   return (
-    <figure className={`project-detail__figure${wide ? ' project-detail__figure--wide' : ''}`}>
-      {image.src ? (
-        <img src={image.src} alt={image.caption || ''} />
+    <div className='lightbox' onClick={onClose} role='dialog' aria-modal='true'>
+      {isVideo ? (
+        <video src={item.src} autoPlay loop muted playsInline controls onClick={(e) => e.stopPropagation()} />
       ) : (
-        <div className='figure-placeholder'>
-          Image placeholder
-          <span>{image.placeholder}</span>
-        </div>
+        <img src={item.src} alt={item.caption || ''} />
       )}
+      {item.caption && <p className='lightbox__caption'>{item.caption}</p>}
+      <button className='lightbox__close' onClick={onClose} aria-label='Close'>
+        ×
+      </button>
+    </div>
+  );
+}
+
+/* ── media ─────────────────────────────────────────────────── */
+
+// Any video on the page plays while it's on screen and pauses
+// when scrolled past.
+function ScrollVideo({ src, label }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return <video ref={ref} src={src} loop muted playsInline preload='metadata' aria-label={label} />;
+}
+
+function Media({ image, plain = false }) {
+  const openLightbox = useContext(LightboxContext);
+  const isVideo = /\.(mp4|webm)$/i.test(image.src || '');
+  const media = image.src ? (
+    <button
+      type='button'
+      className='zoomable'
+      onClick={() => openLightbox(image)}
+      aria-label={`Enlarge: ${image.caption || 'design'}`}
+    >
+      {isVideo ? (
+        <ScrollVideo src={image.src} label={image.caption || ''} />
+      ) : (
+        <img src={image.src} alt={image.caption || image.placeholder || ''} />
+      )}
+    </button>
+  ) : (
+    <div className='figure-placeholder'>
+      Image placeholder
+      <span>{image.placeholder}</span>
+    </div>
+  );
+
+  if (plain) return media;
+  return (
+    <figure className='project-detail__figure project-detail__figure--in-row'>
+      {media}
       {image.caption && <figcaption>{image.caption}</figcaption>}
     </figure>
   );
 }
-import { useEffect, useRef } from 'react';
 
-function ProjectVideo({ project }) {
-  const videoRef = useRef(null);
-
+// Page cover: image or video. A video cover plays while it's on
+// screen and pauses when scrolled past (saves battery, feels alive).
+function CoverMedia({ project }) {
+  const ref = useRef(null);
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
+    const el = ref.current;
+    if (!el || el.tagName !== 'VIDEO') return;
+    const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => {});
+          el.play().catch(() => {});
         } else {
-          video.pause();
+          el.pause();
         }
       },
-      { threshold: 0.5 },
+      { threshold: 0.25 }
     );
-
-    observer.observe(video);
-
-    return () => observer.disconnect();
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
+  if (!project.cover) {
+    return (
+      <div className='figure-placeholder'>
+        Image placeholder
+        <span>{project.coverPlaceholder}</span>
+      </div>
+    );
+  }
+  if (/\.(mp4|webm)$/i.test(project.cover)) {
+    return (
+      <video
+        ref={ref}
+        className='project-detail__cover'
+        src={project.cover}
+        loop
+        muted
+        playsInline
+        preload='metadata'
+        aria-label={project.title}
+      />
+    );
+  }
+  return <img className='project-detail__cover' src={project.cover} alt={project.title} />;
+}
+
+// Full-width solution hero for a section.
+function SectionHero({ image, narrow = false }) {
+  if (!image) return null;
   return (
-    <video ref={videoRef} muted loop playsInline className='project-detail__cover'>
-      <source src={project.cover} type='video/mp4' />
-    </video>
+    <figure className={`section-hero${narrow ? ' section-hero--narrow' : ''}`}>
+      <Media image={image} plain />
+      {image.caption && <figcaption>{image.caption}</figcaption>}
+    </figure>
   );
 }
+
+// Showcase: media in soft container left, caption right.
+function Showcase({ items }) {
+  if (!items) return null;
+  return (
+    <div className='showcase'>
+      {items.map((item) => (
+        <div className='showcase-row' key={item.heading}>
+          <div className='showcase-row__media'>
+            <Media image={item.image} plain />
+          </div>
+          <div className='showcase-row__text'>
+            <h3>{item.heading}</h3>
+            <p>{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Screenshot grid: 2 or 3 columns of smaller shots.
+function ShotGrid({ grid }) {
+  if (!grid) return null;
+  return (
+    <div className='shot-grid-wrap'>
+      {grid.title && <h3 className='shot-grid__title'>{grid.title}</h3>}
+      <div className={`shot-grid shot-grid--${grid.cols || 3}`}>
+        {grid.images.map((image, i) => (
+          <Media image={image} key={i} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ── text pieces ───────────────────────────────────────────── */
+
+function SectionTitle({ lead, rest }) {
+  return (
+    <h2 className='case-title'>
+      <span className='case-title__lead'>{lead}</span> <span className='case-title__rest'>{rest}</span>
+    </h2>
+  );
+}
+
+// Problem / Opportunity / Solution — text only, three tinted cards.
+function POS({ pos }) {
+  if (!pos) return null;
+  const cells = [
+    { label: 'The problem', text: pos.problem },
+    { label: 'The opportunity', text: pos.opportunity },
+    { label: 'The solution', text: pos.solution },
+  ];
+  return (
+    <div className='pos-grid'>
+      {cells.map((c) => (
+        <div className='pos-grid__cell' key={c.label}>
+          <h3>{c.label}</h3>
+          <p>{c.text}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ── research charts (animate on scroll) ───────────────────── */
+
+// Horizontal bars, one hue, direct-labeled, animated width.
+function BarChart({ chart }) {
+  const [ref, inView] = useInView(0.5);
+  return (
+    <div className='chart' ref={ref}>
+      <h3 className='chart__title'>{chart.title}</h3>
+      <div className='chart__bars'>
+        {chart.bars.map((bar) => (
+          <div className='chart__row' key={bar.label}>
+            <span className='chart__label'>{bar.label}</span>
+            <div className='chart__track'>
+              <div
+                className='chart__fill'
+                style={{ width: inView ? `${bar.value}%` : '0%' }}
+              />
+            </div>
+            <span className='chart__value'>{bar.display}</span>
+          </div>
+        ))}
+      </div>
+      {chart.note && <p className='chart__note'>{chart.note}</p>}
+    </div>
+  );
+}
+
+// Findings with small animated stat bars.
+function FindingBars({ findings }) {
+  const [ref, inView] = useInView(0.4);
+  return (
+    <div className='finding-list' ref={ref}>
+      {findings.map((f) => (
+        <div className='finding' key={f.title}>
+          <span className='finding__stat'>{f.display}</span>
+          <div className='finding__body'>
+            <h4>{f.title}</h4>
+            <p>{f.text}</p>
+            <div className='chart__track chart__track--thin'>
+              <div className='chart__fill' style={{ width: inView ? `${f.stat}%` : '0%' }} />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// The 23% payoff — counts up when it enters the viewport.
+function ResultCounter({ result }) {
+  const [ref, inView] = useInView(0.6);
+  const value = useCountUp(result.value, inView);
+  return (
+    <div className='result-callout' ref={ref}>
+      <span className='result-callout__value'>
+        {value}
+        <em>%</em>
+      </span>
+      <div>
+        <strong>{result.strong}</strong>
+        <p>{result.text}</p>
+      </div>
+    </div>
+  );
+}
+
+/* ── nav ───────────────────────────────────────────────────── */
+
+function PillNav({ nav }) {
+  const [active, setActive] = useState(nav[0]?.id);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-30% 0px -60% 0px' }
+    );
+    nav.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [nav]);
+
+  return (
+    <nav className='pill-nav' aria-label='Case study sections'>
+      {nav.map(({ id, label }) => (
+        <a key={id} href={`#${id}`} className={active === id ? 'is-active' : ''}>
+          {label}
+        </a>
+      ))}
+    </nav>
+  );
+}
+
+/* ── page ──────────────────────────────────────────────────── */
 
 export default function ProjectDetail() {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
+  const [lightboxItem, setLightboxItem] = useState(null);
 
   if (!project) return <Navigate to='/' replace />;
 
   const s = project.sections;
 
   return (
+    <LightboxContext.Provider value={setLightboxItem}>
     <article className='page project-detail'>
       <Link to='/' className='link-underline project-detail__back'>
         ← Back to work
@@ -93,19 +408,10 @@ export default function ProjectDetail() {
         </dl>
       )}
 
-      {/* Hero */}
       <figure className='project-detail__figure project-detail__figure--hero'>
-        {project.cover ? (
-          <ProjectVideo project={project} />
-        ) : (
-          <div className='figure-placeholder'>
-            Image placeholder
-            <span>{project.coverPlaceholder}</span>
-          </div>
-        )}
+        <CoverMedia project={project} />
       </figure>
 
-      {/* Headline numbers */}
       {project.metrics && (
         <ul className='metrics'>
           {project.metrics.map((m) => (
@@ -119,188 +425,124 @@ export default function ProjectDetail() {
 
       {s && (
         <div className='project-detail__case-study'>
-          {/* The challenge + what I owned */}
-          <section className='case-section case-section--lead case-section--tight'>
-            <p className='case-section__eyebrow'>The problem</p>
-            <h2>{s.challenge.title}</h2>
-            {s.challenge.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </section>
-          <SectionFigure image={s.challenge.image} />
-          <section className='case-section case-section--tight' style={{ paddingTop: 0 }}>
-            {s.ownership && (
-              <dl className='role-list'>
-                {s.ownership.rows.map((row) => (
-                  <div className='role-list__row' key={row.term}>
-                    <dt>{row.term}</dt>
-                    <dd>{row.detail}</dd>
-                  </div>
-                ))}
-              </dl>
-            )}
-          </section>
-
-          {/* Strategy / principles */}
-          <section className='case-section case-section--tint'>
-            <p className='case-section__eyebrow'>Design principles</p>
-            <h2>{s.strategy.title}</h2>
-            <p className='case-section__intro'>{s.strategy.intro}</p>
-            <div className='strategy-grid'>
-              {s.strategy.items.map((item) => (
-                <article className='strategy-card' key={item.label}>
-                  <h3>{item.label}</h3>
-                  <p>{item.text}</p>
-                </article>
+          {/* ══ OVERVIEW ══ */}
+          <section className='case-section case-section--lead' id={s.overview.id}>
+            <div className='problem-block'>
+              <p className='case-section__eyebrow'>{s.overview.problemEyebrow}</p>
+              {s.overview.problemParagraphs.map((p) => (
+                <p key={p}>{p}</p>
               ))}
             </div>
+            <p className='case-section__eyebrow'>{s.overview.eyebrow}</p>
+            <SectionTitle lead={s.overview.titleLead} rest={s.overview.titleRest} />
+            {s.overview.paragraphs.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+            <dl className='role-list'>
+              {s.overview.ownership.rows.map((row) => (
+                <div className='role-list__row' key={row.term}>
+                  <dt>{row.term}</dt>
+                  <dd>{row.detail}</dd>
+                </div>
+              ))}
+            </dl>
           </section>
 
-          {/* Intake study — the 23% story */}
-          {s.research && (
-            <>
-              <section className='case-section case-section--tight'>
-                <p className='case-section__eyebrow'>{s.research.eyebrow}</p>
-                <h2>{s.research.title}</h2>
-                {s.research.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-                {s.research.studyMeta && (
+          {/* ══ WORK SECTIONS ══ */}
+          {s.work.map((section) => (
+            <section className='case-section case-section--work' id={section.id} key={section.id}>
+              <p className='case-section__eyebrow'>{section.eyebrow}</p>
+              <SectionTitle lead={section.titleLead} rest={section.titleRest} />
+
+              {section.type === 'research' ? (
+                <>
+                  <p className='case-section__intro'>{section.lede}</p>
                   <dl className='study-meta'>
-                    {s.research.studyMeta.map((m) => (
+                    {section.studyMeta.map((m) => (
                       <div key={m.term}>
                         <dt>{m.term}</dt>
                         <dd>{m.detail}</dd>
                       </div>
                     ))}
                   </dl>
-                )}
-                {s.research.compare && (
-                  <div className='compare'>
-                    {s.research.compare.map((col) => (
-                      <div className='compare__col' key={col.title}>
-                        <h3>{col.title}</h3>
-                        <p>{col.text}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </section>
+                  <BarChart chart={section.chartEase} />
+                  <SectionHero image={section.hero} />
+                  <BarChart chart={section.chartPlans} />
+                  <FindingBars findings={section.findings} />
+                  <ResultCounter result={section.result} />
+                </>
+              ) : (
+                <>
+                  <POS pos={section.pos} />
+                  <SectionHero image={section.hero} />
+                  {section.gridFirst ? (
+                    <>
+                      <ShotGrid grid={section.grid} />
+                      <Showcase items={section.showcase} />
+                    </>
+                  ) : (
+                    <>
+                      <Showcase items={section.showcase} />
+                      <ShotGrid grid={section.grid} />
+                    </>
+                  )}
+                </>
+              )}
+            </section>
+          ))}
 
-              <SectionFigure image={s.research.image} />
-
-              <section className='case-section case-section--tight' style={{ paddingTop: 0 }}>
-                <h3 className='subhead'>{s.research.findingsTitle}</h3>
-                <div className='finding-list'>
-                  {s.research.findings.map((f) => (
-                    <div className='finding' key={f.title}>
-                      <span className='finding__stat'>{f.stat}</span>
-                      <div>
-                        <h4>{f.title}</h4>
-                        <p>{f.text}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                {s.research.quotes && (
-                  <div className='quote-row'>
-                    {s.research.quotes.map((q) => (
-                      <figure className='pull-quote' key={q.quote}>
-                        <blockquote>{q.quote}</blockquote>
-                        <figcaption>{q.attribution}</figcaption>
-                      </figure>
-                    ))}
-                  </div>
-                )}
-                {s.research.result && (
-                  <div className='result-callout'>
-                    <span className='result-callout__value'>{s.research.result.value}</span>
+          {/* ══ PROCESS & COLLABORATION ══ */}
+          {s.process && (
+            <section className='case-section case-section--work' id={s.process.id}>
+              <p className='case-section__eyebrow'>{s.process.eyebrow}</p>
+              <SectionTitle lead={s.process.titleLead} rest={s.process.titleRest} />
+              <p className='case-section__intro'>{s.process.intro}</p>
+              <div className='flow-list flow-list--spaced' style={{ marginTop: 42 }}>
+                {s.process.steps.map((step) => (
+                  <article className='flow-item' key={step.number}>
+                    <span>{step.number}</span>
                     <div>
-                      <strong>{s.research.result.strong}</strong>
-                      <p>{s.research.result.text}</p>
+                      <h3>{step.title}</h3>
+                      <p>{step.text}</p>
                     </div>
+                  </article>
+                ))}
+              </div>
+              {s.process.image && s.process.image.src && <SectionHero image={s.process.image} />}
+              {s.process.partners && (
+                <>
+                  <h3 className='subhead'>{s.process.partners.title}</h3>
+                  <div className='strategy-grid' style={{ marginTop: 24 }}>
+                    {s.process.partners.items.map((item) => (
+                      <article className='strategy-card' key={item.label}>
+                        <h3>{item.label}</h3>
+                        <p>{item.text}</p>
+                      </article>
+                    ))}
                   </div>
-                )}
-              </section>
-            </>
+                </>
+              )}
+            </section>
           )}
 
-          {/* Exploration */}
-          <section className='case-section case-section--split case-section--tight'>
-            <div>
-              <p className='case-section__eyebrow'>Exploration</p>
-              <h2>{s.exploration.title}</h2>
-            </div>
-            <div>
-              {s.exploration.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </section>
-          <SectionFigure image={s.exploration.image} />
+          {/* ══ LEADERSHIP ══ */}
+          {s.leadership && (
+            <section className='case-section case-section--work case-section--tight'>
+              <p className='case-section__eyebrow'>{s.leadership.eyebrow}</p>
+              <h2>{s.leadership.title}</h2>
+              <p>{s.leadership.text}</p>
+            </section>
+          )}
 
-          {/* Validation & iteration */}
-          <section className='case-section case-section--validation case-section--tight'>
-            <p className='case-section__eyebrow'>Testing & iteration</p>
-            <h2>{s.validation.title}</h2>
-            <p>{s.validation.text}</p>
-            <div className='validation-track'>
-              {s.validation.markers.map((marker, index) => (
-                <div key={marker}>
-                  <span>0{index + 1}</span>
-                  <p>{marker}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-          <SectionFigure image={s.validation.image} />
-
-          {/* Core flows */}
-          <section className='case-section case-section--tight'>
-            <p className='case-section__eyebrow'>Core flows</p>
-            <h2>{s.flows.title}</h2>
-            <div className='flow-list flow-list--spaced'>
-              {s.flows.items.map((item) => (
-                <article className='flow-item' key={item.number}>
-                  <span>{item.number}</span>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-          <SectionFigure image={s.flows.image} />
-
-          {/* Key decisions */}
-          <section className='case-section case-section--quote'>
-            <p className='case-section__eyebrow'>Key decisions</p>
-            <blockquote>{s.decisions.quote}</blockquote>
-            <div className='decision-list'>
-              {s.decisions.items.map((item) => (
-                <p key={item}>{item}</p>
-              ))}
-            </div>
-          </section>
-
-          {/* Outcome */}
-          <section className='case-section case-section--outcome'>
-            <p className='case-section__eyebrow'>Outcome</p>
-            <h2>{s.outcome.title}</h2>
-            {s.outcome.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-            <p className='outcome-callout'>{project.outcome}</p>
-          </section>
-          <SectionFigure image={s.outcome.image} />
-
-          {/* Reflection */}
-          <section className='case-section case-section--reflection'>
+          {/* ══ REFLECTION ══ */}
+          <section className='case-section case-section--reflection' id={s.reflection.id}>
             <p className='case-section__eyebrow'>Reflection</p>
             <h2>{s.reflection.title}</h2>
             <p>{s.reflection.text}</p>
           </section>
+
+          {/* ══ TEAM PHOTO (page closer) ══ */}
+          {s.process?.teamPhoto && <SectionHero image={s.process.teamPhoto} narrow />}
         </div>
       )}
 
@@ -311,6 +553,10 @@ export default function ProjectDetail() {
           ))}
         </div>
       )}
+
+      {project.nav && <PillNav nav={project.nav} />}
+      <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
     </article>
+    </LightboxContext.Provider>
   );
 }
