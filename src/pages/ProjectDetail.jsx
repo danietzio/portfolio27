@@ -54,6 +54,179 @@ function useCountUp(target, inView, duration = 1400) {
   return value;
 }
 
+// Counts a float 0 → target (for ratings etc.).
+function useCountUpFloat(target, inView, duration = 1400, from = 0) {
+  const [value, setValue] = useState(from);
+  useEffect(() => {
+    if (!inView) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setValue(target);
+      return;
+    }
+    let raf;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setValue(from + eased * (target - from));
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [inView, target, duration, from]);
+  return value;
+}
+
+// Renders **text** inside a string as an accent highlight.
+function Rich({ text }) {
+  const parts = String(text).split(/\*\*(.+?)\*\*/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <strong className='hl' key={i}>
+            {part}
+          </strong>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
+/* ── animated hero metrics ─────────────────────────────────── */
+
+// Parses a metric like "100%", "334", "15k", "2 → 4.3" and
+// animates its last number when scrolled into view.
+function MetricValue({ value, inView }) {
+  const match = String(value).match(/^(.*?)([\d.]+)([^\d.]*)$/);
+  const target = match ? parseFloat(match[2]) : null;
+  const decimals = match && match[2].includes('.') ? match[2].split('.')[1].length : 0;
+  const n = useCountUpFloat(target ?? 0, inView && target !== null);
+  if (!match) return <>{value}</>;
+  return (
+    <>
+      {match[1]}
+      {n.toFixed(decimals)}
+      {match[3]}
+    </>
+  );
+}
+
+function Metrics({ metrics }) {
+  const [ref, inView] = useInView(0.4);
+  return (
+    <ul className='metrics' ref={ref}>
+      {metrics.map((m) => (
+        <li key={m.label}>
+          <span className='metrics__value'>
+            <MetricValue value={m.value} inView={inView} />
+          </span>
+          <span className='metrics__label'>{m.label}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/* ── section impact visuals (animate on scroll) ────────────── */
+
+const STAR = 'M12 2l2.9 6.2 6.6.8-4.9 4.6 1.3 6.5L12 16.9 6.1 20l1.3-6.5L2.5 9l6.6-.8z';
+
+// A row of stars; each star fills exactly its own fraction of
+// `value` (gaps no longer distort the fill).
+function StarRow({ value, outOf = 5 }) {
+  return (
+    <div className='stars' role='img' aria-label={`${value} out of ${outOf} stars`}>
+      {Array.from({ length: outOf }).map((_, i) => {
+        const fill = Math.max(0, Math.min(1, value - i)) * 100;
+        return (
+          <span className='star-cell' key={i}>
+            <svg viewBox='0 0 24 24' className='star star--empty' aria-hidden='true'>
+              <path d={STAR} />
+            </svg>
+            <span className='star-cell__fill' style={{ width: `${fill}%` }}>
+              <svg viewBox='0 0 24 24' className='star star--full' aria-hidden='true'>
+                <path d={STAR} />
+              </svg>
+            </span>
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+// Before/after star rating: the old score sits dimmed above the
+// new one, which counts up and fills when scrolled into view.
+function RatingImpact({ impact }) {
+  const [ref, inView] = useInView(0.5);
+  const value = useCountUpFloat(impact.to, inView, 1600, impact.from);
+  return (
+    <div className='impact' ref={ref}>
+      <div className='impact__text'>
+        <strong>{impact.heading}</strong>
+        <p>{impact.label}</p>
+      </div>
+      <div className='impact__figure'>
+        <div className='rating-row rating-row--before'>
+          <span className='rating-row__num'>{impact.from.toFixed(1)}</span>
+          <StarRow value={inView ? impact.from : 0} outOf={impact.outOf || 5} />
+          <span className='rating-row__tag'>before</span>
+        </div>
+        <div className='rating-row'>
+          <span className='rating-row__num'>{value.toFixed(1)}</span>
+          <StarRow value={value} outOf={impact.outOf || 5} />
+          <span className='rating-row__tag'>after</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Peak-players counter: a dot field fills in as the number counts up.
+function PeakImpact({ impact }) {
+  const [ref, inView] = useInView(0.5);
+  const value = useCountUpFloat(impact.value, inView, 1800);
+  const DOTS = 120; // each dot ≈ value/120 players
+  const lit = Math.round((value / impact.value) * DOTS);
+  return (
+    <div className='impact' ref={ref}>
+      <div className='impact__text'>
+        <strong>{impact.heading}</strong>
+        <p>{impact.label}</p>
+      </div>
+      <div className='impact__figure'>
+        <span className='impact__value'>
+          {Math.round(value).toLocaleString('en-US')}
+        </span>
+        <div className='dots' aria-hidden='true'>
+          {Array.from({ length: DOTS }).map((_, i) => (
+            <span key={i} className={i < lit ? 'dot is-lit' : 'dot'} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Impact({ impact }) {
+  if (!impact) return null;
+  if (impact.type === 'rating') return <RatingImpact impact={impact} />;
+  if (impact.type === 'peak') return <PeakImpact impact={impact} />;
+  return null;
+}
+
+/* ── ambient background glow (themed pages) ────────────────── */
+
+// Two soft glow blobs in the page's accent colors. Fixed to the
+// viewport so they cover the whole page at any scroll position;
+// their own slow drift loops (CSS) provide the motion.
+function PageGlow() {
+  return <div className='page-glow' aria-hidden='true' />;
+}
+
 /* ── lightbox ──────────────────────────────────────────────── */
 
 const LightboxContext = createContext(() => {});
@@ -370,13 +543,29 @@ export default function ProjectDetail() {
   const project = projects.find((p) => p.slug === slug);
   const [lightboxItem, setLightboxItem] = useState(null);
 
+  // Per-project theme: token overrides applied to <body> while
+  // this page is open; the site's defaults return on leave.
+  useEffect(() => {
+    const theme = project?.theme;
+    if (!theme) return;
+    const body = document.body;
+    const prevBg = body.style.background;
+    Object.entries(theme).forEach(([k, v]) => body.style.setProperty(k, v));
+    if (theme['--bg']) body.style.background = theme['--bg'];
+    return () => {
+      Object.keys(theme).forEach((k) => body.style.removeProperty(k));
+      body.style.background = prevBg;
+    };
+  }, [project]);
+
   if (!project) return <Navigate to='/' replace />;
 
   const s = project.sections;
 
   return (
     <LightboxContext.Provider value={setLightboxItem}>
-    <article className='page project-detail'>
+    <article className={`page project-detail project--${project.slug}`}>
+      {project.theme && <PageGlow />}
       <Link to='/' className='link-underline project-detail__back'>
         ← Back to work
       </Link>
@@ -412,16 +601,7 @@ export default function ProjectDetail() {
         <CoverMedia project={project} />
       </figure>
 
-      {project.metrics && (
-        <ul className='metrics'>
-          {project.metrics.map((m) => (
-            <li key={m.label}>
-              <span className='metrics__value'>{m.value}</span>
-              <span className='metrics__label'>{m.label}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      {project.metrics && <Metrics metrics={project.metrics} />}
 
       {s && (
         <div className='project-detail__case-study'>
@@ -430,13 +610,17 @@ export default function ProjectDetail() {
             <div className='problem-block'>
               <p className='case-section__eyebrow'>{s.overview.problemEyebrow}</p>
               {s.overview.problemParagraphs.map((p) => (
-                <p key={p}>{p}</p>
+                <p key={p}>
+                  <Rich text={p} />
+                </p>
               ))}
             </div>
             <p className='case-section__eyebrow'>{s.overview.eyebrow}</p>
             <SectionTitle lead={s.overview.titleLead} rest={s.overview.titleRest} />
             {s.overview.paragraphs.map((p) => (
-              <p key={p}>{p}</p>
+              <p key={p}>
+                <Rich text={p} />
+              </p>
             ))}
             <dl className='role-list'>
               {s.overview.ownership.rows.map((row) => (
@@ -486,6 +670,7 @@ export default function ProjectDetail() {
                       <ShotGrid grid={section.grid} />
                     </>
                   )}
+                  <Impact impact={section.impact} />
                 </>
               )}
             </section>

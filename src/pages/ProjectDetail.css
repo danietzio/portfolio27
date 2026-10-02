@@ -609,9 +609,10 @@ video.project-detail__cover {
 .case-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.05;
+  font-size: clamp(1.85rem, 3.2vw, 2.8rem);
+  line-height: 1.1;
   margin: 14px 0 24px;
+  max-width: 24ch;
 }
 .case-title__lead {
   color: var(--accent);
@@ -1035,4 +1036,298 @@ video.project-detail__cover {
 }
 .section-hero--narrow {
   margin-top: 0;
+}
+
+/* ── Hero metrics: keep 4 on one row, values never wrap ────── */
+.metrics {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.metrics__value {
+  white-space: nowrap;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* ── Section impact visuals (rating stars, player dots) ────── */
+.impact {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto;
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  margin-top: 56px;
+  padding-top: 44px;
+}
+.impact__text strong {
+  max-width: 20ch;
+}
+.impact__figure {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.impact__value {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 4.5rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.impact__text strong {
+  display: block;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  margin-bottom: 8px;
+}
+.impact__text p {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0;
+  max-width: 44ch;
+}
+
+/* Stars: each star fills exactly its own fraction of the score */
+.stars {
+  display: flex;
+  gap: 6px;
+}
+.star-cell {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+.star-cell__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+}
+.star {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+.star--empty {
+  fill: var(--accent-soft);
+}
+.star--full {
+  fill: var(--accent);
+}
+
+/* Before / after rating rows */
+.rating-row {
+  display: grid;
+  grid-template-columns: 90px auto auto;
+  gap: 16px;
+  align-items: center;
+}
+.rating-row + .rating-row {
+  margin-top: 18px;
+}
+.rating-row__num {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.rating-row__tag {
+  color: var(--ink-soft);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.rating-row--before {
+  opacity: 0.45;
+}
+.rating-row--before .rating-row__num {
+  color: var(--ink-soft);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+}
+.rating-row--before .star-cell,
+.rating-row--before .star {
+  width: 24px;
+  height: 24px;
+}
+
+/* Player dot field: 120 dots fill as the counter climbs */
+.dots {
+  display: grid;
+  grid-template-columns: repeat(20, 12px);
+  gap: 6px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.dot.is-lit {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+@media (max-width: 720px) {
+  .impact {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .dots {
+    grid-template-columns: repeat(20, 10px);
+  }
+  .star {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    transition: none;
+  }
+}
+
+/* ═══ Per-project styling ═══════════════════════════════════════
+   Every page carries .project--<slug>, so any project can have
+   its own look without affecting the others. Examples:
+
+   .project--backgammon-galaxy .case-title__lead { color: #2451ff; }
+   .project--backgammon-galaxy .impact__value   { letter-spacing: -0.02em; }
+   .project--oar-health-member-experience .pos-grid__cell { border-radius: 8px; }
+
+   Works for anything: tokens, fonts, spacing, one-off tweaks.
+   Keep overrides small — the shared system is what makes the
+   site feel coherent; per-project CSS is for accents, not forks. */
+
+/* ── Accent highlights in prose (**text** in content.js) ────── */
+.hl {
+  color: var(--accent);
+  font-weight: 600;
+  background-image: linear-gradient(var(--accent-soft), var(--accent-soft));
+  background-repeat: no-repeat;
+  background-size: 100% 0.45em;
+  background-position: 0 80%;
+  animation: hl-sweep 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  padding: 0 2px;
+  border-radius: 3px;
+}
+@keyframes hl-sweep {
+  from { background-size: 0% 0.45em; }
+  to { background-size: 100% 0.45em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hl { animation: none; }
+}
+
+@media (max-width: 720px) {
+  .rating-row {
+    grid-template-columns: 64px auto auto;
+    gap: 10px;
+  }
+}
+
+/* ═══ Backgammon Galaxy — dark theme, in the app's own grammar ═══
+   Blue (--accent) = action: titles, nav, links, charts.
+   Gold (--gold)   = value: every number that measures the outcome. */
+
+.project--backgammon-galaxy .metrics__value,
+.project--backgammon-galaxy .impact__value,
+.project--backgammon-galaxy .rating-row__num {
+  color: var(--gold, var(--accent));
+}
+.project--backgammon-galaxy .rating-row--before .rating-row__num {
+  color: var(--ink-soft);
+}
+.project--backgammon-galaxy .star--full {
+  fill: var(--gold, var(--accent));
+}
+.project--backgammon-galaxy .star--empty {
+  fill: #262e3e;
+}
+.project--backgammon-galaxy .hl {
+  color: var(--gold, var(--accent));
+  background-image: linear-gradient(rgba(242, 177, 56, 0.16), rgba(242, 177, 56, 0.16));
+}
+
+/* Surfaces & chrome tuned for the dark ground */
+.project--backgammon-galaxy .pill-nav {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+.project--backgammon-galaxy .figure-placeholder {
+  border-color: var(--line);
+  color: var(--ink-soft);
+}
+.project--backgammon-galaxy .showcase-row__media .figure-placeholder {
+  background: var(--accent-soft);
+}
+.project--backgammon-galaxy .lightbox {
+  background: rgba(5, 7, 10, 0.92);
+}
+.project--backgammon-galaxy .dot {
+  background: #262e3e;
+}
+.project--backgammon-galaxy .dot.is-lit {
+  background: var(--gold, var(--accent));
+}
+.project--backgammon-galaxy .outcome-callout,
+.project--backgammon-galaxy .result-callout {
+  border-left-color: var(--gold, var(--accent));
+}
+
+/* ── Ambient glow on themed pages + top breathing room ─────── */
+article.project-detail.project-detail {
+  padding-top: 150px; /* clear space below the site header */
+}
+
+.page-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  /* one quiet atmosphere: deep navy settling into black */
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 7%, var(--bg)) 0%,
+    var(--bg) 55%
+  );
+}
+/* A single soft light, breathing slowly at the top of the page */
+.page-glow::before {
+  content: '';
+  position: absolute;
+  width: min(90vw, 1200px);
+  height: min(90vw, 1200px);
+  top: -45%;
+  left: 50%;
+  margin-left: min(-45vw, -600px);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 14%, transparent),
+    transparent 65%
+  );
+  animation: glow-breathe 14s ease-in-out infinite alternate;
+}
+@keyframes glow-breathe {
+  from { transform: translateX(-6vw) scale(1); opacity: 0.85; }
+  to { transform: translateX(6vw) scale(1.12); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-glow::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 720px) {
+  article.project-detail.project-detail {
+    padding-top: 90px;
+  }
 }

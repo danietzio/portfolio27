@@ -34,6 +34,7 @@ export const experience = [
 export const projects = [
   {
     slug: 'oar-health-member-experience',
+    hook: '23% more people reached care.',
     title: 'Designing the member experience at Oar Health',
     subtitle: 'Oar Health • Telehealth • Product Design',
     tag: 'Case study',
@@ -453,7 +454,7 @@ export const projects = [
         // Team photo — shown only when src is set. Get your
         // teammates' okay before publishing their faces.
         teamPhoto: {
-          src: '/projects/OarHealth/team.jpeg', // '/projects/OarHealth/team.jpg'
+          src: '/projects/OarHealth/team1.jpeg', // '/projects/OarHealth/team.jpg'
           placeholder: 'OPTIONAL — a photo of the design team (with everyone’s permission).',
           caption: 'The design team behind the member experience.',
         },
@@ -475,15 +476,416 @@ export const projects = [
     },
   },
 
-  // ── OTHER PROJECTS ─────────────────────────────────────────
+  // ═══════════════════════════════════════════════════════════
+  // BACKGAMMON GALAXY — designer × developer case study.
+  // Images go in /public/projects/Backgammon/ — every slot has a
+  // placeholder saying what to export. Verify the numbers marked
+  // "verify" before publishing.
+  // ═══════════════════════════════════════════════════════════
   {
-    slug: 'project-two',
-    title: 'Another project title',
-    subtitle: 'Company or context • 2025',
-    tag: 'Shipped',
-    cover: '/projects/project-two-cover.png',
-    summary: 'One sentence on what the project is and why it mattered.',
-    body: ['Set up the problem.', 'Describe your approach.', 'Close with the outcome.'],
+    slug: 'backgammon-galaxy',
+    hook: 'A 2-star app, rebuilt to 4.3.',
+    title: 'Designing — and building — Backgammon Galaxy',
+    subtitle: 'Backgammon Galaxy • Gaming • Product Design + Front-end',
+    tag: 'Case study',
+
+    // '/projects/Backgammon/hero.mp4' — gameplay in motion is the
+    // strongest possible cover for a game product.
+    cover: '/projects/Backgammon/cover1.png',
+    coverPlaceholder:
+      'HERO — gameplay recording (hero.mp4): a live match with the hint arrows firing, or your best board frame.',
+
+    summary:
+      'Backgammon Galaxy is the world’s biggest backgammon community — 100,000+ games a day, founded by grandmasters, and organizer of live events from the World Championship in Monte Carlo to the UBC. I redesigned the mobile app end to end, rebranded the website, built the design system — and once developers delivered the first build, finished it myself in code until it matched the designs exactly.',
+    role: 'Product Designer & Front-end Developer',
+    team: 'Art Director, CEO, PM, Web / Mobile / Back-end Engineers, QA',
+    tools: 'Figma, React, Git, Docker',
+    outcome: 'A full mobile app, a rebranded website, and a 334-component design system — shipped pixel-perfect.',
+
+    metrics: [
+      { value: '2 → 4.3', label: 'app rating — old app vs. the redesign' }, // verify exact figures
+      { value: '15k', label: 'peak concurrent players after rollout' }, // verify
+      { value: '334', label: 'components in the design system' }, // verify against Figma
+      { value: '100%', label: 'design-to-build fidelity, closed in code myself' },
+    ],
+
+    // Page theme — the app's own color grammar: blue = action,
+    // gold = value. Applied while this case study is open;
+    // leaving the page restores the site's light look.
+    theme: {
+      '--bg': '#0E1116',
+      '--ink': '#F2F4F8',
+      '--ink-soft': '#98A2B6',
+      '--line': '#252C3A',
+      '--accent': '#3D6BFF', // electric blue — action, navigation, links
+      '--accent-soft': '#1A2130', // panel surfaces, chart tracks
+      '--gold': '#F2B138', // value — metrics, stars, the 15,000
+    },
+
+    nav: [
+      { id: 'overview', label: 'Overview' },
+      { id: 'mobile', label: 'Mobile' },
+      { id: 'website', label: 'Website' },
+      { id: 'academy', label: 'Academy' },
+      { id: 'gameplay', label: 'Gameplay' },
+      { id: 'system', label: 'System' },
+      { id: 'code', label: 'Design → Code' },
+      { id: 'reflection', label: 'Reflection' },
+    ],
+
+    sections: {
+      // ══ OVERVIEW ══════════════════════════════════════════════
+      overview: {
+        id: 'overview',
+        problemEyebrow: 'The problem',
+        problemParagraphs: [
+          'Backgammon Galaxy is where the game lives online: **the world’s biggest backgammon community**, **100,000+ games a day**, founded by grandmasters — and behind live events from the **World Championship in Monte Carlo** to the Ultimate Backgammon Championship. A platform with those stakes deserved better than what it had.',
+          'Backgammon is deep strategy under time pressure: board positions, candidate moves, the doubling cube — all evaluated while a clock runs. Yet the platform had an aging website, a mobile app players rated 2 out of 5, and no way to help players learn without interrupting the game.',
+          'And between design and engineering sat a gap: an art director who didn’t work with developers, and developers who needed precise answers.',
+        ],
+        eyebrow: 'The answer',
+        titleLead: 'Play and learn.',
+        titleRest: 'One ecosystem — designed, systematized, and built.',
+        paragraphs: [
+          'I worked both sides of the product: deciding the designs with the CEO and art director, briefing engineering through detailed Figma guides — and once developers delivered the first build, going into the code myself to close every gap between design and production.',
+        ],
+        ownership: {
+          rows: [
+            {
+              term: 'Mobile app',
+              detail: 'Redesigned end to end — sign-up through lobby, dashboard, messaging, analytics',
+            },
+            { term: 'Website', detail: 'Full redesign with new branding and new features' },
+            { term: 'In-game coaching', detail: 'The Hint → Detailed Analysis system' },
+            { term: 'Quiz Academy', detail: 'Expert courses turned into a structured learning journey' },
+            { term: 'Design system', detail: '334 components covering a state-heavy product' },
+            {
+              term: 'Final-mile code',
+              detail: 'Refined the developers’ front-end myself until it matched the designs',
+            },
+            {
+              term: 'Design–dev bridge',
+              detail: 'One line from CEO and art director to PM and developers — no back-and-forth',
+            },
+          ],
+        },
+      },
+
+      // ══ WORK SECTIONS ════════════════════════════════════════
+      work: [
+        // ── 01 MOBILE APP ─────────────────────────────────────────────
+        {
+          id: 'mobile',
+          eyebrow: 'Section 01',
+          titleLead: 'The mobile app.',
+          titleRest: 'From two stars to four point three.',
+          pos: {
+            problem:
+              'The old mobile app was landscape-only, carried the old branding, missed the ecosystem’s new features — and players said so: it sat at roughly 2 out of 5 in the stores.',
+            opportunity:
+              'A full redesign on the new design system and branding could bring the whole ecosystem — play, learning, social, economy, analytics — to the platform players actually carry.',
+            solution:
+              'A full redesign on the new system: sign-up through lobby, dashboard, messaging, boards, and the coin shop. Landscape first to meet old-app players where they were — then the portrait v3. The rating climbed from about 2 to 4.3.',
+          },
+          hero: {
+            src: '/projects/Backgammon/mobile1.png', // '/projects/Backgammon/mobile-hero.png'
+            placeholder: 'SOLUTION HERO — the mobile lobby, or a lineup of the key mobile screens.',
+            caption: 'The lobby: every way to play, one screen.',
+          },
+          showcase: [
+            {
+              heading: 'Landscape first, portrait when it counted',
+              text: 'The old app was landscape, so the redesign started there — new branding and system on a format players already knew, shipped sooner. Then V3 rebuilt it in portrait: one-handed, natural, the best design of the three. Knowing when to bridge from the old and when to break from it was the job.',
+              image: {
+                src: '/projects/Backgammon/mobile2.png', // '/projects/Backgammon/mobile-v1-v3.png'
+                placeholder: 'ONE combined frame — the landscape V1 beside the portrait V3 of the same screen.',
+              },
+            },
+            {
+              heading: 'Onboarding that makes the experience unique',
+              text: 'New players identify as Newbie through Advanced during sign-up — the foundation for personalized learning and fair matches, captured before the first game.',
+              image: {
+                src: '/projects/Backgammon/mobile3.png', // '/projects/Backgammon/mobile-v1-v3.png'
+                placeholder: 'Sign-up → verification → skill-level selection → lobby. Recording works great.',
+              },
+            },
+            {
+              heading: 'A dashboard that’s yours',
+              text: 'Rating, bankroll, current board and avatar, matches, leaderboards — in configurable rows, so a grinder and a casual player see different homes.',
+              image: {
+                src: '/projects/Backgammon/mobile4.png', // '/projects/Backgammon/mobile-dashboard.png'
+                placeholder: 'Mobile dashboard with configurable rows.',
+              },
+            },
+            {
+              heading: 'A lot of data, very little screen',
+              text: 'The analytics page had far more to say than a phone has room for — ratings, performance, match history, blunders. Most of the design time went into structure: what earns the first screen, what collapses, what waits behind a tap.',
+              image: {
+                src: '/projects/Backgammon/mobile5.png', // '/projects/Backgammon/mobile-analytics.png'
+                placeholder: 'Mobile analytics page — the dense-data layout, or 2–3 screens of its hierarchy.',
+              },
+            },
+            {
+              heading: 'Messaging, on both platforms',
+              text: 'Friends, conversations, player search, invites — designed once as a system, shipped on mobile and web.',
+              image: {
+                src: '/projects/Backgammon/mobile6.png', // '/projects/Backgammon/messaging.png'
+                placeholder: 'Messaging — conversation list + chat, mobile and web side by side.',
+              },
+            },
+          ],
+          grid: {
+            title: 'Around the app',
+            cols: 3,
+            images: [
+              { src: '/projects/Backgammon/mobile7.png', placeholder: 'Boards — selection & locked levels' },
+              { src: '/projects/Backgammon/mobile8.png', placeholder: 'Coin shop — bundles & bonuses' },
+              { src: '/projects/Backgammon/mobile9.png', placeholder: 'Profile / social screens' },
+            ],
+          },
+          // Animated on scroll: stars fill from 2.0 to 4.3.
+          impact: {
+            type: 'rating',
+            from: 2,
+            to: 4.3, // verify exact figure
+            outOf: 5,
+            heading: 'What players said',
+            label: 'App store rating after the redesign — up from about 2.0 on the old app.',
+          },
+        },
+
+        // ── 02 WEBSITE ────────────────────────────────────────────────
+        {
+          id: 'website',
+          eyebrow: 'Section 02',
+          titleLead: 'The website.',
+          titleRest: 'A rebrand, rebuilt page by page.',
+          pos: {
+            problem:
+              'The existing site carried old branding and an old structure — and none of the features the platform was growing into.',
+            opportunity:
+              'The new brand — dark navy surfaces, electric blue, gold for currency — could carry an entirely rethought site, and every new feature could launch web and mobile together.',
+            solution:
+              'A full redesign under the new branding, with new sections throughout: the quiz, Play vs AI, Analytics, Play a Friend, messaging, and board selection — one visual language across the whole platform.',
+          },
+          hero: {
+            src: null, // '/projects/Backgammon/web-hero.png'
+            placeholder: 'SOLUTION HERO — the redesigned website main page, new branding on full display.',
+            caption: 'The new face of the platform.',
+          },
+          showcase: [
+            {
+              heading: 'Old site, new site',
+              text: 'Same platform, different decade. One combined before/after shows how far the rebrand moved it.',
+              image: {
+                src: null, // '/projects/Backgammon/web-before-after.png'
+                placeholder: 'ONE combined frame — old website beside the redesign.',
+              },
+            },
+            {
+              heading: 'Your game, measured',
+              text: 'The Analytics section turns match history into a readable picture of your play — ratings over time, blunders, performance.',
+              image: {
+                src: null, // '/projects/Backgammon/web-analytics.png'
+                placeholder: 'Analytics page — charts and match insights.',
+              },
+            },
+          ],
+          // Animated on scroll: counter + dot field fill to 15,000.
+          impact: {
+            type: 'peak',
+            value: 15000, // verify exact figure
+            heading: 'The whole galaxy, online at once',
+            label: 'Peak concurrent players after the new version rolled out.',
+          },
+        },
+
+        // ── 03 QUIZ ACADEMY & AI ──────────────────────────────────────
+        {
+          id: 'academy',
+          eyebrow: 'Section 03',
+          titleLead: 'The academy.',
+          titleRest: 'Grandmaster knowledge, ten problems at a time.',
+          pos: {
+            problem:
+              'Advanced backgammon knowledge lives in dense books and engine outputs. Nothing in the product turned it into a journey a beginner could actually walk.',
+            opportunity:
+              'Expert-authored problems, structured like a game: categories, progress, streaks of feedback — learning that feels like playing.',
+            solution:
+              'Quiz Academy: Easy to Hard categories, courses of 10 to 50 problems with saved progress, instant “Excellent” / “Nope” feedback before the explanation, and a celebration at the end. Beside it, Play vs AI: opponents from Rookie to Galactic Master with configurable coaching, format, and fees.',
+          },
+          hero: {
+            src: null, // '/projects/Backgammon/academy-hero.png'
+            placeholder: 'SOLUTION HERO — the Quiz Academy entry: categories, courses, progress states.',
+            caption: 'Courses with states, progress, and a reason to come back.',
+          },
+          showcase: [
+            {
+              heading: 'Feedback first, lesson second',
+              text: 'Pick a move, get the verdict instantly, then see the correct move and why. The emotional beat lands before the explanation asks for attention.',
+              image: {
+                src: null, // '/projects/Backgammon/quiz-flow.mp4'
+                placeholder: 'RECORDING — a quiz problem: answer → “Excellent”/“Nope” → explanation → next.',
+              },
+            },
+            {
+              heading: 'An opponent for every level',
+              text: 'Rookie to Galactic Master, with match format, coaching assistance, hints and pip count all configurable — and membership deciding how much flexibility you get.',
+              image: {
+                src: null, // '/projects/Backgammon/play-vs-ai.png'
+                placeholder:
+                  'Play vs AI — opponent selection + match configuration, Free vs Star entitlements visible.',
+              },
+            },
+          ],
+        },
+
+        // ── 04 GAMEPLAY & COACHING ────────────────────────────────────
+        {
+          id: 'gameplay',
+          eyebrow: 'Section 04',
+          titleLead: 'The game.',
+          titleRest: 'Coaching that never interrupts the match.',
+          pos: {
+            problem:
+              'Evaluating moves and cube decisions under a running clock is where players blunder — and where they quit. Traditional analysis lives after the game, when the lesson no longer sticks.',
+            opportunity:
+              'Expert-grade analysis — equity differences, winning chances, cube verdicts — already existed in engines. The design question: surface it inside live play, progressively, without breaking the flow of a match.',
+            solution:
+              'A Hint → Detail system. Request a hint (coins permitting) and suggested-move arrows appear on the board; open Detail for candidate moves, equity, and winning chances. Cube decisions get their own verdicts — from No Double to Cube Blunder — and if you already made the best move, the system says so.',
+          },
+          hero: {
+            src: null, // '/projects/Backgammon/gameplay-hero.png' or .mp4
+            placeholder:
+              'SOLUTION HERO — the live match screen: board, clocks, ratings, dice, with hint arrows visible. Recording > still.',
+            caption: 'Everything a match needs, with coaching one tap away.',
+          },
+          showcase: [
+            {
+              heading: 'Hint, then Detail',
+              text: 'Arrows suggest the move; Detail explains it — candidate moves ranked by equity and winning chances. After you move, it resets and the clock never stopped mattering.',
+              image: {
+                src: null, // '/projects/Backgammon/hint-flow.mp4'
+                placeholder: 'RECORDING — hint requested → arrows appear → Detail panel opens → move made.',
+              },
+            },
+            {
+              heading: 'Feedback that names the move',
+              text: 'Correct, good, error, blunder — and the full cube vocabulary from Excellent Take to Missed Cube. Players learn the language of the game while playing it.',
+              image: {
+                src: null, // '/projects/Backgammon/feedback-states.png'
+                placeholder:
+                  'Feedback states — correct / good / error / blunder plus cube verdicts, composed on one frame.',
+              },
+            },
+            {
+              heading: 'One event, three audiences',
+              text: 'When a player goes inactive, three people see three different screens: the inactive player gets a countdown, the opponent gets context, the spectator gets an update. Role-specific communication instead of one generic notification.',
+              image: {
+                src: null, // '/projects/Backgammon/inactivity.png'
+                placeholder:
+                  'ONE frame — the inactivity flow from all three perspectives: player, opponent, spectator.',
+              },
+            },
+          ],
+        },
+
+        // ── 05 DESIGN SYSTEM ──────────────────────────────────────────
+        {
+          id: 'system',
+          eyebrow: 'Section 05',
+          titleLead: 'The system.',
+          titleRest: '334 components for a thousand states.',
+          pos: {
+            problem:
+              'A product with live gameplay, an economy, memberships, and error states everywhere cannot be designed screen by screen — it drifts apart within a sprint.',
+            opportunity:
+              'Every repeated pattern — buttons, dialogs, countdowns, user tiles, chat messages, coin packs, board levels, pre-match dialogs — could become a component the whole team, including me as its developer, could trust.',
+            solution:
+              'A comprehensive component library: 80 component sets, 334 components, 5,000+ instances across the file — covering navigation, inputs and validation, overlays, notifications, gameplay messages, leaderboards, and the analysis sidebar.',
+          },
+          hero: {
+            src: null, // '/projects/Backgammon/system-hero.png'
+            placeholder: 'SOLUTION HERO — a composed sheet of the component library: sets, variants, states.',
+            caption: 'The shared language of the whole platform.',
+          },
+          showcase: [
+            {
+              heading: 'Built to be built',
+              text: 'Because I was also implementing these components in code, the system stayed honest: every variant existed because a screen needed it, named so a developer — me — could find it. The next maturity step I scoped: a semantic token layer and consolidation of legacy variants.',
+              image: {
+                src: null, // '/projects/Backgammon/system-states.png'
+                placeholder:
+                  'A state-heavy component set — e.g. dialogs or gameplay messages with all variants visible.',
+              },
+            },
+          ],
+        },
+      ],
+
+      // ══ DESIGN → CODE (the differentiator) ═══════════════════
+      process: {
+        id: 'code',
+        eyebrow: 'Both sides of the handoff',
+        titleLead: 'Design → code.',
+        titleRest: 'I was the handoff.',
+        intro:
+          'Before this, every design decision bounced: CEO, art director, product manager, developers, and back again. I collapsed the loop — deciding at the source, briefing engineering precisely, and finishing the build myself in code so the back-and-forth ended.',
+        steps: [
+          {
+            number: '01',
+            title: 'Decide at the source',
+            text: 'Design decisions made directly with the CEO and art director — the three of us as the decision-makers, so direction was settled before it ever reached a ticket.',
+          },
+          {
+            number: '02',
+            title: 'Brief through the PM',
+            text: 'Detailed guides in Figma — exactly what should be what, state by state — handed to the product manager who ran the developer teams. Precision in, so questions didn’t come back out.',
+          },
+          {
+            number: '03',
+            title: 'Let the build land',
+            text: 'Web, mobile, and back-end developers delivered the first version from those guides — about 80% of the way there.',
+          },
+          {
+            number: '04',
+            title: 'Close the last mile in code',
+            text: 'Then I went into the front-end repositories myself — GitHub projects running in Docker containers — and refined the build until design and development were indistinguishable. No more rounds of feedback; I just fixed it.',
+          },
+        ],
+        image: {
+          src: null, // '/projects/Backgammon/design-to-code.png'
+          placeholder:
+            'OPTIONAL — a split shot: Figma frame beside the identical shipped screen, or your code/PR view next to the design.',
+          caption: 'The design, and the build of it — indistinguishable on purpose.',
+        },
+        partners: {
+          title: 'Who I worked between',
+          items: [
+            {
+              label: 'CEO & Art Director',
+              text: 'Design decided together at the source — no relay, no telephone game.',
+            },
+            {
+              label: 'Product Manager',
+              text: 'My channel into the developer teams — briefed with detailed Figma guides, not vague tickets.',
+            },
+            {
+              label: 'Engineers',
+              text: 'Web, mobile, and back-end delivered the first build; I finished it alongside them in the repos.',
+            },
+            { label: 'QA', text: 'Verified behavior after my fidelity pass had already caught the visual drift.' },
+          ],
+        },
+      },
+
+      // ══ REFLECTION ════════════════════════════════════════════
+      reflection: {
+        id: 'reflection',
+        title: 'What building my own designs taught me',
+        text: 'Finishing the build myself changed how I design: anything I drew, I might later have to code, so ambiguity stopped at the Figma file. Collapsing the loop between a CEO, an art director, a PM and three developer teams taught me the cheapest fix for endless back-and-forth is one person who speaks both languages — and the mobile app — from a 2-star landscape legacy to a 4.3-rated portrait redesign — taught me when to bridge from what users know and when to break from it.',
+      },
+    },
   },
 ];
 

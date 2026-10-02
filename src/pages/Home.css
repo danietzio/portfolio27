@@ -1,28 +1,159 @@
-.hero {
-  padding: 72px 0 48px;
-  max-width: 620px;
+/* ── Intro: one line, nothing else ─────────────────────────── */
+.home-intro {
+  padding: 64px 0 36px;
+  max-width: 680px;
 }
-
-.hero__title {
+.home-intro__title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  line-height: 1.25;
+  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
+  line-height: 1.22;
   margin: 0;
+}
+
+/* ── The doors: each project, in its own world ─────────────────
+   Light Oar beside near-black Backgammon: the contrast is the
+   design. Hover widens a door; click enters the case study. */
+.doors {
+  display: flex;
+  gap: 10px;
+  height: min(74vh, 680px);
+  margin-bottom: 72px;
+}
+
+.door {
+  position: relative;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  border-radius: 18px;
+  text-decoration: none;
+  background: var(--door-bg, var(--accent-soft));
+  color: var(--door-ink, var(--ink));
+  transition: flex-grow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  /* the one load moment: doors part from the seam */
+  opacity: 0;
+  transform: scaleX(0.96);
+  animation: door-open 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--door-delay, 0ms);
+}
+@keyframes door-open {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+.door:hover,
+.door:focus-visible {
+  flex-grow: 1.45;
+}
+.door:focus-visible {
+  outline: 2px solid var(--door-accent, var(--accent));
+  outline-offset: 4px;
+}
+
+/* Cover media fills the door; the scrim keeps the text readable */
+.door__media {
+  position: absolute;
+  inset: 0;
+}
+.door__media img,
+.door__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.door:hover .door__media img,
+.door:hover .door__media video {
+  transform: scale(1.04);
+}
+.door__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 30%,
+    color-mix(in srgb, var(--door-bg, var(--bg, #fff)) 55%, transparent) 72%,
+    color-mix(in srgb, var(--door-bg, var(--bg, #fff)) 92%, transparent) 100%
+  );
+}
+
+.door__content {
+  position: relative;
+  align-self: flex-end;
+  display: grid;
+  gap: 8px;
+  padding: clamp(24px, 3.5vw, 44px);
+}
+.door__company {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+  line-height: 1.05;
+}
+.door__hook {
+  color: var(--door-ink-soft, var(--ink-soft));
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.4;
+  max-width: 30ch;
+}
+.door__enter {
+  color: var(--door-accent, var(--accent));
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-top: 8px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.door:hover .door__enter,
+.door:focus-visible .door__enter {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .section {
   padding: 32px 0;
 }
 
-.project-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+/* ── Mobile: doors stack as slabs ──────────────────────────── */
+@media (max-width: 720px) {
+  .home-intro {
+    padding: 40px 0 28px;
+  }
+  .doors {
+    flex-direction: column;
+    height: auto;
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+  .door {
+    min-height: 300px;
+    transition: none;
+  }
+  .door:hover {
+    flex-grow: 1;
+  }
+  .door__enter {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-@media (max-width: 720px) {
-  .project-list {
-    grid-template-columns: 1fr;
+@media (prefers-reduced-motion: reduce) {
+  .door {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .door__media img,
+  .door__media video,
+  .door__enter {
+    transition: none;
+  }
+  .door__enter {
+    opacity: 1;
+    transform: none;
   }
 }
