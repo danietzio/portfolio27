@@ -669,7 +669,7 @@ export const projects = [
               'A full redesign under the new branding, with new sections throughout: the quiz, Play vs AI, Analytics, Play a Friend, messaging, and board selection — one visual language across the whole platform.',
           },
           hero: {
-            src: null, // '/projects/Backgammon/web-hero.png'
+            src: '/projects/Backgammon/cover2.png', // '/projects/Backgammon/web-hero.png'
             placeholder: 'SOLUTION HERO — the redesigned website main page, new branding on full display.',
             caption: 'The new face of the platform.',
           },
@@ -678,15 +678,15 @@ export const projects = [
               heading: 'Old site, new site',
               text: 'Same platform, different decade. One combined before/after shows how far the rebrand moved it.',
               image: {
-                src: null, // '/projects/Backgammon/web-before-after.png'
+                src: '/projects/Backgammon/mobile21.png', // '/projects/Backgammon/web-before-after.png'
                 placeholder: 'ONE combined frame — old website beside the redesign.',
               },
             },
             {
-              heading: 'Your game, measured',
-              text: 'The Analytics section turns match history into a readable picture of your play — ratings over time, blunders, performance.',
+              heading: 'Chat with your friends and opponents',
+              text: 'Real-time conversation built into the platform — talk with your opponent mid-match or pick up a thread with friends, with the same messaging system carried across web and mobile.',
               image: {
-                src: null, // '/projects/Backgammon/web-analytics.png'
+                src: '/projects/Backgammon/mobile22.png', // '/projects/Backgammon/web-analytics.png'
                 placeholder: 'Analytics page — charts and match insights.',
               },
             },
@@ -715,7 +715,7 @@ export const projects = [
               'Quiz Academy: Easy to Hard categories, courses of 10 to 50 problems with saved progress, instant “Excellent” / “Nope” feedback before the explanation, and a celebration at the end. Beside it, Play vs AI: opponents from Rookie to Galactic Master with configurable coaching, format, and fees.',
           },
           hero: {
-            src: null, // '/projects/Backgammon/academy-hero.png'
+            src: '/projects/Backgammon/cover3.png', // '/projects/Backgammon/academy-hero.png'
             placeholder: 'SOLUTION HERO — the Quiz Academy entry: categories, courses, progress states.',
             caption: 'Courses with states, progress, and a reason to come back.',
           },
@@ -724,7 +724,7 @@ export const projects = [
               heading: 'Feedback first, lesson second',
               text: 'Pick a move, get the verdict instantly, then see the correct move and why. The emotional beat lands before the explanation asks for attention.',
               image: {
-                src: null, // '/projects/Backgammon/quiz-flow.mp4'
+                src: '/projects/Backgammon/mobile31.png', // '/projects/Backgammon/quiz-flow.mp4'
                 placeholder: 'RECORDING — a quiz problem: answer → “Excellent”/“Nope” → explanation → next.',
               },
             },
@@ -732,7 +732,7 @@ export const projects = [
               heading: 'An opponent for every level',
               text: 'Rookie to Galactic Master, with match format, coaching assistance, hints and pip count all configurable — and membership deciding how much flexibility you get.',
               image: {
-                src: null, // '/projects/Backgammon/play-vs-ai.png'
+                src: '/projects/Backgammon/mobile32.png', // '/projects/Backgammon/play-vs-ai.png'
                 placeholder:
                   'Play vs AI — opponent selection + match configuration, Free vs Star entitlements visible.',
               },
