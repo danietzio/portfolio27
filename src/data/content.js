@@ -1199,7 +1199,7 @@ export const projects = [
             },
             {
               heading: 'One toolbar for every app',
-              text: 'We observed that most La Suite tools share the same core instruments — so we gave them one toolbar. Bold works in the document, the spreadsheet cell, the chat. Alignment lines up text in a doc — and windows on the canvas. Learned once, used everywhere.',
+              text: 'We observed that most La Suite tools share the same core instruments — so we gave them one toolbar. Bold works in the document, the spreadsheet cell, the chat. Alignment lines up text in a doc — and windows on the canvas. Learned once, used everywhere. This is **instrumental interaction** in practice — Michel Beaudouin-Lafon’s model of tools as first-class instruments, decoupled from any single application (CHI 2000).',
               image: {
                 src: '/projects/LaSuite/image21.png', // '/projects/LaSuite/toolbar.png'
                 placeholder:
@@ -1216,16 +1216,23 @@ export const projects = [
               },
             },
           ],
+          // How the canvas was found, not just what it became:
+          // sticky notes, sketches, and paper prototypes. Drop your
+          // photos into /public/projects/LaSuite/ and set the paths.
+          // (Photos showing teammates' faces: get their okay first.)
           grid: {
-            title: 'Around the canvas',
+            title: 'Before the pixels',
             cols: 3,
             images: [
-              { src: null, placeholder: 'canvas2.png — another canvas arrangement' },
-              { src: null, placeholder: 'canvas3.png — chat + widgets detail' },
-              { src: null, placeholder: 'canvas4.png — email / call creation on canvas' },
-              { src: null, placeholder: 'canvas5.png — tabs: one canvas per workflow' },
-              { src: null, placeholder: 'canvas6.png — saved templates in storage' },
-              { src: null, placeholder: 'canvas7.png — your pick' },
+              {
+                src: '/projects/LaSuite/image22.jpg',
+                placeholder: 'Sticky notes — mapping the six apps into the canvas concept',
+              },
+              {
+                src: '/projects/LaSuite/image23.jpg',
+                placeholder: 'Low-fi sketch — first canvas layout, edges vs. middle',
+              },
+              { src: '/projects/LaSuite/image24.jpg', placeholder: 'Paper prototype — pieces on the table' },
             ],
           },
         },
@@ -1237,12 +1244,12 @@ export const projects = [
           titleLead: 'The scenario.',
           titleRest: 'Reschedule a meeting without leaving the canvas.',
           rationale:
-            'One real task, played end to end — because a concept is only proven when data crosses every border without being retyped once.',
+            'One real task, played end to end — because a concept is only proven when data crosses every border without being retyped once. Substrates, the lab’s own research line, made that testable.',
           pos: {
             problem:
               'In the old suite this errand is six apps: read the message, poll the team, tally answers, make the list, schedule the call, send the email. Data is retyped at every border.',
             opportunity:
-              'If every object is a substrate — data with behavior, not a picture of data — then a poll stays tabular, a column stays a list of people, a meeting stays joinable, wherever you drag it.',
+              'If every object is a substrate — data with behavior, not a picture of data — then a poll stays tabular, a column stays a list of people, a meeting stays joinable, wherever you drag it. This builds on the lab’s **information substrates** research (Webstrates — Klokmose, Eagan, Baader, Mackay & Beaudouin-Lafon, UIST 2015).',
             solution:
               'We played one real task end to end: Ross asks for the intern welcome meeting to be moved. From his first message to the final email — poll, spreadsheet, people list, scheduled call, invitation — nothing is retyped and nothing leaves the canvas.',
           },
@@ -1252,19 +1259,19 @@ export const projects = [
             { name: 'Harry', role: 'HR — reschedules it without leaving the canvas' },
             { name: 'Teresa', role: 'The new intern — onboarded in the next section' },
           ],
-          hero: {
-            src: null, // '/projects/LaSuite/scenario.mp4' — THE recording of this case study
-            placeholder:
-              'HERO — the scenario as a RECORDING: poll dragged from chat into a spreadsheet, column becoming a people list, dropped into the call and the email.',
-            caption: 'The same data, changing clothes: poll → table → people → meeting → invitation.',
-          },
+          // No hero here on purpose: the seven steps below ARE the
+          // scenario, told once, in order. A full recording up front
+          // would spoil and then repeat them. (If you have the
+          // polished screen recording, step images can be swapped
+          // for short clips — each step showing only its own move.)
+          hero: null,
           // A true sequence — told as one.
           showcase: [
             {
               heading: '1 — The ask arrives, with the calendar in it',
               text: 'Ross’s message lands: move the welcome meeting. He’s already dragged a slot from his calendar into the chat — not a screenshot of a date, a live slot, ready to be used downstream.',
               image: {
-                src: null, // '/projects/LaSuite/flow1.png'
+                src: '/projects/LaSuite/scenario1.mp4', // '/projects/LaSuite/flow1.png'
                 placeholder: 'STEP 1 — Ross’s chat message with the live calendar slot (18 July) embedded.',
               },
             },
@@ -1272,7 +1279,7 @@ export const projects = [
               heading: '2 — Ask the team, where they already talk',
               text: 'One marquee gesture opens a chat with the design team. From the shared toolbar’s widgets, a poll drops into the thread: who can make the new date? Votes land as people answer.',
               image: {
-                src: null, // '/projects/LaSuite/flow2.png'
+                src: '/projects/LaSuite/scenario2.mp4', // '/projects/LaSuite/flow2.png'
                 placeholder: 'STEP 2 — the poll widget inside the design-team chat, votes arriving.',
               },
             },
@@ -1280,7 +1287,7 @@ export const projects = [
               heading: '3 — The poll becomes a table',
               text: 'Drag the finished poll onto the canvas and it lands as a spreadsheet — the AI reads the content and names the columns itself: Name, Attending. Live rows, not a pasted picture.',
               image: {
-                src: null, // '/projects/LaSuite/flow3.png'
+                src: '/projects/LaSuite/scenario3.png', // '/projects/LaSuite/flow3.png'
                 placeholder: 'STEP 3 — the poll as spreadsheet rows, columns auto-named Name / Attending.',
               },
             },
@@ -1288,7 +1295,7 @@ export const projects = [
               heading: '4 — Ask the AI for the yes-list',
               text: 'Drop the AI instrument on the two columns and ask: “who’s joining?” It answers as a new spreadsheet — just the people who said yes.',
               image: {
-                src: null, // '/projects/LaSuite/flow4.png'
+                src: '/projects/LaSuite/scenario4.mp4', // '/projects/LaSuite/flow4.png'
                 placeholder: 'STEP 4 — the AI instrument on the columns, producing the filtered yes-sheet.',
               },
             },
@@ -1296,7 +1303,7 @@ export const projects = [
               heading: '5 — People and a date make a meeting',
               text: 'A new video call opens on the canvas. The yes-list drags into its people field — everyone added at once — and Ross’s original calendar slot drags in as the time. The meeting is scheduled without typing a single name. (Dragging a whole team from the left bar works the same way — anything that accepts people, accepts people.)',
               image: {
-                src: null, // '/projects/LaSuite/flow5.png'
+                src: '/projects/LaSuite/scenario5.mp4', // '/projects/LaSuite/flow5.png'
                 placeholder: 'STEP 5 — the video call with the dragged-in people list and Ross’s slot as the date.',
               },
             },
@@ -1304,7 +1311,7 @@ export const projects = [
               heading: '6 — Text becomes the email',
               text: 'A plain text note on the canvas — “the meeting has been rescheduled…” — gets marquee-selected and turned into an email: To field, attachments, the lot. The people list fills To; the meeting itself drops into the body. When it arrives, the invitation contains the live call: open the email, join the room.',
               image: {
-                src: null, // '/projects/LaSuite/flow6.png'
+                src: '/projects/LaSuite/scenario6.mp4', // '/projects/LaSuite/flow6.png'
                 placeholder: 'STEP 6 — canvas text transformed into an email, people in To, joinable meeting embedded.',
               },
             },
@@ -1312,11 +1319,24 @@ export const projects = [
               heading: 'Then the desk gets cleaned',
               text: 'Select everything the errand produced — chat, sheet, call, email — group it, let the AI suggest its name, and minimize. The canvas is clean; the whole workflow waits in one box, reopenable whenever it’s needed again.',
               image: {
-                src: null, // '/projects/LaSuite/flow7.png'
+                src: '/projects/LaSuite/scenario7.png', // '/projects/LaSuite/flow7.png'
                 placeholder: 'CLOSER — the finished services grouped, AI-named, minimized to one tidy box.',
               },
             },
           ],
+          // The same scenario, acted out in paper and filmed — a
+          // distinct annex panel at the end of this section, so it
+          // reads as "the paper version of what you just read".
+          aside: {
+            eyebrow: 'Video prototype',
+            heading: 'This exact scenario, played in paper first',
+            // **words** render in the accent color. The method name
+            // and its origin carry the color — the credibility bits.
+            text: 'This is a **video prototype** — a participatory-design technique from **Wendy Mackay’s** research (Mackay & Fayard, CHI ’99): the interface is paper, a hand plays the computer, and the camera frames it like a screen. We acted the seven steps above start to finish — cheap enough to discard, yet real enough to critique as a lived experience before a single pixel existed.',
+            src: '/projects/LaSuite/paper-scenario.mp4',
+            placeholder: 'PAPER VIDEO — the whole scheduling scenario played with paper pieces, start to finish.',
+            caption: 'Click to watch it full-screen.',
+          },
         },
 
         // ── 03 SHARING BY ARRANGEMENT ─────────────────────────────────
@@ -1413,7 +1433,7 @@ export const projects = [
           {
             number: '03',
             title: 'Generative walkthroughs',
-            text: 'Stepping through the storyboarded task together, generating alternatives at each step instead of judging one design — the marquee menu and the substrate drags came out of these sessions.',
+            text: 'Stepping through the storyboarded task together, generating alternatives at each step instead of judging one design — the marquee menu and the substrate drags came out of these sessions. The format comes from **Generative Theories of Interaction** (Beaudouin-Lafon, Bødker & Mackay, TOCHI 2021).',
           },
           {
             number: '04',
@@ -1429,7 +1449,7 @@ export const projects = [
         image: {
           src: null, // '/projects/LaSuite/method.mp4' or method.png
           placeholder:
-            'THE VIDEO PROTOTYPE (method.mp4, trimmed + compressed) — or a composed frame of paper prototypes, a storyboard, and a video still. Get teammates’ okay for photos showing their faces.',
+            'A composed frame of paper prototypes, a storyboard, and a video still — or leave empty; the paper video lives in the Scenario section. Get teammates’ okay for photos showing their faces.',
           caption: 'The idea at four fidelities before a single pixel.',
         },
         partners: {
@@ -1446,6 +1466,10 @@ export const projects = [
             {
               label: 'La Suite context',
               text: 'An ecosystem of real services — and the constraint that whatever we proposed had to feel reachable from them.',
+            },
+            {
+              label: 'The literature',
+              text: 'Instrumental interaction (Beaudouin-Lafon, CHI 2000) · Reification, polymorphism and reuse (Beaudouin-Lafon & Mackay, AVI 2000) · Webstrates (Klokmose et al., UIST 2015) · Generative theories of interaction (Beaudouin-Lafon, Bødker & Mackay, TOCHI 2021) · Video prototyping (Mackay & Fayard, CHI ’99).',
             },
           ],
         },

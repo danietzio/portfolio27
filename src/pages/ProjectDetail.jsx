@@ -860,6 +860,25 @@ export default function ProjectDetail() {
                       <ShotGrid grid={section.grid} />
                     </>
                   )}
+                  {/* optional annex at the end of a section: a tinted
+                      panel, text left + small media right — visually
+                      apart from the steps above it */}
+                  {section.aside && section.aside.src && (
+                    <aside className='sec-annex'>
+                      <div className='sec-annex__text'>
+                        {section.aside.eyebrow && <p className='sec-annex__eyebrow'>{section.aside.eyebrow}</p>}
+                        {section.aside.heading && <h3 className='sec-annex__heading'>{section.aside.heading}</h3>}
+                        {section.aside.text && (
+                          <p className='sec-annex__body'>
+                            <Rich text={section.aside.text} />
+                          </p>
+                        )}
+                      </div>
+                      <div className='sec-annex__media'>
+                        <Media image={section.aside} />
+                      </div>
+                    </aside>
+                  )}
                   <Impact impact={section.impact} />
                 </>
               )}
@@ -887,7 +906,15 @@ export default function ProjectDetail() {
                   </article>
                 ))}
               </div>
-              {s.process.image && s.process.image.src && <SectionHero image={s.process.image} />}
+              {s.process.image &&
+                s.process.image.src &&
+                (s.process.image.size === 'small' ? (
+                  <div className='media-small'>
+                    <Media image={s.process.image} />
+                  </div>
+                ) : (
+                  <SectionHero image={s.process.image} />
+                ))}
               {s.process.partners && (
                 <>
                   <h3 className='subhead'>{s.process.partners.title}</h3>
