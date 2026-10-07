@@ -1,5 +1,11 @@
 .nav {
+  position: sticky;
+  top: 0;
+  z-index: 35;
   border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg, #fff) 80%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 
 .nav__inner {
@@ -13,10 +19,25 @@
   gap: 12px;
 }
 
+.nav__home {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* the logo: height-capped so the bar stays slim; width follows */
+.nav__logo {
+  display: block;
+  height: 30px;
+  width: auto;
+}
+
+/* fallback when profile.logo is null */
 .nav__name {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 500;
+  color: var(--ink);
 }
 
 .nav__links {
@@ -35,4 +56,22 @@
 .nav__links a.is-active {
   color: var(--ink);
   border-bottom-color: var(--accent);
+}
+
+/* Anchored sections land clear of the sticky bar */
+:root {
+  scroll-padding-top: 80px;
+}
+
+/* ── Auto-hide: slide away scrolling down, return scrolling up ── */
+.nav {
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav--hidden {
+  transform: translateY(-100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav {
+    transition: none;
+  }
 }

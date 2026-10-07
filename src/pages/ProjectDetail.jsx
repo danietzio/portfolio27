@@ -287,8 +287,9 @@ function ScrollVideo({ src, label }) {
 
 function Media({ image, plain = false }) {
   const openLightbox = useContext(LightboxContext);
+  const [failed, setFailed] = useState(false);
   const isVideo = /\.(mp4|webm)$/i.test(image.src || '');
-  const media = image.src ? (
+  const media = image.src && !failed ? (
     <button
       type='button'
       className='zoomable'
@@ -298,7 +299,11 @@ function Media({ image, plain = false }) {
       {isVideo ? (
         <ScrollVideo src={image.src} label={image.caption || ''} />
       ) : (
-        <img src={image.src} alt={image.caption || image.placeholder || ''} />
+        <img
+          src={image.src}
+          alt={image.caption || image.placeholder || ''}
+          onError={() => setFailed(true)}
+        />
       )}
     </button>
   ) : (
@@ -321,6 +326,7 @@ function Media({ image, plain = false }) {
 // screen and pauses when scrolled past (saves battery, feels alive).
 function CoverMedia({ project }) {
   const ref = useRef(null);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el || el.tagName !== 'VIDEO') return;
@@ -338,7 +344,7 @@ function CoverMedia({ project }) {
     return () => obs.disconnect();
   }, []);
 
-  if (!project.cover) {
+  if (!project.cover || failed) {
     return (
       <div className='figure-placeholder'>
         Image placeholder
@@ -360,7 +366,14 @@ function CoverMedia({ project }) {
       />
     );
   }
-  return <img className='project-detail__cover' src={project.cover} alt={project.title} />;
+  return (
+    <img
+      className='project-detail__cover'
+      src={project.cover}
+      alt={project.title}
+      onError={() => setFailed(true)}
+    />
+  );
 }
 
 // Full-width solution hero for a section.
@@ -386,7 +399,9 @@ function Showcase({ items }) {
           </div>
           <div className='showcase-row__text'>
             <h3>{item.heading}</h3>
-            <p>{item.text}</p>
+            <p>
+              <Rich text={item.text} />
+            </p>
           </div>
         </div>
       ))}
@@ -432,7 +447,9 @@ function POS({ pos }) {
       {cells.map((c) => (
         <div className='pos-grid__cell' key={c.label}>
           <h3>{c.label}</h3>
-          <p>{c.text}</p>
+          <p>
+            <Rich text={c.text} />
+          </p>
         </div>
       ))}
     </div>
@@ -507,33 +524,186 @@ function ResultCounter({ result }) {
 
 /* ── nav ───────────────────────────────────────────────────── */
 
-function PillNav({ nav }) {
+const sectionNoun = (nav, active) => {
+  const label = nav.find((n) => n.id === active)?.label || '';
+  return /^overview$/i.test(label) ? 'this project' : label;
+};
+
+function PillNav({ nav, noteIds = [] }) {
   const [active, setActive] = useState(nav[0]?.id);
+  const navRef = useRef(null);
+  const [flash, setFlash] = useState(false);
+  const flashed = useRef(false);
+
+  // One-time attention moment: plays ONLY when we actually watch
+  // the reader cross from the opening section into the next one.
+  // Loading mid-page never triggers it (no witnessed transition).
+  const prevActive = useRef(null);
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: '-30% 0px -60% 0px' }
-    );
-    nav.forEach(({ id }) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
+    const prev = prevActive.current;
+    prevActive.current = active;
+    if (flashed.current || !prev || prev !== nav[0]?.id || active === prev) return;
+    flashed.current = true;
+    setFlash(true);
+    const t = setTimeout(() => setFlash(false), 4000);
+    return () => clearTimeout(t);
+  }, [active, nav]);
+
+  // One rAF-throttled handler: sets the progress line (--scrollp)
+  // and picks the active section deterministically — the last
+  // section whose top has passed 35% of the viewport. No racing,
+  // no flicker.
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      const p = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
+      doc.style.setProperty('--scrollp', p.toFixed(2) + '%');
+      const line = window.innerHeight * 0.35;
+      let current = nav[0]?.id;
+      for (const { id } of nav) {
+        const sec = document.getElementById(id);
+        if (sec && sec.getBoundingClientRect().top <= line) current = id;
+      }
+      setActive(current);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, [nav]);
 
   return (
-    <nav className='pill-nav' aria-label='Case study sections'>
+    <>
+      <div
+        className={[
+          'key-hint',
+          flash ? 'key-hint--flash' : '',
+          noteIds.includes(active) ? '' : 'key-hint--hidden',
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        aria-hidden='true'
+      >
+        <span>press</span>
+        <kbd>D</kbd>
+        <span>for the decisions behind</span>
+        <span className='key-hint__section' key={active}>
+          {sectionNoun(nav, active)}
+        </span>
+      </div>
+      <nav className='pill-nav' aria-label='Case study sections' ref={navRef}>
       {nav.map(({ id, label }) => (
         <a key={id} href={`#${id}`} className={active === id ? 'is-active' : ''}>
           {label}
         </a>
       ))}
-    </nav>
+      </nav>
+    </>
   );
+}
+
+/* ── "D" — the design-rationale overlay ─────────────────────── */
+
+// Press D anywhere: a big-type note explains why the section
+// you're reading is designed the way it is. D or Esc closes it.
+function DesignNote({ project }) {
+  const [note, setNote] = useState(null);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') {
+        setNote(null);
+        return;
+      }
+      if (e.key.toLowerCase() !== 'd' || e.metaKey || e.ctrlKey || e.altKey) return;
+      const t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+      setNote((cur) => {
+        if (cur) return null;
+        const s = project.sections;
+        const navItems = project.nav || [];
+        if (!s || !navItems.length) return null;
+        const line = window.innerHeight * 0.35;
+        let id = navItems[0].id;
+        for (const n of navItems) {
+          const el = document.getElementById(n.id);
+          if (el && el.getBoundingClientRect().top <= line) id = n.id;
+        }
+        const pool = [s.overview, ...(s.work || []), s.process, s.reflection].filter(Boolean);
+        const sec = pool.find((x) => x.id === id);
+        const text = sec?.rationale;
+        if (!text) return null;
+        const rawLabel = navItems.find((n) => n.id === id)?.label || '';
+        return { label: /^overview$/i.test(rawLabel) ? 'this project' : rawLabel, text };
+      });
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [project]);
+
+  if (!note) return null;
+  return (
+    <div className='design-note' onClick={() => setNote(null)} role='dialog' aria-modal='true'>
+      <div className='design-note__inner'>
+        <p className='design-note__eyebrow'>Decisions behind {note.label}</p>
+        <p className='design-note__text'>
+          <Typewriter text={note.text} />
+        </p>
+        <p className='design-note__hint'>
+          every section has its own note — <kbd>D</kbd> or <kbd>Esc</kbd> to close
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// The rationale arrives word by word — a fast cascade, not a crawl.
+function Typewriter({ text }) {
+  return (
+    <>
+      {text.split(' ').map((word, i) => (
+        <span className='dn-word' style={{ '--i': i }} key={i}>
+          {word}&nbsp;
+        </span>
+      ))}
+    </>
+  );
+}
+
+/* ── scroll reveal ─────────────────────────────────────────── */
+
+// Motion only where it carries meaning: the observer drives the
+// hero unveiling alone — text and rows appear instantly.
+const REVEAL_SELECTOR = '.section-hero';
+
+function useScrollReveal(deps) {
+  useEffect(() => {
+    const els = document.querySelectorAll(REVEAL_SELECTOR);
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-rv');
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px' }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 }
 
 /* ── page ──────────────────────────────────────────────────── */
@@ -561,6 +731,14 @@ export default function ProjectDetail() {
   if (!project) return <Navigate to='/' replace />;
 
   const s = project.sections;
+
+  // Opening a case study always starts at the top (router keeps
+  // the previous page's scroll position otherwise).
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [slug]);
+
+  useScrollReveal([slug]);
 
   return (
     <LightboxContext.Provider value={setLightboxItem}>
@@ -640,7 +818,9 @@ export default function ProjectDetail() {
 
               {section.type === 'research' ? (
                 <>
-                  <p className='case-section__intro'>{section.lede}</p>
+                  <p className='case-section__intro'>
+                    <Rich text={section.lede} />
+                  </p>
                   <dl className='study-meta'>
                     {section.studyMeta.map((m) => (
                       <div key={m.term}>
@@ -658,6 +838,16 @@ export default function ProjectDetail() {
               ) : (
                 <>
                   <POS pos={section.pos} />
+                  {section.cast && (
+                    <div className='cast'>
+                      {section.cast.map((p) => (
+                        <div className='cast__person' key={p.name}>
+                          <span className='cast__name'>{p.name}</span>
+                          <span className='cast__role'>{p.role}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   <SectionHero image={section.hero} />
                   {section.gridFirst ? (
                     <>
@@ -681,14 +871,18 @@ export default function ProjectDetail() {
             <section className='case-section case-section--work' id={s.process.id}>
               <p className='case-section__eyebrow'>{s.process.eyebrow}</p>
               <SectionTitle lead={s.process.titleLead} rest={s.process.titleRest} />
-              <p className='case-section__intro'>{s.process.intro}</p>
+              <p className='case-section__intro'>
+                <Rich text={s.process.intro} />
+              </p>
               <div className='flow-list flow-list--spaced' style={{ marginTop: 42 }}>
                 {s.process.steps.map((step) => (
                   <article className='flow-item' key={step.number}>
                     <span>{step.number}</span>
                     <div>
                       <h3>{step.title}</h3>
-                      <p>{step.text}</p>
+                      <p>
+                        <Rich text={step.text} />
+                      </p>
                     </div>
                   </article>
                 ))}
@@ -723,7 +917,9 @@ export default function ProjectDetail() {
           <section className='case-section case-section--reflection' id={s.reflection.id}>
             <p className='case-section__eyebrow'>Reflection</p>
             <h2>{s.reflection.title}</h2>
-            <p>{s.reflection.text}</p>
+            <p>
+              <Rich text={s.reflection.text} />
+            </p>
           </section>
 
           {/* ══ TEAM PHOTO (page closer) ══ */}
@@ -739,7 +935,19 @@ export default function ProjectDetail() {
         </div>
       )}
 
-      {project.nav && <PillNav nav={project.nav} />}
+      {project.nav && (
+        <PillNav
+          nav={project.nav}
+          noteIds={
+            s
+              ? [s.overview, ...(s.work || []), s.process, s.reflection]
+                  .filter((x) => x && x.rationale)
+                  .map((x) => x.id)
+              : []
+          }
+        />
+      )}
+      <DesignNote project={project} />
       <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
     </article>
     </LightboxContext.Provider>

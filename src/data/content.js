@@ -15,25 +15,108 @@
 // ─────────────────────────────────────────────────────────────
 
 export const profile = {
-  name: 'Your Name',
+  name: 'Daniyal Nasiri Bavil',
   role: 'Product Designer',
-  tagline: "I'm [Name], a product designer who turns complex health journeys into calm, legible experiences.",
-  email: 'you@example.com',
+  // ── Home hero, your reference's structure ──────────────────
+  // One statement that IS the hero (name + role + what you do,
+  // with **accent** words inside the sentence), then one quiet
+  // "previously at" line under it. Rewrite in your own voice.
+  // ── Home hero: exactly two things ──────────────────────────
+  // 1. heroStatement — one short punch line. Your rarest fact, said
+  //    plainly. Nothing else competes with it.
+  // 2. intro — ONE dense factual paragraph: role, current chapter,
+  //    proof. The **words** are the accent keywords.
+  heroStatement: 'I’m Daniyal. I design the product — then I **build** it.',
+  headline: 'Product Designer & Design Engineer', // fallback if heroStatement is null
+  subline: null,
+  credential: null, // folded into intro — one paragraph instead of three lines
+  tagline: 'Designer since 2016, engineer by training — I design products and then build them to the pixel.',
+  email: 'daniyal.nasiri-bavil@universite-paris-saclay.fr', // or your personal one
   resumeUrl: '/resume.pdf',
+  // Your transparent-background portrait (PNG/WebP), shown top-right
+  // of the hero. Drop the file into /public and set the path;
+  // null hides the slot and the text takes the full width.
+  portrait: '/portrait.png',
+  location: 'Paris, France', // shown on the home hero — edit or set to null
+  status: 'Open to design & HCI internships', // ditto
+  intro:
+    'Product designer and front-end engineer with ten years of experience turning ideas into polished digital products. I’m currently researching human–computer interaction in **Wendy Mackay’s** group at Université Paris-Saclay, after working with teams at **Backgammon Galaxy**, **Oar Health**, and **Thinking Machine** — and a top-3% designer on **Toptal**.',
+  focus: 'Product design · Design systems · Front-end · HCI research',
+  // Your logo for the nav bar (SVG preferred, or a transparent PNG
+  // exported at 2x). Drop the file into /public; null falls back to
+  // your name in the display serif.
+  logo: '/logo.png',
   social: [
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/yourname' },
-    { label: 'GitHub', url: 'https://github.com/yourname' },
-    { label: 'X', url: 'https://x.com/yourname' },
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/danial-nasiri/' },
+    { label: 'GitHub', url: 'https://github.com/danietzio' },
+    { label: 'Toptal', url: 'https://www.toptal.com/designers/resume/daniyal-nasiri-bavil' },
+    { label: 'Behance', url: 'https://www.behance.net/CreativeDannies' },
+    { label: 'Dribbble', url: 'https://dribbble.com/CreativeDannies' },
   ],
 };
 
+// Timeline — real history, newest first. (Oar Health and Thinking
+// Machine were Toptal engagements, shown inside the Toptal entry.)
+// Rendered as a compact ledger on the home page: year (never wraps),
+// place, role. `note` is 1–2 sentences — what it was, what you took
+// from it — revealed on hover (always visible on touch screens).
+// These are drafts in my words: rewrite them in yours.
 export const experience = [
-  { year: '2022–2026', company: 'Oar Health', role: 'Product Designer', url: 'https://www.oarhealth.com' },
+  {
+    year: '2026 —',
+    company: 'Inria / LISN, ex)situ',
+    role: 'HCI Researcher, Wendy Mackay’s group',
+    url: 'https://ex-situ.lri.fr',
+    note: 'Researching how scientists really collaborate across tools. Learning to treat design claims the way researchers treat hypotheses — tested, not asserted.',
+  },
+  {
+    year: '2025 —',
+    company: 'Université Paris-Saclay',
+    role: 'MSc Human–Computer Interaction',
+    url: 'https://www.universite-paris-saclay.fr',
+    note: 'The theory behind a decade of instinct: interaction models, research methods, and studies I can defend question by question.',
+  },
+  {
+    year: '2024–25',
+    company: 'Backgammon Galaxy',
+    role: 'Product Designer & Front-end Developer',
+    url: 'https://www.backgammongalaxy.com',
+    note: 'Redesigned the mobile app, rebranded the site, built the design system — then joined the codebase and closed the gap between Figma and production myself.',
+  },
+  {
+    year: '2024–25',
+    company: 'BioComputing UP Lab, Padova',
+    role: 'Research Fellow',
+    url: 'https://biocomputingup.it',
+    note: 'A funded year engineering protein databases used by working biologists. Taught me what “user” means when the user is a scientist mid-experiment.',
+  },
+  {
+    year: '2022–24',
+    company: 'Toptal',
+    role: 'Senior UX Designer — Oar Health, Thinking Machine',
+    url: 'https://www.toptal.com/designers/resume/daniyal-nasiri-bavil',
+    note: 'Telehealth journeys at Oar Health, a no-code platform at Thinking Machine. Client work at this level teaches you to earn trust fast — and to leave every decision documented.',
+  },
+  {
+    year: '2019–21',
+    company: 'Nickelfox Technologies',
+    role: 'UI/UX Designer',
+    url: 'https://www.nickelfox.com',
+    note: 'Part of a team ranked among Dribbble’s top 100 worldwide; one of my shots passed 57,000 views. Where I learned craft at speed.', // verify the 57k figure
+  },
+  {
+    year: '2016–19',
+    company: 'CreativeDannies',
+    role: 'Founder — design & front-end',
+    url: 'https://dribbble.com/CreativeDannies',
+    note: 'My own studio: design and front-end for clients from Melbourne to New York. Where designing and building stopped being separate jobs.',
+  },
 ];
 
 export const projects = [
   {
     slug: 'oar-health-member-experience',
+    thumb: '/projects/thumbs/oar.png', // home-page thumbnail — your own design, not a case-study image
     hook: '23% more people reached care.',
     title: 'Designing the member experience at Oar Health',
     subtitle: 'Oar Health • Telehealth • Product Design',
@@ -82,6 +165,8 @@ export const projects = [
         eyebrow: 'The answer',
         titleLead: 'One system.',
         titleRest: 'From sign-up to treatment, nobody gets lost.',
+        rationale:
+          'Every decision on this page serves one goal: reducing uncertainty at an emotionally loaded moment. When someone seeks help for drinking, confusion is a reason to quit.',
         paragraphs: [
           'Over several release cycles I redesigned each surface a member touches — and tied them together with a shared design system and research that changed how we charge for care.',
         ],
@@ -106,6 +191,8 @@ export const projects = [
           eyebrow: 'Section 01',
           titleLead: 'The dashboard.',
           titleRest: 'Always one clear next step.',
+          rationale:
+            'I chose a state-aware dashboard over a flat one because new members don’t need more information — they need the single next step toward care, impossible to miss.',
           pos: {
             problem:
               'The old dashboard was one flat layout for everyone. Required setup tasks sat next to treatment data with no hierarchy — new members couldn’t tell what to do next, and stalled before their first clinician visit.',
@@ -166,6 +253,8 @@ export const projects = [
           eyebrow: 'Section 02',
           titleLead: 'Care+.',
           titleRest: 'A home for everything beyond today’s tasks.',
+          rationale:
+            'Care+ exists because treatment is long. The dashboard serves today; the quieter, ongoing work of care needed a home of its own.',
           pos: {
             problem:
               'The dashboard was built around today: tasks, shipments, the next visit. Everything else — visit summaries, surveys, guides, help articles — had no home, so members left the product to find answers.',
@@ -206,6 +295,8 @@ export const projects = [
           eyebrow: 'Section 03',
           titleLead: 'The intake.',
           titleRest: 'Trust before money.',
+          rationale:
+            'We flipped the payment sequence because trust had to come first: nobody should gamble money on medication a doctor hasn’t approved yet.',
           pos: {
             problem:
               'The intake asked members to commit hundreds of dollars for medication before any clinician had reviewed them. For someone already anxious about treatment, that was a wall — and the funnel showed it.',
@@ -247,6 +338,8 @@ export const projects = [
           eyebrow: 'Section 04',
           titleLead: 'The research.',
           titleRest: 'Eight people, one hesitation, 23%.',
+          rationale:
+            'I tested before building because the most expensive screen is the one engineering builds twice. Eight moderated sessions found the insight that moved the funnel 23%.',
           lede: 'The intake redesign wasn’t a hunch. I ran a moderated A/B study on Userlytics with participants who matched our real audience — people who wanted to make a change and were open to options.',
           studyMeta: [
             { term: 'Method', detail: 'Moderated sessions + A/B variant, Userlytics' },
@@ -311,6 +404,8 @@ export const projects = [
           eyebrow: 'Section 05',
           titleLead: 'Doorknob.',
           titleRest: 'The right question reaches the right team.',
+          rationale:
+            'Two channels, because a billing question and a side-effect question carry different stakes — routing by intent respects both the member and the clinician.',
           pos: {
             problem:
               'Members had one undifferentiated way to reach us. A question about a side effect could sit in the same queue as a billing question — the wrong wait, from the wrong team.',
@@ -369,6 +464,8 @@ export const projects = [
           eyebrow: 'Section 06',
           titleLead: 'The system.',
           titleRest: 'Design once, hold up everywhere.',
+          rationale:
+            'The system exists so four surfaces couldn’t drift apart: states named in words, color never alone, components shared from desktop down to the native app.',
           pos: {
             problem:
               'Four surfaces, three breakpoints, and a mobile app in flight — designed ad hoc, they would have drifted apart within months.',
@@ -394,6 +491,8 @@ export const projects = [
         eyebrow: 'Behind the screens',
         titleLead: 'The process.',
         titleRest: 'How work moved from Figma wall to production.',
+        rationale:
+          'Wide exploration first, validation before engineering — convergence is only honest when there were real alternatives to converge from.',
         intro:
           'None of this shipped from a designer working alone. Every surface went through the same loop: explore wide, converge with the people who know what I don’t, validate with members, hand off precisely, and stay with it after launch.',
         steps: [
@@ -484,6 +583,7 @@ export const projects = [
   // ═══════════════════════════════════════════════════════════
   {
     slug: 'backgammon-galaxy',
+    thumb: '/projects/thumbs/backgammon.png', // home-page thumbnail — your own design, not a case-study image
     hook: 'A 2-star app, rebuilt to 4.3.',
     title: 'Designing — and building — Backgammon Galaxy',
     subtitle: 'Backgammon Galaxy • Gaming • Product Design + Front-end',
@@ -522,6 +622,16 @@ export const projects = [
       '--gold': '#F2B138', // value — metrics, stars, the 15,000
     },
 
+    // Home-card paint only — the case study itself keeps the near-black
+    // theme above; the home grid gets a richer navy so the card doesn't
+    // read as plain black next to the light cards.
+    cardTheme: {
+      '--bg': '#1E2F63',
+      '--ink': '#F2F4F8',
+      '--ink-soft': '#B9C5EA',
+      '--accent': '#F2B138',
+    },
+
     nav: [
       { id: 'overview', label: 'Overview' },
       { id: 'mobile', label: 'Mobile' },
@@ -529,6 +639,7 @@ export const projects = [
       { id: 'academy', label: 'Academy' },
       { id: 'gameplay', label: 'Gameplay' },
       { id: 'system', label: 'System' },
+      { id: 'guides', label: 'Guides' },
       { id: 'code', label: 'Design → Code' },
       { id: 'reflection', label: 'Reflection' },
     ],
@@ -546,6 +657,8 @@ export const projects = [
         eyebrow: 'The answer',
         titleLead: 'Play and learn.',
         titleRest: 'One ecosystem — designed, systematized, and built.',
+        rationale:
+          'This page shows both halves of my craft: deciding designs at the source, then finishing the build in code so nothing gets lost in translation.',
         paragraphs: [
           'I worked both sides of the product: deciding the designs with the CEO and art director, briefing engineering through detailed Figma guides — and once developers delivered the first build, going into the code myself to close every gap between design and production.',
         ],
@@ -579,6 +692,8 @@ export const projects = [
           eyebrow: 'Section 01',
           titleLead: 'The mobile app.',
           titleRest: 'From two stars to four point three.',
+          rationale:
+            'Landscape first, to meet existing players where they were; portrait V3 when the design deserved to break from the past. Knowing when to bridge and when to break was the real decision.',
           pos: {
             problem:
               'The old mobile app was landscape-only, carried the old branding, missed the ecosystem’s new features — and players said so: it sat at roughly 2 out of 5 in the stores.',
@@ -660,6 +775,8 @@ export const projects = [
           eyebrow: 'Section 02',
           titleLead: 'The website.',
           titleRest: 'A rebrand, rebuilt page by page.',
+          rationale:
+            'One visual language across web and mobile — so every new feature could launch everywhere at once, instead of arriving platform by platform.',
           pos: {
             problem:
               'The existing site carried old branding and an old structure — and none of the features the platform was growing into.',
@@ -706,6 +823,8 @@ export const projects = [
           eyebrow: 'Section 03',
           titleLead: 'The academy.',
           titleRest: 'Grandmaster knowledge, ten problems at a time.',
+          rationale:
+            'Learning had to feel like playing: the verdict lands before the explanation, because the emotional beat teaches more than the paragraph.',
           pos: {
             problem:
               'Advanced backgammon knowledge lives in dense books and engine outputs. Nothing in the product turned it into a journey a beginner could actually walk.',
@@ -746,6 +865,8 @@ export const projects = [
           eyebrow: 'Section 04',
           titleLead: 'The game.',
           titleRest: 'Coaching that never interrupts the match.',
+          rationale:
+            'Coaching lives inside the match because lessons stick at the moment of the mistake — not in a report after the game is lost.',
           pos: {
             problem:
               'Evaluating moves and cube decisions under a running clock is where players blunder — and where they quit. Traditional analysis lives after the game, when the lesson no longer sticks.',
@@ -755,7 +876,7 @@ export const projects = [
               'A Hint → Detail system. Request a hint (coins permitting) and suggested-move arrows appear on the board; open Detail for candidate moves, equity, and winning chances. Cube decisions get their own verdicts — from No Double to Cube Blunder — and if you already made the best move, the system says so.',
           },
           hero: {
-            src: null, // '/projects/Backgammon/gameplay-hero.png' or .mp4
+            src: '/projects/Backgammon/cover4.png', // '/projects/Backgammon/gameplay-hero.png' or .mp4
             placeholder:
               'SOLUTION HERO — the live match screen: board, clocks, ratings, dice, with hint arrows visible. Recording > still.',
             caption: 'Everything a match needs, with coaching one tap away.',
@@ -765,7 +886,7 @@ export const projects = [
               heading: 'Hint, then Detail',
               text: 'Arrows suggest the move; Detail explains it — candidate moves ranked by equity and winning chances. After you move, it resets and the clock never stopped mattering.',
               image: {
-                src: null, // '/projects/Backgammon/hint-flow.mp4'
+                src: '/projects/Backgammon/mobile41.png', // '/projects/Backgammon/hint-flow.mp4'
                 placeholder: 'RECORDING — hint requested → arrows appear → Detail panel opens → move made.',
               },
             },
@@ -773,7 +894,7 @@ export const projects = [
               heading: 'Feedback that names the move',
               text: 'Correct, good, error, blunder — and the full cube vocabulary from Excellent Take to Missed Cube. Players learn the language of the game while playing it.',
               image: {
-                src: null, // '/projects/Backgammon/feedback-states.png'
+                src: '/projects/Backgammon/mobile42.png', // '/projects/Backgammon/feedback-states.png'
                 placeholder:
                   'Feedback states — correct / good / error / blunder plus cube verdicts, composed on one frame.',
               },
@@ -782,7 +903,7 @@ export const projects = [
               heading: 'One event, three audiences',
               text: 'When a player goes inactive, three people see three different screens: the inactive player gets a countdown, the opponent gets context, the spectator gets an update. Role-specific communication instead of one generic notification.',
               image: {
-                src: null, // '/projects/Backgammon/inactivity.png'
+                src: '/projects/Backgammon/mobile43.png', // '/projects/Backgammon/inactivity.png'
                 placeholder:
                   'ONE frame — the inactivity flow from all three perspectives: player, opponent, spectator.',
               },
@@ -796,6 +917,8 @@ export const projects = [
           eyebrow: 'Section 05',
           titleLead: 'The system.',
           titleRest: '334 components for a thousand states.',
+          rationale:
+            'Every variant exists because a screen needed it. I was also the developer consuming this system — so it had to stay honest.',
           pos: {
             problem:
               'A product with live gameplay, an economy, memberships, and error states everywhere cannot be designed screen by screen — it drifts apart within a sprint.',
@@ -805,7 +928,7 @@ export const projects = [
               'A comprehensive component library: 80 component sets, 334 components, 5,000+ instances across the file — covering navigation, inputs and validation, overlays, notifications, gameplay messages, leaderboards, and the analysis sidebar.',
           },
           hero: {
-            src: null, // '/projects/Backgammon/system-hero.png'
+            src: '/projects/Backgammon/cover5.jpg', // '/projects/Backgammon/system-hero.png'
             placeholder: 'SOLUTION HERO — a composed sheet of the component library: sets, variants, states.',
             caption: 'The shared language of the whole platform.',
           },
@@ -814,9 +937,63 @@ export const projects = [
               heading: 'Built to be built',
               text: 'Because I was also implementing these components in code, the system stayed honest: every variant existed because a screen needed it, named so a developer — me — could find it. The next maturity step I scoped: a semantic token layer and consolidation of legacy variants.',
               image: {
-                src: null, // '/projects/Backgammon/system-states.png'
+                src: '/projects/Backgammon/mobile51.png', // '/projects/Backgammon/system-states.png'
                 placeholder:
                   'A state-heavy component set — e.g. dialogs or gameplay messages with all variants visible.',
+              },
+            },
+            {
+              heading: 'One component, every variant',
+              text: 'Each component set carries its full range — sizes, states, platforms — so no screen ever needed a one-off. When a developer reached for a button or a dialog, the exact variant was already there, named and ready.',
+              image: {
+                src: '/projects/Backgammon/mobile52.png', // '/projects/Backgammon/system-variants.png'
+                placeholder:
+                  'VARIANTS — one component set opened up: every size, state and platform variant on one frame.',
+              },
+            },
+          ],
+        },
+
+        // ── 06 THE GUIDES ─────────────────────────────────────────────
+        // How detailed feedback + step-by-step instructions kept
+        // the build at 100% accuracy. Cover + two showcase rows.
+        {
+          id: 'guides',
+          eyebrow: 'Section 06',
+          titleLead: 'The guides.',
+          titleRest: 'Feedback so precise, nothing bounced back.',
+          rationale:
+            'Vague feedback loops forever. Naming the exact element, the exact value and the exact step turned reviews into checklists that converge.',
+          pos: {
+            problem:
+              '“Make it match the design” is not an instruction. Left vague, every review round becomes a guessing game — and the gap between Figma and production never closes.',
+            opportunity:
+              'If feedback named the exact element, the exact value, and the exact step to take, developers could fix without asking — and reviews would converge instead of looping.',
+            solution:
+              'Detailed guides for every handoff and every review: annotated screens pointing at precise issues, with numbered steps to follow — spacing values, states, timing — so each round ended closer to 100%, not just different.',
+          },
+          hero: {
+            src: '/projects/Backgammon/cover6.png', // '/projects/Backgammon/guides1.png'
+            placeholder:
+              'COVER — a full annotated guide page: a screen marked up with numbered pointers and exact corrections.',
+            caption: 'Not “fix the spacing” — which element, which value, which step.',
+          },
+          showcase: [
+            {
+              heading: 'Point at the pixel, not the page',
+              text: 'Every issue got a numbered pointer on the exact element: the current value, the intended value, and the component it should come from. No translation needed on the other side.',
+              image: {
+                src: '/projects/Backgammon/mobile61.png', // '/projects/Backgammon/guides2.png'
+                placeholder:
+                  'DETAIL — a close-up of annotated feedback: numbered markers, current vs. intended values.',
+              },
+            },
+            {
+              heading: 'Steps to follow, in order',
+              text: 'Each guide ended as a checklist: do this, then this, verify against that frame. Developers could work through it top to bottom — and when the list was done, the screen matched the design.',
+              image: {
+                src: '/projects/Backgammon/mobile62.png', // '/projects/Backgammon/guides3.png'
+                placeholder: 'STEPS — the step-by-step instruction list a developer followed to close a screen.',
               },
             },
           ],
@@ -829,6 +1006,8 @@ export const projects = [
         eyebrow: 'Both sides of the handoff',
         titleLead: 'Design → code.',
         titleRest: 'I was the handoff.',
+        rationale:
+          'I collapsed the loop between leadership and developers because the cheapest fix for endless back-and-forth is one person who speaks both languages.',
         intro:
           'Before this, every design decision bounced: CEO, art director, product manager, developers, and back again. I collapsed the loop — deciding at the source, briefing engineering precisely, and finishing the build myself in code so the back-and-forth ended.',
         steps: [
@@ -884,6 +1063,399 @@ export const projects = [
         id: 'reflection',
         title: 'What building my own designs taught me',
         text: 'Finishing the build myself changed how I design: anything I drew, I might later have to code, so ambiguity stopped at the Figma file. Collapsing the loop between a CEO, an art director, a PM and three developer teams taught me the cheapest fix for endless back-and-forth is one person who speaks both languages — and the mobile app — from a 2-star landscape legacy to a 4.3-rated portrait redesign — taught me when to bridge from what users know and when to break from it.',
+      },
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // SUITEFLOW / LA SUITE NUMÉRIQUE — HCI research case study.
+  // DesignAthon team of three (you, Shubham Bhatt, Ons Sammari)
+  // at LISN under Wendy Mackay — VERIFY teammates are okay being
+  // named, and add/adjust supervisor credits as they'd want.
+  // Images → /public/projects/LaSuite/. Your three screenshots:
+  // canvas1.png, phases1.png, phases2.png (already wired).
+  // ═══════════════════════════════════════════════════════════
+  {
+    slug: 'la-suite-numerique',
+    thumb: '/projects/thumbs/lasuite.png', // home-page thumbnail — your own design, not a case-study image
+    hook: 'Six apps became one canvas.',
+    title: 'SuiteFlow: rethinking La Suite Numérique as one canvas',
+    subtitle: 'La Suite Numérique • LISN, Université Paris-Saclay • HCI Research',
+    tag: 'Research prototype',
+
+    // Ideal cover: a recording of the scenario — the poll being
+    // dragged into a spreadsheet beats any still.
+    cover: '/projects/LaSuite/canvas1.png',
+    coverPlaceholder:
+      'HERO — the canvas in use: chat, video call, people list and spreadsheet side by side on one surface.',
+
+    summary:
+      'La Suite Numérique is Europe’s answer to Google Workspace — but it launched as separate look-alike apps: a Zoom, a Gmail, an Excel, a Slack. At LISN, under Wendy Mackay, our team of three asked what the suite could be if the apps actually knew each other — and designed SuiteFlow: a canvas where chats, sheets, calls and emails share one surface, one toolbar, and data that moves between them by drag.',
+    role: 'HCI Research & Design — team of three', // with Shubham Bhatt & Ons Sammari (verify naming is okay)
+    team: 'LISN, Université Paris-Saclay — supervised by Wendy Mackay', // verify full supervisor credits
+    tools: 'Paper, video, Figma',
+    outcome:
+      'A working design concept demonstrated end to end: one scenario — reschedule a meeting, delegate the work — completed without ever leaving the canvas.',
+
+    metrics: [
+      { value: '7 → 1', label: 'separate services, rethought as one shared canvas' }, // verify count
+      { value: '4', label: 'prototyping methods before pixels: paper, storyboards, walkthroughs, video' },
+      { value: '3', label: 'capabilities: temporal workflows, cross-app data transfer, personalization' },
+    ],
+
+    // La Suite's own look: cool paper, French blue.
+    theme: {
+      '--bg': '#F6F8FC',
+      '--ink': '#1B2437',
+      '--ink-soft': '#5D6A85',
+      '--line': '#DCE3F0',
+      '--accent': '#3A5FE5', // La Suite blue
+      '--accent-soft': '#E9EEFB',
+    },
+
+    nav: [
+      { id: 'overview', label: 'Overview' },
+      { id: 'canvas', label: 'The canvas' },
+      { id: 'scenario', label: 'The scenario' },
+      { id: 'sharing', label: 'Sharing' },
+      { id: 'method', label: 'Method' },
+      { id: 'reflection', label: 'Reflection' },
+    ],
+
+    sections: {
+      // ══ OVERVIEW ══════════════════════════════════════════════
+      overview: {
+        id: 'overview',
+        problemEyebrow: 'The problem',
+        problemParagraphs: [
+          'La Suite Numérique is France’s push for **a sovereign European workspace** — but its first generation mirrored the thing it replaced: a copy of Zoom, a copy of Gmail, a copy of Excel, a copy of Slack. Separate apps, separate windows, nothing shared.',
+          'The real work people do — reschedule a meeting, gather answers, brief an intern — cuts across all of them. Every app switch was a seam where context, data and attention leaked.',
+        ],
+        eyebrow: 'The answer',
+        titleLead: 'SuiteFlow.',
+        titleRest: 'A workspace where the apps finally know each other.',
+        rationale:
+          'Europe’s workspace shouldn’t copy the silos it replaces. The canvas exists so work can keep flowing where apps used to end.',
+        paragraphs: [
+          'We designed a workspace built on a shared canvas: chats, spreadsheets, documents, calls and emails live side by side as windows on one surface, draw from **one shared toolbar**, and pass data between each other by **drag** — everything behaving as a substrate, so information keeps its meaning as it moves. And we proved it the way the lab proves things: one real scenario, played end to end, from paper to video prototype.',
+        ],
+        ownership: {
+          rows: [
+            { term: 'The team', detail: 'Three of us, at LISN under Wendy Mackay' }, // name teammates if they agree
+            {
+              term: 'Concept & interaction design',
+              detail: 'The canvas model, marquee menu, shared toolbar, cross-app flows',
+            },
+            { term: 'Paper prototyping', detail: 'The first canvas lived on paper, moved by hand' },
+            { term: 'Storyboards & walkthroughs', detail: 'Generative walkthroughs of the scheduling scenario' },
+            { term: 'Video prototype', detail: 'The full scenario, acted and filmed end to end' },
+            { term: 'High-fidelity design', detail: 'The canvas, groups, access and storage system in Figma' },
+          ],
+        },
+      },
+
+      // ══ WORK SECTIONS ════════════════════════════════════════
+      work: [
+        // ── 01 THE CANVAS ─────────────────────────────────────────────
+        {
+          id: 'canvas',
+          eyebrow: 'Section 01',
+          titleLead: 'The canvas.',
+          titleRest: 'Familiar at the edges, new in the middle.',
+          rationale:
+            'Novelty is spent only where it buys capability. The edges stay familiar so users’ hands know where to go; the middle becomes one shared surface.',
+          pos: {
+            problem:
+              'Replace six apps with something alien, and nobody comes. Users arrive carrying mental models from Slack, Drive and Sheets — a new workspace that ignores them starts from zero trust.',
+            opportunity:
+              'Keep the edges familiar — people and conversations on the left, storage below, tools at the bottom, tabs on top — and spend the novelty where it pays: the middle, where apps become windows on one shared surface.',
+            solution:
+              'A canvas workspace. The left bar reads like Slack: Teams & People, Conversations, threads. Tabs on top work like a browser — each one its own canvas for its own workflow. The center is new: open a chat, create a spreadsheet beside it, start a call, draft an email, all arranged like a desk.',
+          },
+          hero: {
+            src: '/projects/LaSuite/canvas1.png',
+            placeholder:
+              'HERO — the Intern Meeting canvas: chat, video call people list, and attendance spreadsheet side by side.',
+            caption: 'One tab, one task: the chat, the call, and the attendance sheet share a desk.',
+          },
+          showcase: [
+            {
+              heading: 'One gesture to anything',
+              text: 'Drag a rectangle on empty canvas — the way you select files on a desktop — and the marquee menu appears: pick a service, and without releasing, slide onto your recent people and teams. One continuous gesture takes you from blank space to an open chat with the whole design team.',
+              image: {
+                src: null, // '/projects/LaSuite/marquee.png' or .mp4 — a recording sells this gesture
+                placeholder:
+                  'THE MARQUEE MENU — drag-select on empty canvas → service menu pops → hover to “Design Team” → chat created. Recording strongly preferred.',
+              },
+            },
+            {
+              heading: 'Storage that takes anything',
+              text: 'The cloud storage isn’t just for files. Drag a whole canvas into it and its latest state is saved as a reusable template; drag in a set of people, a call transcript, a poll. If it exists on the canvas, it can be kept, reused, and shared.',
+              image: {
+                src: null, // '/projects/LaSuite/storage.png'
+                placeholder:
+                  'DETAIL — the Cloud Storage panel: a saved canvas template, saved people, and a transcript alongside docs and tables.',
+              },
+            },
+            {
+              heading: 'One toolbar for every app',
+              text: 'We observed that most La Suite tools share the same core instruments — so we gave them one toolbar. Bold works in the document, the spreadsheet cell, the chat. Alignment lines up text in a doc — and windows on the canvas. Learned once, used everywhere.',
+              image: {
+                src: null, // '/projects/LaSuite/toolbar.png'
+                placeholder:
+                  'DETAIL — the shared bottom toolbar acting on a document, a spreadsheet, and the canvas itself.',
+              },
+            },
+            {
+              heading: 'Old world, new world',
+              text: 'Six separate look-alike services on one side; the canvas on the other. The layout kept what users already understood, so the leap in capability didn’t cost a leap in learning.',
+              image: {
+                src: null, // '/projects/LaSuite/old-new.png'
+                placeholder:
+                  'ONE combined frame — the old separate apps (grid of six) beside the new canvas workspace.',
+              },
+            },
+          ],
+          grid: {
+            title: 'Around the canvas',
+            cols: 3,
+            images: [
+              { src: null, placeholder: 'canvas2.png — another canvas arrangement' },
+              { src: null, placeholder: 'canvas3.png — chat + widgets detail' },
+              { src: null, placeholder: 'canvas4.png — email / call creation on canvas' },
+              { src: null, placeholder: 'canvas5.png — tabs: one canvas per workflow' },
+              { src: null, placeholder: 'canvas6.png — saved templates in storage' },
+              { src: null, placeholder: 'canvas7.png — your pick' },
+            ],
+          },
+        },
+
+        // ── 02 THE SCENARIO (substrates, end to end) ──────────────────
+        {
+          id: 'scenario',
+          eyebrow: 'Section 02',
+          titleLead: 'The scenario.',
+          titleRest: 'Reschedule a meeting without leaving the canvas.',
+          rationale:
+            'One real task, played end to end — because a concept is only proven when data crosses every border without being retyped once.',
+          pos: {
+            problem:
+              'In the old suite this errand is six apps: read the message, poll the team, tally answers, make the list, schedule the call, send the email. Data is retyped at every border.',
+            opportunity:
+              'If every object is a substrate — data with behavior, not a picture of data — then a poll stays tabular, a column stays a list of people, a meeting stays joinable, wherever you drag it.',
+            solution:
+              'We played one real task end to end: Ross asks for the intern welcome meeting to be moved. From his first message to the final email — poll, spreadsheet, people list, scheduled call, invitation — nothing is retyped and nothing leaves the canvas.',
+          },
+          // The three personas the scenario follows (from the deck).
+          cast: [
+            { name: 'Ross', role: 'Head of the design team — asks for the meeting to move' },
+            { name: 'Harry', role: 'HR — reschedules it without leaving the canvas' },
+            { name: 'Teresa', role: 'The new intern — onboarded in the next section' },
+          ],
+          hero: {
+            src: null, // '/projects/LaSuite/scenario.mp4' — THE recording of this case study
+            placeholder:
+              'HERO — the scenario as a RECORDING: poll dragged from chat into a spreadsheet, column becoming a people list, dropped into the call and the email.',
+            caption: 'The same data, changing clothes: poll → table → people → meeting → invitation.',
+          },
+          // A true sequence — told as one.
+          showcase: [
+            {
+              heading: '1 — The ask arrives, with the calendar in it',
+              text: 'Ross’s message lands: move the welcome meeting. He’s already dragged a slot from his calendar into the chat — not a screenshot of a date, a live slot, ready to be used downstream.',
+              image: {
+                src: null, // '/projects/LaSuite/flow1.png'
+                placeholder: 'STEP 1 — Ross’s chat message with the live calendar slot (18 July) embedded.',
+              },
+            },
+            {
+              heading: '2 — Ask the team, where they already talk',
+              text: 'One marquee gesture opens a chat with the design team. From the shared toolbar’s widgets, a poll drops into the thread: who can make the new date? Votes land as people answer.',
+              image: {
+                src: null, // '/projects/LaSuite/flow2.png'
+                placeholder: 'STEP 2 — the poll widget inside the design-team chat, votes arriving.',
+              },
+            },
+            {
+              heading: '3 — The poll becomes a table',
+              text: 'Drag the finished poll onto the canvas and it lands as a spreadsheet — the AI reads the content and names the columns itself: Name, Attending. Live rows, not a pasted picture.',
+              image: {
+                src: null, // '/projects/LaSuite/flow3.png'
+                placeholder: 'STEP 3 — the poll as spreadsheet rows, columns auto-named Name / Attending.',
+              },
+            },
+            {
+              heading: '4 — Ask the AI for the yes-list',
+              text: 'Drop the AI instrument on the two columns and ask: “who’s joining?” It answers as a new spreadsheet — just the people who said yes.',
+              image: {
+                src: null, // '/projects/LaSuite/flow4.png'
+                placeholder: 'STEP 4 — the AI instrument on the columns, producing the filtered yes-sheet.',
+              },
+            },
+            {
+              heading: '5 — People and a date make a meeting',
+              text: 'A new video call opens on the canvas. The yes-list drags into its people field — everyone added at once — and Ross’s original calendar slot drags in as the time. The meeting is scheduled without typing a single name. (Dragging a whole team from the left bar works the same way — anything that accepts people, accepts people.)',
+              image: {
+                src: null, // '/projects/LaSuite/flow5.png'
+                placeholder: 'STEP 5 — the video call with the dragged-in people list and Ross’s slot as the date.',
+              },
+            },
+            {
+              heading: '6 — Text becomes the email',
+              text: 'A plain text note on the canvas — “the meeting has been rescheduled…” — gets marquee-selected and turned into an email: To field, attachments, the lot. The people list fills To; the meeting itself drops into the body. When it arrives, the invitation contains the live call: open the email, join the room.',
+              image: {
+                src: null, // '/projects/LaSuite/flow6.png'
+                placeholder: 'STEP 6 — canvas text transformed into an email, people in To, joinable meeting embedded.',
+              },
+            },
+            {
+              heading: 'Then the desk gets cleaned',
+              text: 'Select everything the errand produced — chat, sheet, call, email — group it, let the AI suggest its name, and minimize. The canvas is clean; the whole workflow waits in one box, reopenable whenever it’s needed again.',
+              image: {
+                src: null, // '/projects/LaSuite/flow7.png'
+                placeholder: 'CLOSER — the finished services grouped, AI-named, minimized to one tidy box.',
+              },
+            },
+          ],
+        },
+
+        // ── 03 SHARING BY ARRANGEMENT ─────────────────────────────────
+        {
+          id: 'sharing',
+          eyebrow: 'Section 03',
+          titleLead: 'Sharing.',
+          titleRest: 'Arrange things together, and they’re shared.',
+          rationale:
+            'Spatial arrangement already says what belongs together. So we made grouping the act of sharing, and let context do the permission bookkeeping.',
+          pos: {
+            problem:
+              'Onboarding Teresa, the intern, the old way means forwarding five links, setting permissions on each, and hoping she finds the tasks. Sharing is explicit, repetitive, and always one checkbox away from wrong.',
+            opportunity:
+              'On a canvas, spatial arrangement already says what belongs together. Let grouping be the act of sharing — and let the system read context (deadlines, assignees) to do the bookkeeping.',
+            solution:
+              'Ross groups the sheet, the document, the recording and the task list; because Teresa is assigned inside, the group is shared with her — no share dialog. He limits her access to two spreadsheet columns and one region of the document (the form she must fill), the AI suggests the group’s name, and a timeline assembles itself from the tasks’ deadlines.',
+          },
+          hero: {
+            src: '/projects/LaSuite/phases1.png',
+            placeholder:
+              'HERO — a grouped phase: recording, notes, document, tasks and sheet, marked Completed, with view access.',
+            caption: 'A group: the work, its status, and who may touch what — in one frame.',
+          },
+          showcase: [
+            {
+              heading: 'Assign by dropping a person',
+              text: 'Tasks work like everything else: drag Teresa from Teams & People onto a task and it’s hers; drop a whole team and it belongs to all of them. Assignment is a gesture, not a form.',
+              image: {
+                src: null, // '/projects/LaSuite/assign.png'
+                placeholder: 'DETAIL — a person tile dropped onto a task in the task widget, assignment made.',
+              },
+            },
+            {
+              heading: 'Access down to a column',
+              text: 'Limited access isn’t per-file, it’s per-part: two columns of the spreadsheet, one region of the document. Teresa sees exactly the form she must fill — the rest of the doc stays Ross’s.',
+              image: {
+                src: null, // '/projects/LaSuite/access.png'
+                placeholder:
+                  'DETAIL — limit-access on selected spreadsheet columns and a selected region of a document.',
+              },
+            },
+            {
+              heading: 'A timeline the group writes itself',
+              text: 'Because the grouped tasks carry deadlines and assignees, the phase renders its own timeline on the rail: Week 2 complete and dimmed behind, Week 3 in progress in front. The project’s history and present, on the same surface.',
+              image: {
+                src: '/projects/LaSuite/phases2.png',
+                placeholder:
+                  'DETAIL — Week 2 faded behind, the Week 3 “In progress” group in front, timeline rail on the right.',
+              },
+            },
+            {
+              heading: 'Teresa’s side of the handoff',
+              text: 'She’s notified, opens the one group, and has everything: the context documents, the form cropped to what she may edit, the tasks with her face on them. She personalizes her workspace, completes the form, checks the task off — onboarded without a single forwarded link.',
+              image: {
+                src: null, // '/projects/LaSuite/teresa.png'
+                placeholder: 'DETAIL — Teresa’s view: her tasks, her limited-access form, the task checked complete.',
+              },
+            },
+          ],
+          grid: {
+            title: 'More of the system',
+            cols: 3,
+            images: [
+              { src: null, placeholder: 'sharing2.png — grouping people with content to share it' },
+              { src: null, placeholder: 'sharing3.png — AI-suggested group names' },
+              { src: null, placeholder: 'sharing4.png — your pick' },
+            ],
+          },
+        },
+      ],
+
+      // ══ METHOD (the HCI process) ══════════════════════════════
+      process: {
+        id: 'method',
+        eyebrow: 'How we got there',
+        titleLead: 'The method.',
+        titleRest: 'Paper first, pixels last.',
+        rationale:
+          'Ideas earn their way up through fidelities — each round cheap enough to throw away, each answering a question the previous one couldn’t.',
+        intro:
+          'This concept wasn’t sketched straight into Figma. In Wendy Mackay’s lab the ideas earn their way up through fidelities — each round cheap enough to throw away, each one answering a question the previous couldn’t.',
+        steps: [
+          {
+            number: '01',
+            title: 'Paper prototypes',
+            text: 'The canvas, its windows and its drags — made of paper and moved by hand, so the interaction model could fail fast and cheaply.',
+          },
+          {
+            number: '02',
+            title: 'Storyboards',
+            text: 'The scheduling scenario drawn frame by frame — Ross’s ask, the poll, the handoff to Teresa — to find where the seams between apps actually hurt.',
+          },
+          {
+            number: '03',
+            title: 'Generative walkthroughs',
+            text: 'Stepping through the storyboarded task together, generating alternatives at each step instead of judging one design — the marquee menu and the substrate drags came out of these sessions.',
+          },
+          {
+            number: '04',
+            title: 'Video prototype',
+            text: 'The full scenario — message to poll to table to meeting to email — acted out and filmed, so the concept could be critiqued as an experience, not a wireframe.',
+          },
+          {
+            number: '05',
+            title: 'High-fidelity canvas',
+            text: 'Only then, Figma: the canvas, groups, access and storage designed at full fidelity, carrying every decision the cheaper rounds had already settled.',
+          },
+        ],
+        image: {
+          src: null, // '/projects/LaSuite/method.mp4' or method.png
+          placeholder:
+            'THE VIDEO PROTOTYPE (method.mp4, trimmed + compressed) — or a composed frame of paper prototypes, a storyboard, and a video still. Get teammates’ okay for photos showing their faces.',
+          caption: 'The idea at four fidelities before a single pixel.',
+        },
+        partners: {
+          title: 'Who was in the room',
+          items: [
+            {
+              label: 'Wendy Mackay',
+              text: 'Supervision and method — the discipline of generating alternatives before committing to one.',
+            },
+            {
+              label: 'The team', // verify: name Shubham Bhatt & Ons Sammari if they agree
+              text: 'Three of us designing, prototyping and filming together — the concept belongs to the group.',
+            },
+            {
+              label: 'La Suite context',
+              text: 'An ecosystem of real services — and the constraint that whatever we proposed had to feel reachable from them.',
+            },
+          ],
+        },
+      },
+
+      // ══ REFLECTION ════════════════════════════════════════════
+      reflection: {
+        id: 'reflection',
+        title: 'What the lab taught me',
+        text: 'Industry taught me to converge fast; the lab taught me to stay divergent longer — the marquee menu and the substrate drags only appeared after we stopped polishing one idea and started generating many. Three ideas from SuiteFlow stay with me: workflows are temporal, so the workspace should have a timeline; data should cross app borders without changing meaning; and familiarity is a design material — we spent novelty only where it bought new capability, and kept everything else where users’ hands already knew to find it.',
       },
     },
   },

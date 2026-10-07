@@ -1331,3 +1331,851 @@ article.project-detail.project-detail {
     padding-top: 90px;
   }
 }
+
+/* ── Scenario cast strip ────────────────────────────────────── */
+.cast {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 28px;
+}
+.cast__person {
+  border-left: 2px solid var(--accent);
+  padding-left: 14px;
+}
+.cast__name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.cast__role {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+@media (max-width: 720px) {
+  .cast {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ═══ Typography & rhythm pass ═══════════════════════════════════
+   Stronger hierarchy: darker, larger reading text; tighter display
+   type; clearer bold; more generous vertical rhythm. */
+
+/* Reading text: bigger, darker, roomier */
+.case-section p {
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+.case-section__intro {
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: var(--ink);
+  max-width: 58ch;
+}
+.project-detail__summary {
+  line-height: 1.5;
+}
+
+/* Display type: tighter, more confident */
+.project-detail__title {
+  letter-spacing: -0.015em;
+  line-height: 1.02;
+}
+.case-title {
+  letter-spacing: -0.012em;
+}
+.case-title__rest {
+  color: color-mix(in srgb, var(--ink) 62%, var(--ink-soft));
+}
+.showcase-row__text h3,
+.shot-grid__title,
+.chart__title,
+.subhead {
+  letter-spacing: -0.01em;
+}
+.showcase-row__text h3 {
+  margin-bottom: 16px;
+}
+.showcase-row__text p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* The important stuff: **bold** in content.js renders as .hl
+   (accent highlight); plain <strong> gets real weight + full ink */
+.case-section strong:not(.hl),
+.showcase-row__text strong:not(.hl) {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+/* P/O/S cells: darker text, looser leading, label breathing room */
+.pos-grid__cell p {
+  color: var(--ink);
+  line-height: 1.6;
+}
+.pos-grid__cell h3 {
+  margin-bottom: 14px;
+}
+.pos-grid__cell {
+  padding: 30px 28px;
+}
+
+/* Role list & steps: firmer terms */
+.role-list dt,
+.flow-item h3,
+.strategy-card h3 {
+  font-weight: 650;
+}
+.flow-item p,
+.strategy-card p {
+  line-height: 1.6;
+}
+
+/* Captions: a touch larger, clearly secondary */
+.project-detail__figure figcaption,
+.section-hero figcaption {
+  font-size: 0.82rem;
+  margin-top: 12px;
+  letter-spacing: 0.01em;
+}
+
+/* Vertical rhythm: more air between the big beats */
+.metrics {
+  margin-bottom: 72px;
+  gap: 32px;
+}
+.metrics__label {
+  line-height: 1.5;
+}
+.section-hero {
+  margin-top: 56px;
+}
+.showcase {
+  gap: 88px;
+  margin-top: 64px;
+}
+.shot-grid-wrap {
+  margin-top: 56px;
+}
+.shot-grid {
+  gap: 20px;
+}
+.impact {
+  margin-top: 72px;
+  padding-top: 52px;
+}
+.pos-grid {
+  margin-top: 44px;
+}
+
+@media (max-width: 720px) {
+  .case-section__intro {
+    font-size: 1.08rem;
+  }
+  .showcase {
+    gap: 64px;
+  }
+  .metrics {
+    margin-bottom: 48px;
+  }
+}
+
+/* ═══ P/O/S as rows (uneven text lengths killed the columns) ═══ */
+.pos-grid {
+  display: block;
+  background: transparent;
+  border-top: 1px solid var(--line);
+  margin-top: 44px;
+}
+.pos-grid__cell {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+  background: transparent;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+.pos-grid__cell h3 {
+  margin: 5px 0 0; /* optically aligns the small caps with the text's first line */
+}
+.pos-grid__cell p {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  max-width: 58ch;
+}
+
+/* Metrics: stop one-word orphans in the labels */
+.metrics__label {
+  font-size: 0.88rem;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+@media (max-width: 720px) {
+  .pos-grid__cell {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .pos-grid__cell h3 {
+    margin: 0;
+  }
+}
+
+/* ═══ Scroll experience ══════════════════════════════════════════
+   1. Reading progress bar (CSS scroll timeline — no JS)
+   2. Reveal choreography (.is-rv added by observer)
+   3. Image unveiling (scale-settle inside the mask)
+   4. Hero parallax (view timeline)
+   All of it only when motion is welcome. */
+
+/* 1 ── Reading progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 40;
+  background: var(--accent);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes progress-grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* 4 ── Hero parallax: the cover eases larger as it scrolls away */
+  @supports (animation-timeline: view()) {
+    .project-detail__figure--hero img,
+    .project-detail__figure--hero video {
+      animation: hero-drift linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+    @keyframes hero-drift {
+      to { transform: scale(1.07) translateY(-3%); }
+    }
+  }
+}
+
+/* ═══ Fix: hero centering + a better hero reveal ═════════════════
+   The reveal's transform was overwriting the translateX(-50%) that
+   centered section heroes. Center with margins instead (transform
+   stays free for animation), and unveil heroes with a masked wipe. */
+
+.section-hero {
+  left: auto;
+  transform: none;
+  width: min(1120px, calc(100vw - 2 * var(--gutter)));
+  margin-inline: calc((100% - min(1120px, 100vw - 2 * var(--gutter))) / 2);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Other version: the hero opens out of a cropped window */
+  .section-hero {
+    opacity: 0;
+    transform: none;
+    clip-path: inset(12% 7% 12% 7% round 14px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .section-hero.is-rv {
+    clip-path: inset(0 0 0 0 round 8px);
+  }
+  .section-hero .zoomable img,
+  .section-hero .zoomable video {
+    transform: scale(1.08);
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .section-hero.is-rv .zoomable img,
+  .section-hero.is-rv .zoomable video {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 720px) {
+  .section-hero {
+    margin-inline: calc((100% - (100vw - 2 * var(--gutter))) / 2);
+  }
+}
+
+/* Fix: restore hero visibility (the global .is-rv opacity rule was
+   removed with the choreography; the wipe needs its own) */
+@media (prefers-reduced-motion: no-preference) {
+  .section-hero.is-rv {
+    opacity: 1;
+  }
+}
+
+/* ═══ Progress ring around the pill nav ══════════════════════════
+   The reading progress traces clockwise around the floating nav.
+   Replaces the top bar (its element was removed). */
+@property --scrollp {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 0%;
+}
+
+/* A clean progress line inside the pill, along its bottom edge */
+.pill-nav {
+  overflow: hidden; /* line follows the pill's rounded corners */
+}
+.pill-nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: var(--scrollp, 0%);
+  background: var(--accent);
+  border-radius: 0 3px 3px 0;
+  pointer-events: none;
+  transition: width 0.15s linear;
+}
+
+/* --scrollp is set by PillNav in JS (rAF scroll listener). */
+
+/* ── Glow on the progress line (and a breath of it on the pill) ── */
+.pill-nav::after {
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--accent) 80%, transparent),
+    0 0 18px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.pill-nav a.is-active {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* ── Progress line moves to the nav's TOP edge, glowing harder ── */
+.pill-nav::after {
+  bottom: auto;
+  top: 0;
+  border-radius: 0 0 3px 3px;
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--accent) 95%, transparent),
+    0 0 26px color-mix(in srgb, var(--accent) 60%, transparent),
+    0 0 48px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* ── The D hint chip in the nav ────────────────────────────── */
+.pill-nav__kbd {
+  align-self: center;
+  margin-left: 6px;
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: help;
+}
+
+/* ── The design-rationale overlay ──────────────────────────── */
+.design-note {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 6vh 6vw;
+  background: color-mix(in srgb, var(--bg, #fff) 82%, transparent);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  cursor: pointer;
+  animation: note-in 0.25s ease-out;
+}
+.design-note__inner {
+  max-width: 34ch;
+  text-align: center;
+}
+.design-note__eyebrow {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 22px;
+}
+.design-note__text {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0 0 28px;
+}
+.design-note__hint {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  margin: 0;
+}
+@keyframes note-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .design-note {
+    animation: none;
+  }
+}
+
+/* ── Progress line back to the nav's bottom edge ────────────── */
+.pill-nav::after {
+  top: auto;
+  bottom: 0;
+  border-radius: 3px 3px 0 0;
+}
+
+/* ── Keycap style for D / Esc ───────────────────────────────── */
+kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--bg, #fff) 85%, var(--ink));
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ── Floating hint above the nav (not inside it) ────────────── */
+.key-hint {
+  position: fixed;
+  bottom: 82px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 19;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  pointer-events: none;
+}
+@media (max-width: 720px), (hover: none) {
+  .key-hint {
+    display: none; /* no keyboard, no hint */
+  }
+}
+.pill-nav__kbd {
+  display: none; /* retired: hint lives above the nav now */
+}
+
+/* ── Typewriter caret ───────────────────────────────────────── */
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.95em;
+  margin-left: 3px;
+  vertical-align: -0.12em;
+  background: var(--accent);
+  animation: caret-blink 0.9s step-end infinite;
+}
+.caret--done {
+  animation: caret-fade 0.6s ease-out forwards;
+}
+@keyframes caret-blink {
+  50% { opacity: 0; }
+}
+@keyframes caret-fade {
+  to { opacity: 0; }
+}
+
+/* ── Hint becomes a legible chip (was raw text over content) ── */
+.key-hint {
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg, #fff) 78%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  color: var(--ink-soft);
+}
+
+/* ── Overlay text: word cascade (typewriter retired) ────────── */
+.dn-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.45em);
+  animation: dn-word 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i) * 26ms);
+}
+@keyframes dn-word {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.caret {
+  display: none; /* retired with the typewriter */
+}
+@media (prefers-reduced-motion: reduce) {
+  .dn-word {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── The hint names the section you're in, and flips with it ── */
+.key-hint__section {
+  color: var(--accent);
+  font-weight: 650;
+  animation: hint-swap 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes hint-swap {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .key-hint__section {
+    animation: none;
+  }
+}
+
+/* ── Bigger, unmissable hint: it pulses in on every section ── */
+.key-hint {
+  bottom: 88px;
+  padding: 10px 18px;
+  gap: 10px;
+  font-size: 0.88rem;
+  animation: hint-pulse 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.key-hint kbd {
+  font-size: 0.85rem;
+  padding: 3px 10px;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.key-hint__section {
+  font-size: 0.88rem;
+}
+@keyframes hint-pulse {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px) scale(0.95);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 26px color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .key-hint {
+    animation: none;
+  }
+}
+
+/* ── Quieter: one accent at a time near the nav ─────────────── */
+/* Keycap back to neutral — the section name keeps the accent */
+.key-hint kbd {
+  border-color: var(--line);
+  color: var(--ink);
+}
+/* Progress glow, dialed down to a warm edge */
+.pill-nav::after {
+  box-shadow:
+    0 0 6px color-mix(in srgb, var(--accent) 60%, transparent),
+    0 0 14px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+/* Pulse keeps the motion, loses the glow flash */
+@keyframes hint-pulse {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px) scale(0.95);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-2px) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+/* ── Progress moves to the top of the viewport ──────────────── */
+.pill-nav::after {
+  display: none; /* retired from the nav */
+}
+.scroll-progress-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: var(--scrollp, 0%);
+  z-index: 40;
+  background: var(--accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 50%, transparent);
+  pointer-events: none;
+}
+
+/* ── One-time shine: a light orbits the chip when the reader
+      first leaves the opening section ─────────────────────────── */
+@property --kha {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+.key-hint--flash::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 999px;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--kha),
+    transparent 0deg 285deg,
+    var(--accent) 330deg,
+    transparent 360deg
+  );
+  animation: kh-orbit 2.3s cubic-bezier(0.3, 0, 0.4, 1) forwards;
+}
+.key-hint--flash {
+  animation: hint-pulse 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    kh-glow 2.3s ease-out forwards;
+}
+@keyframes kh-orbit {
+  from { --kha: 0deg; opacity: 1; }
+  80% { opacity: 1; }
+  to { --kha: 1080deg; opacity: 0; }
+}
+@keyframes kh-glow {
+  0%, 80% {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12),
+      0 0 22px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  100% {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .key-hint--flash,
+  .key-hint--flash::before {
+    animation: none;
+  }
+}
+
+/* ── Shine rides the border only, and the chip grows a touch ── */
+.key-hint {
+  padding: 12px 20px;
+  font-size: 0.92rem;
+  gap: 11px;
+}
+.key-hint kbd {
+  font-size: 0.9rem;
+}
+.key-hint__section {
+  font-size: 0.92rem;
+}
+/* During the flash the chip's fill goes near-opaque, so the
+   orbiting light can't bleed through the glass — only the 4px
+   band around the border shows it. */
+.key-hint--flash {
+  background: color-mix(in srgb, var(--bg, #fff) 96%, transparent);
+}
+.key-hint--flash::before {
+  inset: -4px;
+}
+
+/* ── Shine as a TRUE ring: mask cuts out the center entirely ── */
+.key-hint--flash {
+  /* glass stays glass — the ring no longer needs an opaque cover */
+  background: color-mix(in srgb, var(--bg, #fff) 78%, transparent);
+}
+.key-hint--flash::before {
+  inset: -4px;
+  padding: 4px; /* = ring thickness */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+/* ── Calmer orbit, louder name-change ───────────────────────── */
+
+/* The one-time shine: slower (two gentle laps), thinner, softer */
+.key-hint--flash::before {
+  inset: -3px;
+  padding: 3px;
+  background: conic-gradient(
+    from var(--kha),
+    transparent 0deg 295deg,
+    color-mix(in srgb, var(--accent) 75%, transparent) 338deg,
+    transparent 360deg
+  );
+  animation: kh-orbit 3.8s ease-in-out forwards;
+}
+@keyframes kh-orbit {
+  from { --kha: 0deg; opacity: 1; }
+  85% { opacity: 1; }
+  to { --kha: 720deg; opacity: 0; }
+}
+@keyframes kh-glow {
+  0%, 85% {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12),
+      0 0 14px color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+  100% {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* The section name announces each change: it lands with a brief
+   accent-tinted highlight that fades once read */
+.key-hint__section {
+  padding: 2px 9px;
+  margin: -2px -3px;
+  border-radius: 7px;
+  animation: sec-swap 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes sec-swap {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    background: color-mix(in srgb, var(--accent) 24%, transparent);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(0);
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+  100% {
+    background: transparent;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .key-hint__section {
+    animation: none;
+  }
+}
+
+/* ── Home, one tap away, from anywhere on the page ──────────── */
+.pill-nav__home {
+  display: flex;
+  align-items: center;
+  padding: 8px 13px;
+  margin-right: 2px;
+  border-right: 1px solid var(--line);
+  border-radius: 999px 0 0 999px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.15s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pill-nav__home:hover {
+  color: var(--ink);
+  transform: translateX(-2px);
+}
+
+/* ── Sticky site bar: home is always one click, top-left ────── */
+.site-bar {
+  position: fixed;
+  top: 16px;
+  left: max(24px, var(--gutter));
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg, #fff) 78%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.site-bar__arrow {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.site-bar:hover .site-bar__arrow {
+  transform: translateX(-3px);
+}
+.pill-nav__home {
+  display: none; /* retired — the site bar handles home */
+}
+
+/* ═══ Round of fixes ═════════════════════════════════════════ */
+
+/* 1) Progress bar retired */
+.scroll-progress-top,
+.scroll-progress {
+  display: none;
+}
+
+/* 2) Team photo: the narrow hero must NOT inherit the breakout —
+      it stays in the text column */
+.section-hero--narrow {
+  width: 100% !important;
+  margin-inline: 0 !important;
+}
+
+/* 4) The chip pulses ONLY during its one-time shine — section
+      changes are announced by the name highlight alone */
+.key-hint {
+  animation: none;
+}
+.key-hint--flash {
+  animation: hint-pulse 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    kh-glow 3.8s ease-out forwards;
+}
+
+/* 5) "Back to work" becomes an actual button, not a whisper */
+.project-detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-detail__back:hover {
+  border-color: var(--accent);
+  transform: translateX(-3px);
+}
+
+/* Chip never unmounts (that replayed the shine) — it fades instead */
+.key-hint {
+  transition: opacity 0.25s ease, visibility 0.25s;
+}
+.key-hint--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}

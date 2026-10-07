@@ -3,6 +3,9 @@
   max-width: 620px;
 }
 
+.about {
+  padding-top: 100px !important;
+}
 .prose__heading {
   font-family: var(--font-display);
   font-weight: 400;

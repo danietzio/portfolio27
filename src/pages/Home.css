@@ -1,72 +1,336 @@
-/* ── Intro: one line, nothing else ─────────────────────────── */
-.home-intro {
-  padding: 64px 0 36px;
-  max-width: 680px;
+/* ═════════════════════════════════════════════════════════════
+   Home.css — clean rebuild (replaces all earlier iterations)
+
+   Structure:  hero (statement left / portrait right)
+               → work grid (featured + 2-up cards)
+               → experience ledger (year · place/role · story)
+
+   Layout approach: instead of breaking out of the page column
+   with viewport math (fragile), the home page simply gets a
+   wider, centered column of its own.
+   ═════════════════════════════════════════════════════════════ */
+
+/* the one accent for highlighted words — change it here.
+   Deep raspberry, ~5:1 contrast on the cream background. */
+.home {
+  --hi: #c01d5c;
+  --home-max: 1320px; /* the home page's own column width */
 }
-.home-intro__title {
+
+/* widen + center the home column; gutters stay comfortable */
+.page.home {
+  max-width: var(--home-max);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 48px);
+}
+
+/* ═══ Hero: statement left, portrait right, same floor line ═══ */
+.hero--index {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: end;
+  padding: clamp(88px, 14vh, 170px) 0 0;
+  margin-bottom: clamp(48px, 8vh, 96px);
+}
+.hero--portrait {
+  grid-template-columns: minmax(0, 21fr) minmax(0, 19fr);
+}
+.hero__text {
+  min-width: 0;
+  padding-bottom: clamp(56px, 9vh, 104px);
+}
+
+.hero__statement {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.8rem, 3.6vw, 2.5rem);
-  line-height: 1.22;
+  font-weight: 500;
+  font-size: clamp(2.3rem, 3.6vw, 3.8rem);
+  line-height: 1.16;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  max-width: 19ch;
+  margin: 0 0 30px;
+}
+.hero__statement .hw {
+  font-weight: 500; /* same weight — the color does the work */
+}
+.hw {
+  font-style: normal;
+  color: var(--hi);
+}
+
+/* optional "Previously at …" line (null in content.js hides it) */
+.hero__prev {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 52ch;
+  margin: 0 0 18px;
+}
+
+.hero--index .hero__intro {
+  font-size: 1.06rem;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 56ch;
+  margin: 0 0 44px;
+}
+
+.hero__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px 40px;
+}
+.hero__links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+}
+.hero__links a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  padding-bottom: 4px;
+  background-image: linear-gradient(var(--hi), var(--hi));
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.15s;
+}
+.hero__links a:hover,
+.hero__links a:focus-visible {
+  color: var(--hi);
+  background-size: 100% 2px;
+}
+.hero__now {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
   margin: 0;
 }
 
-/* ── The doors: each project, in its own world ─────────────────
-   Light Oar beside near-black Backgammon: the contrast is the
-   design. Hover widens a door; click enters the case study. */
-.doors {
-  display: flex;
+/* ── Scroll hint: a dark pill, bottom center, gone on scroll ── */
+.hero__scroll {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  z-index: 30; /* under the sticky nav (35) */
+  display: inline-flex;
+  align-items: center;
   gap: 10px;
-  height: min(74vh, 680px);
-  margin-bottom: 72px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: var(--ink);
+  /* the site's background token is --paper (not --bg) — fall back safely */
+  color: var(--paper, var(--bg, #fff));
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--ink) 22%, transparent);
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.18s ease;
+  /* its own entrance — late, after the hero has settled */
+  opacity: 0;
+  animation: scroll-pill-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+}
+@keyframes scroll-pill-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+.hero__scroll:hover,
+.hero__scroll:focus-visible {
+  background: var(--hi);
+  color: #fff;
+}
+.hero__scroll--gone {
+  animation: none; /* the entrance's fill would otherwise win */
+  opacity: 0;
+  transform: translateX(-50%) translateY(14px);
+  pointer-events: none;
+}
+.hero__scroll-arrow {
+  display: inline-block;
+  animation: scroll-bob 1.8s ease-in-out infinite;
+}
+@keyframes scroll-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+/* anchored scroll lands clear of the sticky nav */
+#work {
+  scroll-margin-top: 90px;
 }
 
+/* ── Portrait: black & white in a raspberry arch, color on hover ── */
+.hero__portrait {
+  position: relative;
+  width: 100%;
+  align-self: end;
+}
+.hero__portrait::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 92%;
+  height: 84%;
+  border-radius: 999px 999px 0 0;
+  background: color-mix(in srgb, var(--hi) 9%, transparent);
+}
+.hero__portrait img {
+  position: relative;
+  display: block;
+  width: 88%;
+  margin: 0 auto;
+  height: auto;
+  filter: grayscale(1) contrast(1.04);
+  transition: filter 0.22s ease;
+}
+.hero__portrait:hover img {
+  filter: grayscale(0) contrast(1);
+}
+
+/* ── Load choreography: statement words rise, the rest fades up ── */
+.wr {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.wr__in {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: wr-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--wd, 0ms);
+}
+@keyframes wr-rise {
+  to {
+    transform: translateY(0);
+  }
+}
+.hero__line {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: line-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes line-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══ Work grid: featured card, then two per row ═══ */
+.doors {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin: 0; /* the hero's bottom margin provides the gap */
+}
 .door {
   position: relative;
-  flex: 1;
   display: flex;
   overflow: hidden;
-  border-radius: 18px;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
   text-decoration: none;
   background: var(--door-bg, var(--accent-soft));
   color: var(--door-ink, var(--ink));
-  transition: flex-grow 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-  /* the one load moment: doors part from the seam */
-  opacity: 0;
-  transform: scaleX(0.96);
-  animation: door-open 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: var(--door-delay, 0ms);
 }
-@keyframes door-open {
-  to {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-}
-.door:hover,
-.door:focus-visible {
-  flex-grow: 1.45;
+.door:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 21 / 9;
 }
 .door:focus-visible {
   outline: 2px solid var(--door-accent, var(--accent));
   outline-offset: 4px;
 }
-
-/* Cover media fills the door; the scrim keeps the text readable */
-.door__media {
-  position: absolute;
-  inset: 0;
+/* ── Cards WITH a thumbnail: the image is the card, untouched —
+   no scrim, no overlay; the caption sits underneath ── */
+.door--img {
+  display: block;
+  aspect-ratio: auto;
+  overflow: visible;
+  border-radius: 0;
+  background: none;
+  color: var(--ink);
 }
-.door__media img,
-.door__media video {
+.door__frame {
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--door-bg, var(--accent-soft));
+}
+.door--img:first-child .door__frame {
+  aspect-ratio: 21 / 9;
+}
+.door__frame img,
+.door__frame video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.door:hover .door__media img,
-.door:hover .door__media video {
-  transform: scale(1.04);
+.door--img:focus-visible {
+  outline-offset: 6px;
+}
+
+/* ── Card motion: reveal on scroll, breathe on hover ── */
+.door {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--door-delay, 0ms);
+}
+.door.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* hover: the image eases forward inside its fixed frame */
+.door__frame img,
+.door__frame video {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.door--img:hover .door__frame img,
+.door--img:hover .door__frame video,
+.door--img:focus-visible .door__frame img,
+.door--img:focus-visible .door__frame video {
+  transform: scale(1.03);
+}
+@media (prefers-reduced-motion: reduce) {
+  .door {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .door__frame img,
+  .door__frame video {
+    transition: none;
+  }
+  .door--img:hover .door__frame img,
+  .door--img:hover .door__frame video {
+    transform: none;
+  }
 }
 .door__scrim {
   position: absolute;
@@ -78,7 +342,6 @@
     color-mix(in srgb, var(--door-bg, var(--bg, #fff)) 92%, transparent) 100%
   );
 }
-
 .door__content {
   position: relative;
   align-self: flex-end;
@@ -103,57 +366,134 @@
   font-weight: 600;
   margin-top: 8px;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.25s ease;
 }
 .door:hover .door__enter,
 .door:focus-visible .door__enter {
   opacity: 1;
-  transform: translateY(0);
 }
 
-.section {
-  padding: 32px 0;
+/* ═══ Experience: year · place/role · story ═══ */
+.xp {
+  margin: clamp(72px, 11vh, 120px) 0 48px;
+}
+.xp__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.xp__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.xp__row {
+  border-bottom: 1px solid var(--line);
+}
+.xp__link {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 0.8fr) minmax(0, 1.2fr);
+  column-gap: 32px;
+  align-items: baseline;
+  padding: 18px 2px;
+  color: inherit;
+  text-decoration: none;
+}
+.xp__year {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.xp__what {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+  min-width: 0;
+}
+.xp__company {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+  transition: color 0.18s ease;
+}
+.xp__role {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+.xp__note {
+  display: block;
+  max-width: 62ch;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+a.xp__link:hover .xp__company,
+a.xp__link:focus-visible .xp__company {
+  color: var(--hi);
 }
 
-/* ── Mobile: doors stack as slabs ──────────────────────────── */
-@media (max-width: 720px) {
-  .home-intro {
-    padding: 40px 0 28px;
+/* ═══ Responsive ═══ */
+@media (max-width: 860px) {
+  .hero--index,
+  .hero--portrait {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-top: 40px;
+  }
+  /* portrait above the words, smaller */
+  .hero__portrait {
+    order: -1;
+    width: clamp(180px, 50vw, 280px);
+  }
+  .hero__text {
+    padding-bottom: 0;
   }
   .doors {
-    flex-direction: column;
-    height: auto;
-    gap: 14px;
-    margin-bottom: 48px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  .door {
-    min-height: 300px;
-    transition: none;
-  }
-  .door:hover {
-    flex-grow: 1;
+  .door,
+  .door:first-child {
+    aspect-ratio: 4 / 3;
   }
   .door__enter {
     opacity: 1;
-    transform: none;
+  }
+  .xp__link {
+    grid-template-columns: 66px minmax(0, 1fr);
+    column-gap: 14px;
+    row-gap: 8px;
+  }
+  .xp__note {
+    grid-column: 2;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .door {
+  .wr__in,
+  .hero__line,
+  .hero__scroll-arrow {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+  .hero__scroll {
     animation: none;
     opacity: 1;
-    transform: none;
     transition: none;
   }
-  .door__media img,
-  .door__media video,
-  .door__enter {
-    transition: none;
+  .hero__scroll--gone {
+    opacity: 0;
   }
-  .door__enter {
-    opacity: 1;
-    transform: none;
+  .hero__portrait img,
+  .door__enter,
+  .hero__links a,
+  .xp__company {
+    transition: none;
   }
 }
