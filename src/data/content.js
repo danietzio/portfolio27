@@ -85,7 +85,7 @@ export const experience = [
   },
   {
     year: '2024–25',
-    company: 'BioComputing UP Lab, Padova',
+    company: 'BioComputing UP Lab, Padova, Italy',
     role: 'Research Fellow',
     url: 'https://biocomputingup.it',
     note: 'A funded year engineering protein databases used by working biologists. Taught me what “user” means when the user is a scientist mid-experiment.',
@@ -1085,7 +1085,7 @@ export const projects = [
 
     // Ideal cover: a recording of the scenario — the poll being
     // dragged into a spreadsheet beats any still.
-    cover: '/projects/LaSuite/canvas1.png',
+    cover: '/projects/LaSuite/cover1.png',
     coverPlaceholder:
       'HERO — the canvas in use: chat, video call, people list and spreadsheet side by side on one surface.',
 
@@ -1173,7 +1173,7 @@ export const projects = [
               'A canvas workspace. The left bar reads like Slack: Teams & People, Conversations, threads. Tabs on top work like a browser — each one its own canvas for its own workflow. The center is new: open a chat, create a spreadsheet beside it, start a call, draft an email, all arranged like a desk.',
           },
           hero: {
-            src: '/projects/LaSuite/canvas1.png',
+            src: '/projects/LaSuite/cover2.png',
             placeholder:
               'HERO — the Intern Meeting canvas: chat, video call people list, and attendance spreadsheet side by side.',
             caption: 'One tab, one task: the chat, the call, and the attendance sheet share a desk.',
@@ -1183,7 +1183,7 @@ export const projects = [
               heading: 'One gesture to anything',
               text: 'Drag a rectangle on empty canvas — the way you select files on a desktop — and the marquee menu appears: pick a service, and without releasing, slide onto your recent people and teams. One continuous gesture takes you from blank space to an open chat with the whole design team.',
               image: {
-                src: null, // '/projects/LaSuite/marquee.png' or .mp4 — a recording sells this gesture
+                src: '/projects/LaSuite/video21.mp4', // '/projects/LaSuite/marquee.png' or .mp4 — a recording sells this gesture
                 placeholder:
                   'THE MARQUEE MENU — drag-select on empty canvas → service menu pops → hover to “Design Team” → chat created. Recording strongly preferred.',
               },
@@ -1192,7 +1192,7 @@ export const projects = [
               heading: 'Storage that takes anything',
               text: 'The cloud storage isn’t just for files. Drag a whole canvas into it and its latest state is saved as a reusable template; drag in a set of people, a call transcript, a poll. If it exists on the canvas, it can be kept, reused, and shared.',
               image: {
-                src: null, // '/projects/LaSuite/storage.png'
+                src: '/projects/LaSuite/video22.mp4', // '/projects/LaSuite/storage.png'
                 placeholder:
                   'DETAIL — the Cloud Storage panel: a saved canvas template, saved people, and a transcript alongside docs and tables.',
               },
@@ -1201,7 +1201,7 @@ export const projects = [
               heading: 'One toolbar for every app',
               text: 'We observed that most La Suite tools share the same core instruments — so we gave them one toolbar. Bold works in the document, the spreadsheet cell, the chat. Alignment lines up text in a doc — and windows on the canvas. Learned once, used everywhere.',
               image: {
-                src: null, // '/projects/LaSuite/toolbar.png'
+                src: '/projects/LaSuite/image21.png', // '/projects/LaSuite/toolbar.png'
                 placeholder:
                   'DETAIL — the shared bottom toolbar acting on a document, a spreadsheet, and the canvas itself.',
               },
@@ -1210,7 +1210,7 @@ export const projects = [
               heading: 'Old world, new world',
               text: 'Six separate look-alike services on one side; the canvas on the other. The layout kept what users already understood, so the leap in capability didn’t cost a leap in learning.',
               image: {
-                src: null, // '/projects/LaSuite/old-new.png'
+                src: '/projects/LaSuite/video23.mp4', // '/projects/LaSuite/old-new.png'
                 placeholder:
                   'ONE combined frame — the old separate apps (grid of six) beside the new canvas workspace.',
               },
