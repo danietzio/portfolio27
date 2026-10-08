@@ -38,9 +38,9 @@ export const profile = {
   // null hides the slot and the text takes the full width.
   portrait: '/portrait.png',
   location: 'Paris, France', // shown on the home hero — edit or set to null
-  status: 'Open to design & HCI internships', // ditto
+  status: 'Open to senior product-design roles & HCI research internships', // ditto
   intro:
-    'Product designer and front-end engineer with ten years of experience turning ideas into polished digital products. I’m currently researching human–computer interaction in **Wendy Mackay’s** group at Université Paris-Saclay, after working with teams at **Backgammon Galaxy**, **Oar Health**, and **Thinking Machine** — and a top-3% designer on **Toptal**.',
+    'Senior product designer and front-end engineer — ten years of shipped products, top 3% on **Toptal**. I’ve designed for **Oar Health**, **Thinking Machine**, and **Backgammon Galaxy** (where I also wrote the front-end), and I’m now researching human–computer interaction in **Wendy Mackay’s** group at Université Paris-Saclay.',
   focus: 'Product design · Design systems · Front-end · HCI research',
   // Your logo for the nav bar (SVG preferred, or a transparent PNG
   // exported at 2x). Drop the file into /public; null falls back to
@@ -1468,53 +1468,57 @@ export const projects = [
   },
 
   /* ═══════════════════════════════════════════════════════════
-     PROJECT 4 — THINKING MACHINE (skeleton: structure is final,
-     stories are drafts from your CV + their site. Brain-dump the
-     details and each section gets written properly.)
+     PROJECT 4 — THINKING MACHINE
+     Written from the full design board (Section_1.pdf). Image
+     slots name the exact frames to export from that board.
+     Figures from the demo data (ACME Corp) are labeled as such.
      ═══════════════════════════════════════════════════════════ */
   {
     slug: 'thinking-machine',
-    thumb: '/projects/thumbs/thinkingMachine.png', // your banner — "AI that finds money hidden in telecom invoices" / "26 countries, 18 languages → one platform"
+    thumb: 'projects/thumbs/thinkingMachine.png', // your banner — "AI that finds money hidden in telecom invoices" / "26 countries, 18 languages → one platform"
     hook: 'AI that finds money hidden in telecom invoices.',
     title: 'Designing for density at Thinking Machine',
     subtitle: 'Thinking Machine • B2B AI • Product Design',
     tag: 'Case study',
 
-    cover: null,
+    cover: null, // '/projects/ThinkingMachine/cover.png' — the full Summary Report dashboard, or a composed spread of the board
     coverPlaceholder:
-      'HERO — the platform at work: an invoice table mid-analysis, or the dashboard with cost centers and savings surfaced.',
+      'HERO — the Summary Report in its ready state: spend tiles, the savings-range chart, the opportunities table. The platform at full density.',
 
     summary:
-      'Thinking Machine is a B2B AI company that finds savings hidden in enterprise telecom, IT, and cloud spending — reading invoices and contracts from 26 countries in 18 languages. As their designer through Toptal, I designed the platform end to end: cost centers, databases, documents, configuration, registration — and a no-code layer that let non-technical users build what they needed.',
+      'Thinking Machine is a B2B AI company that finds savings hidden in enterprise telecom, IT and cloud spending — reading invoices and contracts from 26 countries in 18 languages. As their designer through Toptal, I designed the platform end to end, around a hundred screens: onboarding that shows the money first, a dashboard honest about its own readiness, a review queue where humans approve every AI finding, cost-centre hierarchies clients build themselves — and a page that admits what the data can’t say.',
     role: 'UI/UX Designer (via Toptal)',
     team: 'CEO, ML Engineers, Back-end & Front-end Engineers', // verify the roster
     tools: 'Figma',
-    outcome: 'A full B2B platform for the world’s messiest invoices — designed to make density legible.',
+    outcome: 'A ~100-screen platform that makes the world’s messiest invoices legible — and every AI claim auditable.', // verify screen count
 
     metrics: [
       { value: '26', label: 'countries’ invoices flowing through one platform' }, // their published figure
       { value: '18', label: 'languages the AI reads contracts in' }, // ditto
-      { value: '30–40%', label: 'development time cut by the no-code platform' }, // verify — your CV figure
-      { value: '40%', label: 'faster data retrieval with the redesigned tables' }, // verify — your CV figure
+      { value: '~100', label: 'screens designed, one pattern system' }, // verify count
+      { value: '30–40%', label: 'development time cut by the configurable platform' }, // verify — your CV figure
     ],
 
-    // Enterprise-calm light theme: ink on paper, a deep teal-green
-    // accent (money, found). Swap for TM's real palette if you
-    // have brand tokens.
+    // Thinking Machine's own grammar: working blue for structure and
+    // action; orange reserved for the human moments (help, upgrade,
+    // book a call) — mirrored here as the gold token.
     theme: {
-      '--bg': '#F7FAF8',
-      '--ink': '#15231D',
-      '--ink-soft': '#5C6E66',
-      '--line': '#DCE6E0',
-      '--accent': '#0E7A5F',
-      '--accent-soft': '#E2F0EA',
+      '--bg': '#F6F8FC',
+      '--ink': '#101A2E',
+      '--ink-soft': '#5B6880',
+      '--line': '#DDE4F0',
+      '--accent': '#1554F6',
+      '--accent-soft': '#E8EEFE',
+      '--gold': '#F7941D',
     },
 
     nav: [
       { id: 'overview', label: 'Overview' },
-      { id: 'platform', label: 'The platform' },
-      { id: 'nocode', label: 'No-code' },
-      { id: 'data', label: 'Dense data' },
+      { id: 'onboarding', label: 'Onboarding' },
+      { id: 'dashboard', label: 'Dashboard' },
+      { id: 'savings', label: 'Savings review' },
+      { id: 'structure', label: 'Structure' },
+      { id: 'analytics', label: 'Analytics' },
       { id: 'reflection', label: 'Reflection' },
     ],
 
@@ -1523,108 +1527,279 @@ export const projects = [
         id: 'overview',
         problemEyebrow: 'The problem',
         problemParagraphs: [
-          'Enterprises overpay for telecom, IT and cloud because nobody can actually read their invoices: thousands of PDF pages, 18 languages, charges that don’t match contract terms. The money is lost in the density.', // draft — your words
+          'Enterprises overpay for telecom, IT and cloud because nobody can actually read their own bills: thousands of PDF invoices in 18 languages, charges that quietly drift from contract terms, services nobody has used in a year. Thinking Machine’s AI could find the money — but AI findings about money are worthless until a finance team can **see them, interrogate them, and sign off on them**.',
         ],
         eyebrow: 'The project',
         titleLead: 'A platform that reads the unreadable.',
-        titleRest: 'And shows where the money went.',
+        titleRest: 'And earns the right to be believed.',
         rationale:
-          'Every screen here answers one question: how do you make a wall of numbers legible without hiding any of them? Density was the material, not the enemy.', // draft
+          'Every screen answers one question: how do you make a wall of enterprise billing legible without hiding any of it? Density was the material — and trust was the product.',
         paragraphs: [
-          'TELL ME THE STORY: how the engagement started, what existed when you arrived, what you were asked to build — and we’ll write this overview properly.',
+          'I designed the platform end to end — around a hundred screens, from the first visit to the deepest analytics drill-down. The design had two jobs that pull in opposite directions: compress enormous multi-country billing data into something scannable, and keep every compression honest — every number traceable to an invoice, every AI recommendation waiting for a human decision, every gap in the data declared rather than papered over.', // rewrite in your voice
         ],
         ownership: {
           rows: [
             {
-              term: 'Platform design',
-              detail: 'Cost centers, database views, documents, configuration, registration — the whole surface.',
-            }, // verify/expand
-            {
-              term: 'No-code layer',
-              detail: 'A builder for non-technical users to create and customize applications.',
-            },
+              term: 'The whole surface',
+              detail:
+                'Onboarding, dashboard, savings review, configuration, cost centres, documents, database, analytics, support — one pattern system across ~100 screens.',
+            }, // verify count
             {
               term: 'Data design',
-              detail: 'Tables and views for very large datasets — structure, hierarchy, retrieval.',
+              detail:
+                'Tables, review queues, hierarchies and six chart families (bars, donuts, Sankey, maps, gauges, roaming arcs) for very large datasets.',
+            },
+            {
+              term: 'States & trust',
+              detail:
+                'Empty, analysing, ready and locked states for every module; methodology and disclaimer pages that explain the AI’s reasoning and its limits.',
+            },
+            {
+              term: 'Growth moments',
+              detail:
+                'The freemium structure: what free users see, where Pro begins, and how upgrade moments appear without blocking the work.',
             },
           ],
         },
       },
 
       work: [
+        // ── 01 ONBOARDING ─────────────────────────────────────
         {
-          id: 'platform',
+          id: 'onboarding',
           eyebrow: 'Section 01',
-          titleLead: 'The platform.',
-          titleRest: 'Cost centers, documents, configuration — one system.',
+          titleLead: 'Onboarding.',
+          titleRest: 'Show the money before asking for anything.',
           rationale:
-            'B2B tools fail when every module invents its own patterns. One system of tables, panels and forms meant a user who learned one module had learned them all.', // draft
+            'B2B onboarding usually collects data first and delivers value later. We inverted it: three questions, an instant savings estimate — and only then an account. The number does the convincing.',
           pos: {
-            problem: 'DRAFT — what was broken or missing across the platform’s services before your design?',
-            opportunity: 'DRAFT — what did one coherent system make possible?',
-            solution: 'DRAFT — what you shipped: the modules, the shared patterns.',
+            problem:
+              'Asking a finance director to upload sensitive invoices to an unknown AI platform is a big ask. A signup form full of fields, with the value hidden somewhere behind it, loses them before the first screen ends.',
+            opportunity:
+              'The AI could estimate savings from three answers — supplier locations, annual spend, categories. If the first thing a visitor sees is their own number, the rest of onboarding becomes a path toward it, not a toll gate in front of it.',
+            solution:
+              'A three-step opener: tell us about yourself → see your estimate (in the demo: “we estimate to save you $102.00K, for a flat cost of $52.00K”) → create an account to claim it. The estimate screen itself sells the method, per category: switch off legacy services, de-bundle accounts, match tariffs to existing contracts, spot billing errors.',
           },
           hero: {
-            src: null, // '/projects/ThinkingMachine/platform-hero.png'
-            placeholder: 'HERO — the dashboard or the cost-center view: the platform at a glance.',
+            src: null, // '/projects/ThinkingMachine/onboarding-estimate.png' — the "How Much Can You Save?" screen
+            placeholder:
+              'HERO — the estimate screen: Telecom / IT / Cloud tabs, the savings number, the method checklist.',
+            caption: 'The first number a visitor sees is their own. (Demo data.)',
           },
           showcase: [
             {
-              heading: 'Cost centers', // placeholder structure — one row per service
-              text: 'DRAFT — what a cost center is, and how your design made spend legible by team / country / vendor.',
-              image: { src: null, placeholder: 'Cost-center screen.' },
+              heading: 'Three ways to hand over your documents',
+              text: 'Document intake is really a **trust decision**, so it became three explicit tiers: self-upload your invoices; hand us login credentials and we download them for you; or sign a Letter of Authority and we deal with your vendors directly. Each tier trades effort for delegation — and each ends in a clear confirmation of what happens next.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/intake-tiers.png' — the three-option chooser with illustrations
+                placeholder: 'The three-tier chooser: Self-Upload / Managed File Download / Managed Vendor Requests.',
+              },
             },
             {
-              heading: 'Documents & registration',
-              text: 'DRAFT — contracts, invoices, onboarding: how documents enter the system and stay findable.',
-              image: { src: null, placeholder: 'Documents / registration flow.' },
+              heading: 'The waiting is part of the product',
+              text: 'AI analysis of a year of invoices isn’t instant, so the confirmation states say exactly what was received and when the dashboard will be ready — “within 24h–1w” — instead of leaving a silent gap between upload and value.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/intake-confirmation.png' — "Congratulations, ThinkingMachine is Analysing Documents"
+                placeholder: 'The analysing-documents confirmation with the stated timeframe.',
+              },
             },
             {
-              heading: 'Configuration without fear',
-              text: 'DRAFT — enterprise configuration screens users could change without breaking things.',
-              image: { src: null, placeholder: 'Configuration screens.' },
+              heading: 'A human, one tap away, on every screen',
+              text: 'Enterprise buyers want a person reachable before they trust a machine. “Book a Call” lives permanently in the header, help panels repeat it in context, and the support drawer pairs messages with a call code — so the AI platform never feels unstaffed.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/support.png' — the "We're here to help you" drawer with the call code
+                placeholder: 'The support drawer: send a message, or call with your support code.',
+              },
             },
           ],
           grid: null,
         },
 
+        // ── 02 DASHBOARD ──────────────────────────────────────
         {
-          id: 'nocode',
+          id: 'dashboard',
           eyebrow: 'Section 02',
-          titleLead: 'The no-code platform.',
-          titleRest: 'Non-technical users, building their own tools.',
+          titleLead: 'The dashboard.',
+          titleRest: 'Honest about its own readiness.',
           rationale:
-            'The fastest way to cut development time wasn’t designing screens faster — it was designing a system where users could build their own. 30–40% less dev time followed.', // verify figure
+            'A dashboard is a promise about data that may not have arrived yet. Four explicit states — empty, analysing, ready, locked — so the platform never pretends to know more than it does.',
           pos: {
-            problem: 'DRAFT — every client request became an engineering ticket?',
-            opportunity: 'DRAFT — what if users could assemble applications themselves?',
-            solution: 'DRAFT — the no-code builder: what it looked like, what users made with it.',
+            problem:
+              'The Summary Report has to serve a client on day one (no documents yet), day three (analysis running), day ten (everything ready) and the free tier (some of it paywalled). One layout can’t honestly claim all four.',
+            opportunity:
+              'Make the states themselves first-class designs. If “your dashboard is not ready yet” is a designed moment rather than a broken page, waiting reads as the machine working — not the product failing.',
+            solution:
+              'One dashboard, four states: an illustrated empty state that says why it’s empty; a full skeleton while analysis runs; the ready state — spend tiles, a savings-range chart (demo: £63,524→£138,892 a year), a regions map, the immediate-opportunities table, a live spend history; and a Pro-locked state where blurred rows advertise exactly what an upgrade unlocks.',
           },
           hero: {
-            src: null,
-            placeholder: 'HERO — the no-code builder in action.',
+            src: null, // '/projects/ThinkingMachine/dashboard-ready.png'
+            placeholder: 'HERO — the ready-state Summary Report, full density.',
+            caption: 'The ready state: a year of spending, one screen. (Demo data.)',
           },
-          showcase: [],
+          showcase: [
+            {
+              heading: 'Four states, one truth',
+              text: 'Empty, analysing, ready, locked — side by side. Each state tells the user where their data actually is; none of them fakes completeness. The skeleton state alone killed most “is it broken?” support questions before they existed.', // verify that last claim or cut it
+              image: {
+                src: null, // '/projects/ThinkingMachine/dashboard-states.png' — compose the 4 states in one frame
+                placeholder: 'ONE combined frame — the dashboard’s empty / skeleton / ready / locked states.',
+              },
+            },
+            {
+              heading: 'A range, not a promise',
+              text: 'The headline savings figure is deliberately a **range** — “from £63,524 to £138,892” — with actual vs. plan toggles. Estimates presented as exact numbers get falsified by reality; ranges earn trust they can keep.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/savings-range.png' — the annual estimated savings chart
+                placeholder: 'The annual-savings chart with its from–to range and actual/plan toggle.',
+              },
+            },
+          ],
           grid: null,
         },
 
+        // ── 03 SAVINGS REVIEW ─────────────────────────────────
         {
-          id: 'data',
+          id: 'savings',
           eyebrow: 'Section 03',
-          titleLead: 'Dense data.',
-          titleRest: 'Big tables that stay readable.',
+          titleLead: 'The savings review.',
+          titleRest: 'The AI recommends. The client decides.',
           rationale:
-            'The same problem as Backgammon Galaxy’s analytics, at enterprise scale: decide what earns the first screen, what collapses, what waits behind a tap. Retrieval got ~40% faster when the structure did the work.', // verify figure
+            'Nobody lets a machine cancel their phone lines. Every AI finding lands in a review queue — approve or reject — so each saving carries a human signature. Auditability was the feature.',
           pos: {
-            problem: 'DRAFT — the big-data tables: what made them unusable before?',
-            opportunity: 'DRAFT — structure as the fix: hierarchy, filtering, progressive disclosure.',
-            solution: 'DRAFT — the redesigned tables; +40% data-retrieval efficiency.', // verify
+            problem:
+              'The AI finds five kinds of money: unused services, unused products, cheaper plans with the existing provider, billing errors, excessive users. But an auto-applied recommendation about live enterprise infrastructure is a liability, not a feature — and an unexplained one is just noise.',
+            opportunity:
+              'Treat recommendations like a work queue, not a report: statuses, bulk actions, and a paper trail. And treat the AI’s reasoning like documentation: every category explains how its findings are produced and what to do about them.',
+            solution:
+              'Each category opens as a three-tab queue — in the demo, Under Review (100), Approved (30), Rejected (15) — with select-all, approve/reject in bulk, per-service detail down to the invoice line, and a downloadable report for the people not in the room. “Recommendation pending your approval” is the system’s default posture.',
           },
           hero: {
-            src: null,
-            placeholder: 'HERO — the redesigned big-data table.',
+            src: null, // '/projects/ThinkingMachine/review-queue.png' — Unused Services, Under Review tab, rows + bulk actions
+            placeholder:
+              'HERO — the review queue: Under Review / Approved / Rejected tabs, bulk approve-reject, country + provider + amount rows.',
+            caption: 'Every row is money; every decision is a person’s. (Demo data.)',
           },
-          showcase: [],
+          showcase: [
+            {
+              heading: 'The AI shows its homework',
+              text: 'Every category ships with a **Methodology** page — “how the opportunities are found”: every usage type extracted from invoices, text read in all languages where usage is described rather than shown, monthly charges matched per service, last-used dates traced through historical invoices. Next to it, “How to improve” turns findings into actions.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/methodology.png'
+                placeholder: 'The Methodology and How-to-improve pages, side by side.',
+              },
+            },
+            {
+              heading: 'Identified vs. realized',
+              text: 'Two modes of the same summary: what the AI has **identified** (demo: $65,000–$123,000 a year across the five categories) and what the client has actually **realized** by approving and acting. The gap between the two numbers is the product’s to-do list.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/identified-realized.png'
+                placeholder: 'The savings summary in identified mode beside realized mode.',
+              },
+            },
+          ],
+          grid: null,
+          // The honesty page — distinct from the sections above it.
+          aside: {
+            eyebrow: 'Designed honesty',
+            heading: 'A page that admits what the data can’t say',
+            text: 'The platform has a **Disclaimer** section — not legal fine print, but charts: spend processed vs. spend whose service-level usage is missing, vendors with only account-level totals, how to read a gap in the bars. It teaches clients to see the limits of the analysis — and exactly which detailed invoices to request to close them. Trust is built faster by a product that shows its blind spots than by one that claims none.',
+            src: null, // '/projects/ThinkingMachine/disclaimer.png'
+            placeholder: 'The Disclaimer page: missing-data charts and the guidance for closing the gaps.',
+            caption: 'Click to see it full-screen.',
+          },
+        },
+
+        // ── 04 STRUCTURE ──────────────────────────────────────
+        {
+          id: 'structure',
+          eyebrow: 'Section 04',
+          titleLead: 'Structure.',
+          titleRest: 'Enterprise hierarchies, built without engineers.',
+          rationale:
+            'No two enterprises share an org shape, and custom structure usually means custom development. Templates for the common shapes, a wizard for the rest — configuration became self-service.',
+          pos: {
+            problem:
+              'Savings only mean something when they map to the client’s own structure — sites, franchises, cost centres, GL codes. Hard-coding each client’s hierarchy would make every onboarding an engineering project.',
+            opportunity:
+              'Most clients fit a few shapes — site billing, franchise billing, complex contract — and the rest need freedom. Offer the shapes as templates and the freedom as a builder, and the platform configures itself.',
+            solution:
+              'Cost centres start from four templates — Site Billing, Franchise Billing, Complex Contract, or **Build Yourself**. A three-step wizard (basic info → services → allocation) creates hierarchies up to five levels deep, assigns services by family and category with and/or filters, and splits allocation by percentage. The result renders as an expandable tree with GL codes and per-row allocation sliders.',
+          },
+          hero: {
+            src: null, // '/projects/ThinkingMachine/hierarchy.png' — the Complex Contract expandable tree with sliders
+            placeholder:
+              'HERO — the cost-centre hierarchy: nested levels, GL codes, allocation sliders, linked services.',
+            caption: 'A client’s whole org, assembled from a template and a wizard. (Demo data.)',
+          },
+          showcase: [
+            {
+              heading: 'The wizard that replaced a backlog',
+              text: 'Create Hierarchy walks three steps: name, levels and allocation; then services chosen by family, category and logical filters; then percentage splits per level. What used to be a change request became a two-minute flow — the pattern behind the **30–40% less development time** the platform delivered.', // verify figure
+              image: {
+                src: null, // '/projects/ThinkingMachine/wizard.png' — the 3 steps side by side
+                placeholder: 'The Create Hierarchy wizard: Basic Info → Services → Allocation.',
+              },
+            },
+            {
+              heading: 'The rest of the plumbing',
+              text: 'The same patterns carry the whole configuration area: user management with role-scoped permissions (admins approve, analysts draft), a document centre with per-file analysis status, and the Database — the raw ledger of vendors, service types and countries behind every number upstairs.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/config-grid.png' or use the grid below instead
+                placeholder: 'Users, Documents and Database views — one pattern family.',
+              },
+            },
+          ],
+          grid: {
+            title: 'Around the configuration',
+            cols: 3,
+            images: [
+              { src: null, placeholder: 'users.png — roles & permissions, add-member drawer' },
+              { src: null, placeholder: 'documents.png — upload centre with per-file Analysing/Analyzed status' },
+              { src: null, placeholder: 'database.png — the vendors / service types / countries ledger' },
+            ],
+          },
+        },
+
+        // ── 05 ANALYTICS ──────────────────────────────────────
+        {
+          id: 'analytics',
+          eyebrow: 'Section 05',
+          titleLead: 'Analytics.',
+          titleRest: 'Four lenses on the same money.',
+          rationale:
+            'Dense data isn’t one problem — products, suppliers, services and usage each ask a different question. Each lens got the chart its question deserved: Sankey for flow, map for geography, gauge for allowance.',
+          pos: {
+            problem:
+              'A telecom estate is thousands of services across dozens of vendors and countries. One generic chart page would either drown the user or dumb the data down — the same dilemma as any analytics surface, at enterprise scale.',
+            opportunity:
+              'Finance teams don’t ask “show me everything”; they ask where money flows (products), who bills what (suppliers), what runs where (services), and who uses how much (usage). Four questions — four purpose-built lenses over one dataset.',
+            solution:
+              'Products traces spend through a **Sankey** — service type to country to vendor to product; Suppliers compares billed cost against account totals per vendor; Services maps the estate on a world map and by cost centre; Usage splits national, international and roaming — down to a map of roaming arcs between countries. Shared filters everywhere: country, service type, date, cost centre.',
+          },
+          hero: {
+            src: null, // '/projects/ThinkingMachine/sankey.png' — the Products Sankey
+            placeholder:
+              'HERO — the Products Sankey: spend flowing from service types through countries and vendors to products.',
+            caption: 'Where the money actually flows. (Demo data.)',
+          },
+          showcase: [
+            {
+              heading: 'Usage, three zoom levels',
+              text: 'By service (gauges and totals), by zone (national / international / roaming), and by location — a world map of roaming arcs showing exactly which routes burn the budget. The deeper the zoom, the more specific the saving.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/usage-map.png'
+                placeholder: 'The usage views: gauge + zone bars + the roaming-arcs world map.',
+              },
+            },
+            {
+              heading: 'Tables that expand instead of overwhelm',
+              text: 'The services-by-cost-centre view keeps rows one line tall — cost centre, calls, data, count, total — and lets each expand in place for the breakdown. The same progressive-disclosure pattern I later reused for Backgammon Galaxy’s mobile analytics.',
+              image: {
+                src: null, // '/projects/ThinkingMachine/services-table.png'
+                placeholder: 'The services-by-cost-centre table with an expanded row.',
+              },
+            },
+          ],
           grid: null,
         },
       ],
@@ -1632,7 +1807,9 @@ export const projects = [
       reflection: {
         id: 'reflection',
         title: 'What density taught me',
-        text: 'DRAFT — what this project taught you about designing for data-heavy, expert B2B users; connect it to the Backgammon analytics work if you like. Rewrite in your voice.',
+        // EDIT ME (safe to ship as is): finished copy in my words —
+        // make it yours when you get a minute.
+        text: 'A hundred screens of enterprise billing taught me that density isn’t solved by hiding data — it’s solved by structure: states, queues, hierarchies, and charts that each answer exactly one question. It also taught me how AI products earn trust: not by claiming accuracy, but by showing their homework — review queues where humans sign off, methodology pages that explain the findings, a disclaimer that charts its own blind spots. The table patterns I built here became muscle memory; when Backgammon Galaxy later handed me a phone screen and a mountain of player analytics, I already knew what earns the first screen and what waits behind a tap.',
       },
     },
   },
@@ -1640,19 +1817,34 @@ export const projects = [
 
 export const about = {
   heading: 'A bit more about me.',
+  // EDIT ME (safe to ship as is): your real story in my words —
+  // swap in your own phrasing when you can.
   paragraphs: [
-    'Write two or three short paragraphs about your background, what got you into design, and what you care about in your work.',
-    'Mention what you’re curious about right now, or what kind of problems you like to work on.',
-    'A line about outside interests keeps this human.',
+    'I started in 2016 the way a lot of designers from engineering backgrounds do: by building things first and learning why they worked later. I founded CreativeDannies, my own small studio, and spent three years designing and coding websites and apps for clients from Melbourne to New York. That led to Nickelfox — a team ranked among Dribbble’s top 100 worldwide — and eventually to Toptal, where I’ve worked in the top 3% of freelance designers with teams like Oar Health, Thinking Machine, and Backgammon Galaxy.',
+    'Somewhere along the way I decided instinct wasn’t enough. I moved to Italy for an Information Engineering degree at the University of Padua on a full scholarship, wrote a thesis on AI systems for biological databases, and stayed for a funded research year building tools that working biologists actually use. Now I’m in Paris, doing a master’s in Human–Computer Interaction at Université Paris-Saclay and researching the future of collaborative workspaces in Wendy Mackay’s group.',
+    'The thread through all of it: I don’t hand off designs, I finish them. At Backgammon Galaxy I redesigned the mobile app, rebuilt the brand, created the design system — and then joined the codebase to close the gap between Figma and production myself. A design isn’t done when the mockup is approved. It’s done when it runs.',
   ],
 };
 
 export const fun = {
   heading: 'Outside of work.',
   intro: 'A few things I make or do that aren’t on my resume.',
+  // EDIT ME (safe to ship as is): three TRUE items from your CV —
+  // swap for hobbies or projects you'd rather show.
   items: [
-    { title: 'A side project', description: 'One line on what it is and why you made it.' },
-    { title: 'A hobby or craft', description: 'One line about it.' },
-    { title: 'Something you’re learning', description: 'One line about it.' },
+    {
+      title: 'This website',
+      description:
+        'Designed and built by hand — React, one design system, and a keyboard shortcut (press D on any case study).',
+    },
+    {
+      title: 'Teaching',
+      description:
+        'Ran a UX research bootcamp at the University of Padua, on review sessions and research for SaaS products.',
+    },
+    {
+      title: 'ML competitions',
+      description: 'Kaggle: ranked 131st of 1,172 forecasting mini-course sales; predicted CO₂ emissions in Rwanda.',
+    },
   ],
 };
