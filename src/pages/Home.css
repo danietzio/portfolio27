@@ -497,3 +497,21 @@ a.xp__link:focus-visible .xp__company {
     transition: none;
   }
 }
+
+/* ── Fourth project (Thinking Machine): full-width featured card
+   below the 2-up pair, mirroring the Oar card on top ── */
+.door:nth-child(4) {
+  grid-column: 1 / -1;
+  aspect-ratio: 21 / 9;
+}
+.door--img:nth-child(4) .door__frame {
+  aspect-ratio: 21 / 9;
+}
+@media (max-width: 860px) {
+  .door:nth-child(4) {
+    aspect-ratio: 4 / 3;
+  }
+  .door--img:nth-child(4) .door__frame {
+    aspect-ratio: 4 / 3;
+  }
+}

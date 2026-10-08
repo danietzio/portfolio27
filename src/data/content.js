@@ -1356,7 +1356,7 @@ export const projects = [
               'Ross groups the sheet, the document, the recording and the task list; because Teresa is assigned inside, the group is shared with her — no share dialog. He limits her access to two spreadsheet columns and one region of the document (the form she must fill), the AI suggests the group’s name, and a timeline assembles itself from the tasks’ deadlines.',
           },
           hero: {
-            src: '/projects/LaSuite/phases1.png',
+            src: '/projects/LaSuite/cover4.mp4',
             placeholder:
               'HERO — a grouped phase: recording, notes, document, tasks and sheet, marked Completed, with view access.',
             caption: 'A group: the work, its status, and who may touch what — in one frame.',
@@ -1366,7 +1366,7 @@ export const projects = [
               heading: 'Assign by dropping a person',
               text: 'Tasks work like everything else: drag Teresa from Teams & People onto a task and it’s hers; drop a whole team and it belongs to all of them. Assignment is a gesture, not a form.',
               image: {
-                src: null, // '/projects/LaSuite/assign.png'
+                src: '/projects/LaSuite/image41.mp4', // '/projects/LaSuite/assign.png'
                 placeholder: 'DETAIL — a person tile dropped onto a task in the task widget, assignment made.',
               },
             },
@@ -1374,7 +1374,7 @@ export const projects = [
               heading: 'Access down to a column',
               text: 'Limited access isn’t per-file, it’s per-part: two columns of the spreadsheet, one region of the document. Teresa sees exactly the form she must fill — the rest of the doc stays Ross’s.',
               image: {
-                src: null, // '/projects/LaSuite/access.png'
+                src: '/projects/LaSuite/image42.png', // '/projects/LaSuite/access.png'
                 placeholder:
                   'DETAIL — limit-access on selected spreadsheet columns and a selected region of a document.',
               },
@@ -1383,29 +1383,12 @@ export const projects = [
               heading: 'A timeline the group writes itself',
               text: 'Because the grouped tasks carry deadlines and assignees, the phase renders its own timeline on the rail: Week 2 complete and dimmed behind, Week 3 in progress in front. The project’s history and present, on the same surface.',
               image: {
-                src: '/projects/LaSuite/phases2.png',
+                src: '/projects/LaSuite/image43.png',
                 placeholder:
                   'DETAIL — Week 2 faded behind, the Week 3 “In progress” group in front, timeline rail on the right.',
               },
             },
-            {
-              heading: 'Teresa’s side of the handoff',
-              text: 'She’s notified, opens the one group, and has everything: the context documents, the form cropped to what she may edit, the tasks with her face on them. She personalizes her workspace, completes the form, checks the task off — onboarded without a single forwarded link.',
-              image: {
-                src: null, // '/projects/LaSuite/teresa.png'
-                placeholder: 'DETAIL — Teresa’s view: her tasks, her limited-access form, the task checked complete.',
-              },
-            },
           ],
-          grid: {
-            title: 'More of the system',
-            cols: 3,
-            images: [
-              { src: null, placeholder: 'sharing2.png — grouping people with content to share it' },
-              { src: null, placeholder: 'sharing3.png — AI-suggested group names' },
-              { src: null, placeholder: 'sharing4.png — your pick' },
-            ],
-          },
         },
       ],
 
@@ -1480,6 +1463,176 @@ export const projects = [
         id: 'reflection',
         title: 'What the lab taught me',
         text: 'Industry taught me to converge fast; the lab taught me to stay divergent longer — the marquee menu and the substrate drags only appeared after we stopped polishing one idea and started generating many. Three ideas from SuiteFlow stay with me: workflows are temporal, so the workspace should have a timeline; data should cross app borders without changing meaning; and familiarity is a design material — we spent novelty only where it bought new capability, and kept everything else where users’ hands already knew to find it.',
+      },
+    },
+  },
+
+  /* ═══════════════════════════════════════════════════════════
+     PROJECT 4 — THINKING MACHINE (skeleton: structure is final,
+     stories are drafts from your CV + their site. Brain-dump the
+     details and each section gets written properly.)
+     ═══════════════════════════════════════════════════════════ */
+  {
+    slug: 'thinking-machine',
+    thumb: '/projects/thumbs/thinkingMachine.png', // your banner — "AI that finds money hidden in telecom invoices" / "26 countries, 18 languages → one platform"
+    hook: 'AI that finds money hidden in telecom invoices.',
+    title: 'Designing for density at Thinking Machine',
+    subtitle: 'Thinking Machine • B2B AI • Product Design',
+    tag: 'Case study',
+
+    cover: null,
+    coverPlaceholder:
+      'HERO — the platform at work: an invoice table mid-analysis, or the dashboard with cost centers and savings surfaced.',
+
+    summary:
+      'Thinking Machine is a B2B AI company that finds savings hidden in enterprise telecom, IT, and cloud spending — reading invoices and contracts from 26 countries in 18 languages. As their designer through Toptal, I designed the platform end to end: cost centers, databases, documents, configuration, registration — and a no-code layer that let non-technical users build what they needed.',
+    role: 'UI/UX Designer (via Toptal)',
+    team: 'CEO, ML Engineers, Back-end & Front-end Engineers', // verify the roster
+    tools: 'Figma',
+    outcome: 'A full B2B platform for the world’s messiest invoices — designed to make density legible.',
+
+    metrics: [
+      { value: '26', label: 'countries’ invoices flowing through one platform' }, // their published figure
+      { value: '18', label: 'languages the AI reads contracts in' }, // ditto
+      { value: '30–40%', label: 'development time cut by the no-code platform' }, // verify — your CV figure
+      { value: '40%', label: 'faster data retrieval with the redesigned tables' }, // verify — your CV figure
+    ],
+
+    // Enterprise-calm light theme: ink on paper, a deep teal-green
+    // accent (money, found). Swap for TM's real palette if you
+    // have brand tokens.
+    theme: {
+      '--bg': '#F7FAF8',
+      '--ink': '#15231D',
+      '--ink-soft': '#5C6E66',
+      '--line': '#DCE6E0',
+      '--accent': '#0E7A5F',
+      '--accent-soft': '#E2F0EA',
+    },
+
+    nav: [
+      { id: 'overview', label: 'Overview' },
+      { id: 'platform', label: 'The platform' },
+      { id: 'nocode', label: 'No-code' },
+      { id: 'data', label: 'Dense data' },
+      { id: 'reflection', label: 'Reflection' },
+    ],
+
+    sections: {
+      overview: {
+        id: 'overview',
+        problemEyebrow: 'The problem',
+        problemParagraphs: [
+          'Enterprises overpay for telecom, IT and cloud because nobody can actually read their invoices: thousands of PDF pages, 18 languages, charges that don’t match contract terms. The money is lost in the density.', // draft — your words
+        ],
+        eyebrow: 'The project',
+        titleLead: 'A platform that reads the unreadable.',
+        titleRest: 'And shows where the money went.',
+        rationale:
+          'Every screen here answers one question: how do you make a wall of numbers legible without hiding any of them? Density was the material, not the enemy.', // draft
+        paragraphs: [
+          'TELL ME THE STORY: how the engagement started, what existed when you arrived, what you were asked to build — and we’ll write this overview properly.',
+        ],
+        ownership: {
+          rows: [
+            {
+              term: 'Platform design',
+              detail: 'Cost centers, database views, documents, configuration, registration — the whole surface.',
+            }, // verify/expand
+            {
+              term: 'No-code layer',
+              detail: 'A builder for non-technical users to create and customize applications.',
+            },
+            {
+              term: 'Data design',
+              detail: 'Tables and views for very large datasets — structure, hierarchy, retrieval.',
+            },
+          ],
+        },
+      },
+
+      work: [
+        {
+          id: 'platform',
+          eyebrow: 'Section 01',
+          titleLead: 'The platform.',
+          titleRest: 'Cost centers, documents, configuration — one system.',
+          rationale:
+            'B2B tools fail when every module invents its own patterns. One system of tables, panels and forms meant a user who learned one module had learned them all.', // draft
+          pos: {
+            problem: 'DRAFT — what was broken or missing across the platform’s services before your design?',
+            opportunity: 'DRAFT — what did one coherent system make possible?',
+            solution: 'DRAFT — what you shipped: the modules, the shared patterns.',
+          },
+          hero: {
+            src: null, // '/projects/ThinkingMachine/platform-hero.png'
+            placeholder: 'HERO — the dashboard or the cost-center view: the platform at a glance.',
+          },
+          showcase: [
+            {
+              heading: 'Cost centers', // placeholder structure — one row per service
+              text: 'DRAFT — what a cost center is, and how your design made spend legible by team / country / vendor.',
+              image: { src: null, placeholder: 'Cost-center screen.' },
+            },
+            {
+              heading: 'Documents & registration',
+              text: 'DRAFT — contracts, invoices, onboarding: how documents enter the system and stay findable.',
+              image: { src: null, placeholder: 'Documents / registration flow.' },
+            },
+            {
+              heading: 'Configuration without fear',
+              text: 'DRAFT — enterprise configuration screens users could change without breaking things.',
+              image: { src: null, placeholder: 'Configuration screens.' },
+            },
+          ],
+          grid: null,
+        },
+
+        {
+          id: 'nocode',
+          eyebrow: 'Section 02',
+          titleLead: 'The no-code platform.',
+          titleRest: 'Non-technical users, building their own tools.',
+          rationale:
+            'The fastest way to cut development time wasn’t designing screens faster — it was designing a system where users could build their own. 30–40% less dev time followed.', // verify figure
+          pos: {
+            problem: 'DRAFT — every client request became an engineering ticket?',
+            opportunity: 'DRAFT — what if users could assemble applications themselves?',
+            solution: 'DRAFT — the no-code builder: what it looked like, what users made with it.',
+          },
+          hero: {
+            src: null,
+            placeholder: 'HERO — the no-code builder in action.',
+          },
+          showcase: [],
+          grid: null,
+        },
+
+        {
+          id: 'data',
+          eyebrow: 'Section 03',
+          titleLead: 'Dense data.',
+          titleRest: 'Big tables that stay readable.',
+          rationale:
+            'The same problem as Backgammon Galaxy’s analytics, at enterprise scale: decide what earns the first screen, what collapses, what waits behind a tap. Retrieval got ~40% faster when the structure did the work.', // verify figure
+          pos: {
+            problem: 'DRAFT — the big-data tables: what made them unusable before?',
+            opportunity: 'DRAFT — structure as the fix: hierarchy, filtering, progressive disclosure.',
+            solution: 'DRAFT — the redesigned tables; +40% data-retrieval efficiency.', // verify
+          },
+          hero: {
+            src: null,
+            placeholder: 'HERO — the redesigned big-data table.',
+          },
+          showcase: [],
+          grid: null,
+        },
+      ],
+
+      reflection: {
+        id: 'reflection',
+        title: 'What density taught me',
+        text: 'DRAFT — what this project taught you about designing for data-heavy, expert B2B users; connect it to the Backgammon analytics work if you like. Rewrite in your voice.',
       },
     },
   },
