@@ -2275,3 +2275,31 @@ kbd {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Showcase rows can carry a second image: the pair stacks in
+   the media column, each one zoomable on its own ── */
+.showcase-row__media {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* ── Design-note overlay: long rationales must fit ──────────────
+   Wider measure + size that adapts down for long text, and the
+   overlay scrolls if it ever still overflows (margin:auto keeps
+   short notes perfectly centered). */
+.design-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+.design-note__inner {
+  margin: auto; /* centers when short, scrolls when tall */
+  max-width: 58ch;
+  padding: 24px 0;
+}
+.design-note__text {
+  font-size: clamp(1.25rem, 2.3vw, 1.9rem);
+  line-height: 1.45;
+}

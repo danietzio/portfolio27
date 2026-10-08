@@ -1481,7 +1481,7 @@ export const projects = [
     subtitle: 'Thinking Machine • B2B AI • Product Design',
     tag: 'Case study',
 
-    cover: null, // '/projects/ThinkingMachine/cover.png' — the full Summary Report dashboard, or a composed spread of the board
+    cover: '/projects/ThinkingMachine/cover1.webm', // '/projects/ThinkingMachine/cover.png' — the full Summary Report dashboard, or a composed spread of the board
     coverPlaceholder:
       'HERO — the Summary Report in its ready state: spend tiles, the savings-range chart, the opportunities table. The platform at full density.',
 
@@ -1581,7 +1581,7 @@ export const projects = [
               'A three-step opener: tell us about yourself → see your estimate (in the demo: “we estimate to save you $102.00K, for a flat cost of $52.00K”) → create an account to claim it. The estimate screen itself sells the method, per category: switch off legacy services, de-bundle accounts, match tariffs to existing contracts, spot billing errors.',
           },
           hero: {
-            src: null, // '/projects/ThinkingMachine/onboarding-estimate.png' — the "How Much Can You Save?" screen
+            src: '/projects/ThinkingMachine/cover2.png', // '/projects/ThinkingMachine/onboarding-estimate.png' — the "How Much Can You Save?" screen
             placeholder:
               'HERO — the estimate screen: Telecom / IT / Cloud tabs, the savings number, the method checklist.',
             caption: 'The first number a visitor sees is their own. (Demo data.)',
@@ -1591,15 +1591,20 @@ export const projects = [
               heading: 'Three ways to hand over your documents',
               text: 'Document intake is really a **trust decision**, so it became three explicit tiers: self-upload your invoices; hand us login credentials and we download them for you; or sign a Letter of Authority and we deal with your vendors directly. Each tier trades effort for delegation — and each ends in a clear confirmation of what happens next.',
               image: {
-                src: null, // '/projects/ThinkingMachine/intake-tiers.png' — the three-option chooser with illustrations
+                src: '/projects/ThinkingMachine/image21.png', // the three-option chooser with illustrations
                 placeholder: 'The three-tier chooser: Self-Upload / Managed File Download / Managed Vendor Requests.',
+              },
+              // second image for this row — stacks under the first
+              image2: {
+                src: '/projects/ThinkingMachine/image211.png', // your second upload screen — rename to match your export
+                placeholder: 'The self-upload flow: drag-and-drop with queued PDFs.',
               },
             },
             {
               heading: 'The waiting is part of the product',
               text: 'AI analysis of a year of invoices isn’t instant, so the confirmation states say exactly what was received and when the dashboard will be ready — “within 24h–1w” — instead of leaving a silent gap between upload and value.',
               image: {
-                src: null, // '/projects/ThinkingMachine/intake-confirmation.png' — "Congratulations, ThinkingMachine is Analysing Documents"
+                src: '/projects/ThinkingMachine/image22.png', // '/projects/ThinkingMachine/intake-confirmation.png' — "Congratulations, ThinkingMachine is Analysing Documents"
                 placeholder: 'The analysing-documents confirmation with the stated timeframe.',
               },
             },
@@ -1607,7 +1612,7 @@ export const projects = [
               heading: 'A human, one tap away, on every screen',
               text: 'Enterprise buyers want a person reachable before they trust a machine. “Book a Call” lives permanently in the header, help panels repeat it in context, and the support drawer pairs messages with a call code — so the AI platform never feels unstaffed.',
               image: {
-                src: null, // '/projects/ThinkingMachine/support.png' — the "We're here to help you" drawer with the call code
+                src: '/projects/ThinkingMachine/image23.png', // '/projects/ThinkingMachine/support.png' — the "We're here to help you" drawer with the call code
                 placeholder: 'The support drawer: send a message, or call with your support code.',
               },
             },
@@ -1632,7 +1637,7 @@ export const projects = [
               'One dashboard, four states: an illustrated empty state that says why it’s empty; a full skeleton while analysis runs; the ready state — spend tiles, a savings-range chart (demo: £63,524→£138,892 a year), a regions map, the immediate-opportunities table, a live spend history; and a Pro-locked state where blurred rows advertise exactly what an upgrade unlocks.',
           },
           hero: {
-            src: null, // '/projects/ThinkingMachine/dashboard-ready.png'
+            src: '/projects/ThinkingMachine/cover3.png', // '/projects/ThinkingMachine/dashboard-ready.png'
             placeholder: 'HERO — the ready-state Summary Report, full density.',
             caption: 'The ready state: a year of spending, one screen. (Demo data.)',
           },
@@ -1641,7 +1646,7 @@ export const projects = [
               heading: 'Four states, one truth',
               text: 'Empty, analysing, ready, locked — side by side. Each state tells the user where their data actually is; none of them fakes completeness. The skeleton state alone killed most “is it broken?” support questions before they existed.', // verify that last claim or cut it
               image: {
-                src: null, // '/projects/ThinkingMachine/dashboard-states.png' — compose the 4 states in one frame
+                src: '/projects/ThinkingMachine/image31.png', // '/projects/ThinkingMachine/dashboard-states.png' — compose the 4 states in one frame
                 placeholder: 'ONE combined frame — the dashboard’s empty / skeleton / ready / locked states.',
               },
             },
@@ -1649,8 +1654,20 @@ export const projects = [
               heading: 'A range, not a promise',
               text: 'The headline savings figure is deliberately a **range** — “from £63,524 to £138,892” — with actual vs. plan toggles. Estimates presented as exact numbers get falsified by reality; ranges earn trust they can keep.',
               image: {
-                src: null, // '/projects/ThinkingMachine/savings-range.png' — the annual estimated savings chart
+                src: '/projects/ThinkingMachine/image32.png', // '/projects/ThinkingMachine/savings-range.png' — the annual estimated savings chart
                 placeholder: 'The annual-savings chart with its from–to range and actual/plan toggle.',
+              },
+              image2: {
+                src: '/projects/ThinkingMachine/image32b.png', // '/projects/ThinkingMachine/savings-range.png' — the annual estimated savings chart
+                placeholder: 'The annual-savings chart with its from–to range and actual/plan toggle.',
+              },
+            },
+            {
+              heading: 'Basic and Pro: the paywall that shows, not hides',
+              text: 'The free tier isn’t a crippled product — it’s a **preview of a fuller one**. Pro-only modules carry their badge in the sidebar, the locked dashboard blurs real rows instead of hiding them, and the upgrade card names exactly what Annual unlocks. A paywall you can see through converts better than a wall — and it never lies about what’s behind it.',
+              image: {
+                src: '/projects/ThinkingMachine/image33.png', // '/projects/ThinkingMachine/pro-locked.png' — the blurred locked dashboard with the "Upgrade to Annual Subscription" card
+                placeholder: 'The locked dashboard: blurred rows, the Upgrade-to-Annual card in place.',
               },
             },
           ],
@@ -1674,7 +1691,7 @@ export const projects = [
               'Each category opens as a three-tab queue — in the demo, Under Review (100), Approved (30), Rejected (15) — with select-all, approve/reject in bulk, per-service detail down to the invoice line, and a downloadable report for the people not in the room. “Recommendation pending your approval” is the system’s default posture.',
           },
           hero: {
-            src: null, // '/projects/ThinkingMachine/review-queue.png' — Unused Services, Under Review tab, rows + bulk actions
+            src: '/projects/ThinkingMachine/cover4.png', // '/projects/ThinkingMachine/review-queue.png' — Unused Services, Under Review tab, rows + bulk actions
             placeholder:
               'HERO — the review queue: Under Review / Approved / Rejected tabs, bulk approve-reject, country + provider + amount rows.',
             caption: 'Every row is money; every decision is a person’s. (Demo data.)',
@@ -1684,7 +1701,11 @@ export const projects = [
               heading: 'The AI shows its homework',
               text: 'Every category ships with a **Methodology** page — “how the opportunities are found”: every usage type extracted from invoices, text read in all languages where usage is described rather than shown, monthly charges matched per service, last-used dates traced through historical invoices. Next to it, “How to improve” turns findings into actions.',
               image: {
-                src: null, // '/projects/ThinkingMachine/methodology.png'
+                src: '/projects/ThinkingMachine/image41.png', // '/projects/ThinkingMachine/methodology.png'
+                placeholder: 'The Methodology and How-to-improve pages, side by side.',
+              },
+              image2: {
+                src: '/projects/ThinkingMachine/image41b.png', // '/projects/ThinkingMachine/methodology.png'
                 placeholder: 'The Methodology and How-to-improve pages, side by side.',
               },
             },
@@ -1692,7 +1713,11 @@ export const projects = [
               heading: 'Identified vs. realized',
               text: 'Two modes of the same summary: what the AI has **identified** (demo: $65,000–$123,000 a year across the five categories) and what the client has actually **realized** by approving and acting. The gap between the two numbers is the product’s to-do list.',
               image: {
-                src: null, // '/projects/ThinkingMachine/identified-realized.png'
+                src: '/projects/ThinkingMachine/image42.png', // '/projects/ThinkingMachine/identified-realized.png'
+                placeholder: 'The savings summary in identified mode beside realized mode.',
+              },
+              image2: {
+                src: '/projects/ThinkingMachine/image42b.png', // '/projects/ThinkingMachine/methodology.png'
                 placeholder: 'The savings summary in identified mode beside realized mode.',
               },
             },
@@ -1703,7 +1728,7 @@ export const projects = [
             eyebrow: 'Designed honesty',
             heading: 'A page that admits what the data can’t say',
             text: 'The platform has a **Disclaimer** section — not legal fine print, but charts: spend processed vs. spend whose service-level usage is missing, vendors with only account-level totals, how to read a gap in the bars. It teaches clients to see the limits of the analysis — and exactly which detailed invoices to request to close them. Trust is built faster by a product that shows its blind spots than by one that claims none.',
-            src: null, // '/projects/ThinkingMachine/disclaimer.png'
+            src: '/projects/ThinkingMachine/disclaimer.png', // '/projects/ThinkingMachine/disclaimer.png'
             placeholder: 'The Disclaimer page: missing-data charts and the guidance for closing the gaps.',
             caption: 'Click to see it full-screen.',
           },
@@ -1726,7 +1751,7 @@ export const projects = [
               'Cost centres start from four templates — Site Billing, Franchise Billing, Complex Contract, or **Build Yourself**. A three-step wizard (basic info → services → allocation) creates hierarchies up to five levels deep, assigns services by family and category with and/or filters, and splits allocation by percentage. The result renders as an expandable tree with GL codes and per-row allocation sliders.',
           },
           hero: {
-            src: null, // '/projects/ThinkingMachine/hierarchy.png' — the Complex Contract expandable tree with sliders
+            src: '/projects/ThinkingMachine/cover5.png', // '/projects/ThinkingMachine/hierarchy.png' — the Complex Contract expandable tree with sliders
             placeholder:
               'HERO — the cost-centre hierarchy: nested levels, GL codes, allocation sliders, linked services.',
             caption: 'A client’s whole org, assembled from a template and a wizard. (Demo data.)',
@@ -1736,7 +1761,11 @@ export const projects = [
               heading: 'The wizard that replaced a backlog',
               text: 'Create Hierarchy walks three steps: name, levels and allocation; then services chosen by family, category and logical filters; then percentage splits per level. What used to be a change request became a two-minute flow — the pattern behind the **30–40% less development time** the platform delivered.', // verify figure
               image: {
-                src: null, // '/projects/ThinkingMachine/wizard.png' — the 3 steps side by side
+                src: '/projects/ThinkingMachine/image51.png', // '/projects/ThinkingMachine/wizard.png' — the 3 steps side by side
+                placeholder: 'The Create Hierarchy wizard: Basic Info → Services → Allocation.',
+              },
+              image2: {
+                src: '/projects/ThinkingMachine/image51b.png', // '/projects/ThinkingMachine/wizard.png' — the 3 steps side by side
                 placeholder: 'The Create Hierarchy wizard: Basic Info → Services → Allocation.',
               },
             },
@@ -1744,7 +1773,7 @@ export const projects = [
               heading: 'The rest of the plumbing',
               text: 'The same patterns carry the whole configuration area: user management with role-scoped permissions (admins approve, analysts draft), a document centre with per-file analysis status, and the Database — the raw ledger of vendors, service types and countries behind every number upstairs.',
               image: {
-                src: null, // '/projects/ThinkingMachine/config-grid.png' or use the grid below instead
+                src: '/projects/ThinkingMachine/image52.png', // '/projects/ThinkingMachine/config-grid.png' or use the grid below instead
                 placeholder: 'Users, Documents and Database views — one pattern family.',
               },
             },
@@ -1753,9 +1782,18 @@ export const projects = [
             title: 'Around the configuration',
             cols: 3,
             images: [
-              { src: null, placeholder: 'users.png — roles & permissions, add-member drawer' },
-              { src: null, placeholder: 'documents.png — upload centre with per-file Analysing/Analyzed status' },
-              { src: null, placeholder: 'database.png — the vendors / service types / countries ledger' },
+              {
+                src: '/projects/ThinkingMachine/image53.png',
+                placeholder: 'users.png — roles & permissions, add-member drawer',
+              },
+              {
+                src: '/projects/ThinkingMachine/image54.png',
+                placeholder: 'documents.png — upload centre with per-file Analysing/Analyzed status',
+              },
+              {
+                src: '/projects/ThinkingMachine/image55.png',
+                placeholder: 'database.png — the vendors / service types / countries ledger',
+              },
             ],
           },
         },
@@ -1777,7 +1815,7 @@ export const projects = [
               'Products traces spend through a **Sankey** — service type to country to vendor to product; Suppliers compares billed cost against account totals per vendor; Services maps the estate on a world map and by cost centre; Usage splits national, international and roaming — down to a map of roaming arcs between countries. Shared filters everywhere: country, service type, date, cost centre.',
           },
           hero: {
-            src: null, // '/projects/ThinkingMachine/sankey.png' — the Products Sankey
+            src: '/projects/ThinkingMachine/cover6.png', // '/projects/ThinkingMachine/sankey.png' — the Products Sankey
             placeholder:
               'HERO — the Products Sankey: spend flowing from service types through countries and vendors to products.',
             caption: 'Where the money actually flows. (Demo data.)',
@@ -1787,7 +1825,11 @@ export const projects = [
               heading: 'Usage, three zoom levels',
               text: 'By service (gauges and totals), by zone (national / international / roaming), and by location — a world map of roaming arcs showing exactly which routes burn the budget. The deeper the zoom, the more specific the saving.',
               image: {
-                src: null, // '/projects/ThinkingMachine/usage-map.png'
+                src: '/projects/ThinkingMachine/image61.png', // '/projects/ThinkingMachine/usage-map.png'
+                placeholder: 'The usage views: gauge + zone bars + the roaming-arcs world map.',
+              },
+              image2: {
+                src: '/projects/ThinkingMachine/image61b.png', // '/projects/ThinkingMachine/usage-map.png'
                 placeholder: 'The usage views: gauge + zone bars + the roaming-arcs world map.',
               },
             },
@@ -1795,7 +1837,7 @@ export const projects = [
               heading: 'Tables that expand instead of overwhelm',
               text: 'The services-by-cost-centre view keeps rows one line tall — cost centre, calls, data, count, total — and lets each expand in place for the breakdown. The same progressive-disclosure pattern I later reused for Backgammon Galaxy’s mobile analytics.',
               image: {
-                src: null, // '/projects/ThinkingMachine/services-table.png'
+                src: '/projects/ThinkingMachine/image62.png', // '/projects/ThinkingMachine/services-table.png'
                 placeholder: 'The services-by-cost-centre table with an expanded row.',
               },
             },

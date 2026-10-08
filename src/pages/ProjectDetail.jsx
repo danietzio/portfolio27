@@ -396,6 +396,7 @@ function Showcase({ items }) {
         <div className='showcase-row' key={item.heading}>
           <div className='showcase-row__media'>
             <Media image={item.image} plain />
+            {item.image2 && item.image2.src && <Media image={item.image2} plain />}
           </div>
           <div className='showcase-row__text'>
             <h3>{item.heading}</h3>
