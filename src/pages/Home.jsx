@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { profile, projects, experience } from '../data/content.js';
+import { profile, projects, experience, otherWorks } from '../data/content.js';
 import './Home.css';
 
 // **word** inside hero copy renders as an accent-colored word —
@@ -42,6 +42,85 @@ function Rise({ text }) {
       </span>
     );
   });
+}
+
+// ── Archive: the other-works grid + its popup ────────────────
+// The popup mounts only while open, so its shots never weigh on
+// the home page; Esc, backdrop, or × closes it.
+function WorkModal({ item, onClose }) {
+  useEffect(() => {
+    if (!item) return; // only lock scroll while a work is actually open
+    const onKey = (e) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [item, onClose]);
+
+  if (!item) return null;
+  return (
+    <div className='ow-modal' onClick={onClose} role='dialog' aria-modal='true' aria-label={item.title}>
+      <div className='ow-modal__panel' onClick={(e) => e.stopPropagation()}>
+        <button className='ow-modal__close' onClick={onClose} aria-label='Close'>
+          ×
+        </button>
+        <h3 className='ow-modal__title'>{item.title}</h3>
+        {item.meta && <p className='ow-modal__meta'>{item.meta}</p>}
+        {item.description && <p className='ow-modal__desc'>{item.description}</p>}
+        {/* only real shots render — empty slots in content.js stay invisible */}
+        <div className='ow-modal__shots'>
+          {(item.shots || [])
+            .filter(Boolean)
+            .map((src, i) => (
+              <img src={src} alt={`${item.title} — shot ${i + 1}`} key={src} loading='lazy' />
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function OtherWorks() {
+  const [open, setOpen] = useState(null);
+  if (!otherWorks?.items?.length) return null;
+  return (
+    <section className='ow' aria-label={otherWorks.heading}>
+      <h2 className='ow__title'>{otherWorks.heading}</h2>
+      {otherWorks.intro && (
+        <p className='ow__intro'>
+          {otherWorks.intro.replace(/ — more on.*$/, '')} —{' '}
+          <a href='https://dribbble.com/CreativeDannies' target='_blank' rel='noreferrer'>
+            Dribbble
+          </a>{' '}
+          and{' '}
+          <a href='https://www.behance.net/CreativeDannies' target='_blank' rel='noreferrer'>
+            Behance
+          </a>{' '}
+          have more.
+        </p>
+      )}
+      <div className='ow__grid'>
+        {otherWorks.items.map((item) => (
+          <button className='ow-card' key={item.title} onClick={() => setOpen(item)}>
+            <span className='ow-card__frame'>
+              {item.thumb ? (
+                <img src={item.thumb} alt='' loading='lazy' />
+              ) : (
+                <span className='ow-card__empty' aria-hidden='true' />
+              )}
+            </span>
+            <span className='ow-card__label'>
+              <span className='ow-card__name'>{item.title}</span>
+              {item.meta && <span className='ow-card__meta'>{item.meta.split('•')[0].trim()}</span>}
+            </span>
+          </button>
+        ))}
+      </div>
+      <WorkModal item={open} onClose={() => setOpen(null)} />
+    </section>
+  );
 }
 
 // Cards reveal once as they scroll into view.
@@ -224,6 +303,9 @@ export default function Home() {
       </section>
 
       {/* ── Experience: a compact ledger — year, place, role ── */}
+      {/* ── Archive: everything else, one grid, popups on click ── */}
+      <OtherWorks />
+
       <section className='xp' aria-label='Experience'>
         <h2 className='xp__title'>Experience</h2>
         <ol className='xp__list'>

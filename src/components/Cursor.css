@@ -1,0 +1,87 @@
+/* ── Cursor v2: the inversion circle ────────────────────────────
+   White disc + mix-blend-mode: difference = it inverts whatever is
+   under it. Reads dark on cream, light on navy — one cursor, every
+   theme, no color decisions. Over project cards it grows into a
+   labeled "View" pill. */
+
+.has-cursor,
+.has-cursor * {
+  cursor: none !important;
+}
+.cursor-native,
+.cursor-native * {
+  cursor: auto !important;
+}
+.has-cursor.cursor-native .cursor2 {
+  opacity: 0;
+}
+
+.cursor2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  mix-blend-mode: difference;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  transition:
+    width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s ease;
+}
+/* the disc itself — separate from the JS-positioned shell, so the
+   press-scale never fights the translate */
+.cursor2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.15s ease;
+}
+.cursor2__label {
+  position: relative; /* above the disc */
+}
+.cursor2__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #000; /* black on the white disc; difference re-inverts per page */
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  user-select: none;
+}
+
+/* over ordinary links & buttons: a modest swell */
+.cursor2.is-link {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+}
+/* over project cards: the "View" pill */
+.cursor2.is-view {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+}
+.cursor2.is-view .cursor2__label {
+  opacity: 1;
+  transform: scale(1);
+}
+/* pressing: a quick cinch */
+.cursor2.is-down::before {
+  transform: scale(0.82);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor2 {
+    display: none;
+  }
+}

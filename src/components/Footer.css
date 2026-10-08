@@ -20,3 +20,10 @@
   display: flex;
   gap: 24px;
 }
+
+.footer__legal {
+  flex-basis: 100%;
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}

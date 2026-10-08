@@ -714,6 +714,17 @@ export default function ProjectDetail() {
   const project = projects.find((p) => p.slug === slug);
   const [lightboxItem, setLightboxItem] = useState(null);
 
+  // Browser tab carries the case study's name; the site title
+  // returns when you leave.
+  useEffect(() => {
+    if (!project) return;
+    const prev = document.title;
+    document.title = `${project.title} — Daniyal Nasiri Bavil`;
+    return () => {
+      document.title = prev;
+    };
+  }, [project]);
+
   // Per-project theme: token overrides applied to <body> while
   // this page is open; the site's defaults return on leave.
   useEffect(() => {

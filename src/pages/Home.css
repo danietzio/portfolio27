@@ -515,3 +515,224 @@ a.xp__link:focus-visible .xp__company {
     aspect-ratio: 4 / 3;
   }
 }
+
+/* ═══ Archive: other works — 4-up grid, popup on click ═══ */
+.ow {
+  margin: clamp(72px, 11vh, 120px) 0 0;
+}
+.ow__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.ow__intro {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0 0 24px;
+  max-width: 60ch;
+}
+.ow__intro a {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom: 1px solid var(--line);
+}
+.ow__intro a:hover {
+  color: var(--hi);
+  border-bottom-color: var(--hi);
+}
+.ow__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px 16px;
+}
+.ow-card {
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+.ow-card__frame {
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--accent-soft, #eee);
+}
+.ow-card__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ow-card:hover .ow-card__frame img,
+.ow-card:focus-visible .ow-card__frame img {
+  transform: scale(1.04);
+}
+.ow-card__empty {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--hi) 7%, transparent), transparent 60%),
+    var(--accent-soft, #eee);
+}
+.ow-card__label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 2px 0;
+}
+.ow-card__name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink);
+  transition: color 0.18s ease;
+}
+.ow-card:hover .ow-card__name,
+.ow-card:focus-visible .ow-card__name {
+  color: var(--hi);
+}
+.ow-card__meta {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+/* ── The popup: a clean sheet, Dribbble-calm ── */
+.ow-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+  background: color-mix(in srgb, var(--ink) 38%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: ow-fade 0.2s ease-out;
+}
+.ow-modal__panel {
+  position: relative;
+  width: min(860px, 100%);
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--paper, var(--bg, #fff));
+  border-radius: 16px;
+  padding: clamp(24px, 4vw, 44px);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
+  animation: ow-rise 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ow-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent-soft, #eee);
+  color: var(--ink);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.ow-modal__close:hover {
+  background: var(--hi);
+  color: #fff;
+}
+.ow-modal__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--ink);
+  margin: 0 0 6px;
+  padding-right: 48px;
+}
+.ow-modal__meta {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  margin: 0 0 16px;
+}
+.ow-modal__desc {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 62ch;
+  margin: 0 0 24px;
+}
+.ow-modal__shots {
+  display: grid;
+  gap: 16px;
+}
+.ow-modal__shots img {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+@keyframes ow-fade {
+  from { opacity: 0; }
+}
+@keyframes ow-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@media (max-width: 1000px) {
+  .ow__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  .ow__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 12px;
+  }
+  .ow-card__meta {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ow-modal,
+  .ow-modal__panel {
+    animation: none;
+  }
+  .ow-card__frame img {
+    transition: none;
+  }
+}
+
+/* ═══ Archive polish: bigger heading, wider intro, shot slots ═══ */
+/* both home section headings step up together, same rank */
+.ow__title,
+.xp__title {
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  margin-bottom: 10px;
+}
+.ow__intro {
+  font-size: 1rem;
+  max-width: 75ch;
+  margin-bottom: 28px;
+}
+/* empty shot slots inside the popup — visible until files exist */
+.ow-modal__slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  padding: 20px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  border: 2px dashed var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent-soft, #eee) 60%, transparent);
+}

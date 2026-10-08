@@ -13,6 +13,12 @@
   margin: 0 0 24px;
 }
 
+/* second-rank heading on prose pages (e.g. "Outside of work.") */
+.prose__heading--sub {
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  margin: 56px 0 16px;
+}
+
 .prose p {
   color: var(--ink-soft);
   margin: 0 0 18px;

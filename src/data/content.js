@@ -1974,3 +1974,81 @@ export const fun = {
     },
   ],
 };
+
+// ── Other works: the archive grid on the home page ────────────
+// Client and studio work that predates the case studies. Each item
+// opens a popup: title, meta, description, and its shots. Cards
+// with thumb: null show a quiet placeholder until you export the
+// shot — fill thumbs first, shots can come later (the popup shows
+// whatever exists). Add or delete items freely; the section hides
+// itself if the list is ever empty.
+export const otherWorks = {
+  heading: 'More work',
+  intro: 'Client and studio work from the years before the case studies — more on Dribbble and Behance.',
+  items: [
+    {
+      title: 'BetterNow',
+      meta: 'One Item, Inc. • iOS & iPad app • 2017–2018',
+      description:
+        'A lifestyle app for tracking daily activities and setting goals to improve them. I redesigned the old application into a modern, minimal system — over 50 screens across iPhone and iPad.',
+      thumb: '/archive/betternow.png', // '/archive/betternow.png'
+      shots: [null, null, null], // '/archive/betternow-1.png' …
+    },
+    {
+      title: 'MoveInConnect',
+      meta: 'Sydney • Web platform • 2019',
+      description:
+        'A platform that connects essential services for people moving homes. I designed the full flow for comparing and connecting utilities — clean, quick, responsive across devices.',
+      thumb: '/archive/moveinconnect.png',
+      shots: [null, null, null],
+    },
+    {
+      title: 'Cheap Bills',
+      meta: 'Melbourne • Web platform • 2020',
+      description:
+        'Instant comparison of plans from leading retailers in one place. A deliberately minimal interface for a product whose whole promise is “less hassle”.',
+      thumb: '/archive/software.png',
+      shots: [null, null, null],
+    },
+    {
+      title: 'Fitness 21',
+      meta: 'US • Mobile app • 2019–2020',
+      description:
+        'Courses across thousands of categories — fitness, happiness, relaxation — taught by mentors worldwide. I designed the browsing and learning experience.',
+      thumb: '/archive/21fit.png',
+      shots: [null, null, null],
+    },
+    {
+      title: 'TullabApp',
+      meta: 'Bahrain • University platform • 2022',
+      description:
+        'One platform for students and university staff: events, discussions, shared materials, and administrative tools for tracking student performance.',
+      thumb: '/archive/tullabapp.png',
+      shots: [null, null, null],
+    },
+    {
+      title: 'iCause',
+      meta: 'Melbourne • Website • 2020',
+      description:
+        'A community-support organization’s site: events, volunteering, and donations, designed around clear calls to action and the brand’s mission.',
+      thumb: '/archive/hotel.png',
+      shots: [null, null, null],
+    },
+    {
+      title: 'Favory',
+      meta: 'Argentina • Mobile app • 2018–2019',
+      description:
+        'An app connecting people who have food to share with people who need it — onboarding, logo, and landing page for iPhone X.',
+      thumb: '/archive/Disprot.png',
+      shots: [null, null, null],
+    },
+    {
+      title: 'DomiDocs',
+      meta: 'US • Real-estate platform • 2018–2019',
+      description:
+        'A responsive web platform for property documentation — a modern interface for a famously paper-bound industry.',
+      thumb: '/archive/Hexa.png',
+      shots: [null, null, null],
+    },
+  ],
+};
