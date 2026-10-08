@@ -1486,16 +1486,17 @@ export const projects = [
       'HERO — the Summary Report in its ready state: spend tiles, the savings-range chart, the opportunities table. The platform at full density.',
 
     summary:
-      'Thinking Machine is a B2B AI company that finds savings hidden in enterprise telecom, IT and cloud spending — reading invoices and contracts from 26 countries in 18 languages. As their designer through Toptal, I designed the platform end to end, around a hundred screens: onboarding that shows the money first, a dashboard honest about its own readiness, a review queue where humans approve every AI finding, cost-centre hierarchies clients build themselves — and a page that admits what the data can’t say.',
+      'Thinking Machine is a B2B AI company that finds savings hidden in enterprise telecom, IT and cloud spending — reading invoices and contracts from 26 countries in 18 languages. As their designer through Toptal, I designed the platform end to end: onboarding that shows the money first, a dashboard honest about its own readiness, a review queue where humans approve every AI finding, cost-centre hierarchies clients build themselves — and a page that admits what the data can’t say. Months later they brought me back for a second engagement: reorganizing the navigation of everything the platform had grown into.',
     role: 'UI/UX Designer (via Toptal)',
     team: 'CEO, ML Engineers, Back-end & Front-end Engineers', // verify the roster
     tools: 'Figma',
-    outcome: 'A ~100-screen platform that makes the world’s messiest invoices legible — and every AI claim auditable.', // verify screen count
+    outcome:
+      'Two engagements: the full platform, then — when it outgrew itself — the navigation system that made it findable again.', // verify framing
 
     metrics: [
       { value: '26', label: 'countries’ invoices flowing through one platform' }, // their published figure
       { value: '18', label: 'languages the AI reads contracts in' }, // ditto
-      { value: '~100', label: 'screens designed, one pattern system' }, // verify count
+      { value: '2', label: 'engagements — they came back for the navigation' },
       { value: '30–40%', label: 'development time cut by the configurable platform' }, // verify — your CV figure
     ],
 
@@ -1519,6 +1520,7 @@ export const projects = [
       { id: 'savings', label: 'Savings review' },
       { id: 'structure', label: 'Structure' },
       { id: 'analytics', label: 'Analytics' },
+      { id: 'navigation', label: 'Navigation' },
       { id: 'reflection', label: 'Reflection' },
     ],
 
@@ -1542,7 +1544,7 @@ export const projects = [
             {
               term: 'The whole surface',
               detail:
-                'Onboarding, dashboard, savings review, configuration, cost centres, documents, database, analytics, support — one pattern system across ~100 screens.',
+                'Onboarding, dashboard, savings review, configuration, cost centres, documents, database, analytics, support — one pattern system across the whole platform, over two engagements.',
             }, // verify count
             {
               term: 'Data design',
@@ -1843,6 +1845,88 @@ export const projects = [
             },
           ],
           grid: null,
+        },
+
+        // ── PHASE 2: NAVIGATION ───────────────────────────────
+        // The client came back months later: the platform had
+        // grown until finding anything — or jumping between
+        // services — was the problem. This section is that
+        // second engagement.
+        {
+          id: 'navigation',
+          eyebrow: 'Phase 2',
+          titleLead: 'Navigation.',
+          titleRest: 'The platform outgrew its own map.',
+          rationale:
+            'Phase 1 built the rooms; Phase 2 built the corridors. We reorganized everything around what clients do — Overview, Optimize, Negotiate, Audit, Workflow, Database — instead of what the software is.',
+          pos: {
+            problem:
+              'Months after Phase 1 shipped, the client came back with a different problem: the platform had grown — more services, more modules, more document types — and users couldn’t find what they needed. Worse, standing in one service and reaching another meant backtracking through everything in between.',
+            opportunity:
+              'The modules were organized the way the software was built, not the way clients work. A finance team’s day is a sequence of verbs — get an overview, optimize spend, negotiate contracts, audit, manage workflow, consult the records. Name the navigation after the verbs, and every page has an obvious home.',
+            solution:
+              'A navigation system, not a menu: a task-based sidebar (six verbs, each expanding into categories and pages), a searchable **Site Navigation** directory reachable from every screen, breadcrumbs with per-page tabs, and an “About This Page” explainer on every single page — so no screen is ever a dead end.',
+          },
+          hero: {
+            src: '/projects/ThinkingMachine/cover7.png', // '/projects/ThinkingMachine/sitenav.png' — the Site Navigation directory (the Version 19 screen)
+            placeholder:
+              'HERO — the Site Navigation directory: destinations grouped by task (Overview / Optimize / Negotiate / Database), category chips, search.',
+            caption: 'The whole platform on one page: grouped by task, tagged by category, searchable. (Demo data.)',
+          },
+          showcase: [
+            {
+              heading: 'Organized by verb, not by module',
+              text: 'The new sidebar names what the client is doing, not what the software contains: **Overview, Optimize, Negotiate, Audit, Workflow, Database**. Each verb expands into its categories — Spend, Telecom, IT Hardware — and their pages: a two-level tree that holds the grown platform without burying it. The same six verbs structure the directory, so the sidebar and the map always agree.',
+              image: {
+                src: '/projects/ThinkingMachine/image71.png', // '/projects/ThinkingMachine/sidebar.png' — a page with the expanded tree sidebar + breadcrumbs
+                placeholder: 'The task-verb sidebar expanded, with breadcrumbs and per-page tabs above the content.',
+              },
+            },
+            {
+              heading: 'No page is a dead end',
+              text: 'Every page carries its own wayfinding: breadcrumbs back to its service, an **About This Page** explainer, and guided walkthroughs — “How the filtering works”, step by step, with previous and next — written into the interface itself. And when wayfinding isn’t enough, the escape hatches are always in reach: “Can’t find the page you’re looking for?”, “Ask AI Expert”, “Get insights from this table”. The documentation lives where the confusion happens.',
+              image: {
+                src: '/projects/ThinkingMachine/image72.png', // '/projects/ThinkingMachine/walkthrough.png' — the About This Page + How-the-filtering-works modals
+                placeholder:
+                  'The in-context help: About This Page and a guided walkthrough modal over the live screen.',
+              },
+              image2: {
+                src: '/projects/ThinkingMachine/image72b.png', // '/projects/ThinkingMachine/helpers.png' — the orange contextual buttons
+                placeholder:
+                  'The escape hatches: “Can’t find the page?”, “Ask AI Expert”, “Get insights from this table”.',
+              },
+            },
+            {
+              heading: 'The redesign underneath',
+              text: 'Solving navigation honestly meant touching everything it connects, so Phase 2 grew into a new version of the platform: a rebuilt document pipeline shown as a live stepper — unzip, convert, duplicate-check, each stage with its own progress and states — and a theme system that let the whole product ship **white-labeled** under a partner’s brand.',
+              image: {
+                src: '/projects/ThinkingMachine/image73.png', // '/projects/ThinkingMachine/pipeline.png' — the stepper: Unzip → Convert → Duplicate Check with progress
+                placeholder: 'The document pipeline as a stepper, each stage with live progress and its own state.',
+              },
+              image2: {
+                src: '/projects/ThinkingMachine/image73b.png', // '/projects/ThinkingMachine/pipeline.png' — the stepper: Unzip → Convert → Duplicate Check with progress
+                placeholder: 'The document pipeline as a stepper, each stage with live progress and its own state.',
+              },
+            },
+          ],
+          grid: {
+            title: 'Around the second engagement',
+            cols: 3,
+            images: [
+              {
+                src: '/projects/ThinkingMachine/image74.png',
+                placeholder: 'launcher-v2.png — the six-group directory variant (with Audit & Workflow)',
+              },
+              {
+                src: '/projects/ThinkingMachine/image75.png',
+                placeholder: 'summary-states.png — the rebuilt summary in its loading and ready states',
+              },
+              {
+                src: '/projects/ThinkingMachine/image76.png',
+                placeholder: 'whitelabel.png — the same screens themed for a partner brand',
+              }, // confirm you may show the partner's name before exporting; crop or retheme if not
+            ],
+          },
         },
       ],
 
