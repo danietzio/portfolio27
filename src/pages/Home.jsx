@@ -69,13 +69,32 @@ function WorkModal({ item, onClose }) {
         <h3 className='ow-modal__title'>{item.title}</h3>
         {item.meta && <p className='ow-modal__meta'>{item.meta}</p>}
         {item.description && <p className='ow-modal__desc'>{item.description}</p>}
-        {/* only real shots render — empty slots in content.js stay invisible */}
+        {/* only real shots render — empty slots in content.js stay invisible.
+            A shot is a plain path, or { src, title, text } for a captioned one.
+            .mp4/.webm shots play inline with controls (muted, so no surprise audio) */}
         <div className='ow-modal__shots'>
           {(item.shots || [])
             .filter(Boolean)
-            .map((src, i) => (
-              <img src={src} alt={`${item.title} — shot ${i + 1}`} key={src} loading='lazy' />
-            ))}
+            .map((shot, i) => {
+              const s = typeof shot === 'string' ? { src: shot } : shot;
+              if (!s.src) return null;
+              const isVideo = /\.(mp4|webm)$/i.test(s.src);
+              return (
+                <figure className='ow-shot' key={s.src}>
+                  {(s.title || s.text) && (
+                    <figcaption className='ow-shot__head'>
+                      {s.title && <span className='ow-shot__title'>{s.title}</span>}
+                      {s.text && <span className='ow-shot__text'>{s.text}</span>}
+                    </figcaption>
+                  )}
+                  {isVideo ? (
+                    <video src={s.src} controls muted loop playsInline preload='metadata' />
+                  ) : (
+                    <img src={s.src} alt={s.title || `${item.title} — shot ${i + 1}`} loading='lazy' />
+                  )}
+                </figure>
+              );
+            })}
         </div>
       </div>
     </div>

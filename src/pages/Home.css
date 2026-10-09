@@ -736,3 +736,53 @@ a.xp__link:focus-visible .xp__company {
   border-radius: 10px;
   background: color-mix(in srgb, var(--accent-soft, #eee) 60%, transparent);
 }
+
+/* ── Archive popup: video shots sit like image shots ── */
+.ow-modal__shots video {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* ── Archive popup: full-width description + captioned shots ── */
+.ow-modal__desc {
+  max-width: none; /* was 62ch — wrapped too early in the wide panel */
+}
+.ow-modal__shots {
+  gap: 30px; /* captioned shots need air between them */
+}
+.ow-shot {
+  margin: 0;
+}
+.ow-shot__head {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+.ow-shot__title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.ow-shot__text {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* ── Archive grid: equal columns regardless of image size ──
+   bare 1fr lets a huge thumb force its column wider; minmax(0,1fr)
+   makes every track truly equal */
+.ow__grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+@media (max-width: 1000px) {
+  .ow__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .ow__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

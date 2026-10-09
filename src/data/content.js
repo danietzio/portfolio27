@@ -1990,65 +1990,243 @@ export const otherWorks = {
       title: 'BetterNow',
       meta: 'One Item, Inc. • iOS & iPad app • 2017–2018',
       description:
-        'A lifestyle app for tracking daily activities and setting goals to improve them. I redesigned the old application into a modern, minimal system — over 50 screens across iPhone and iPad.',
-      thumb: '/archive/betternow.png', // '/archive/betternow.png'
-      shots: [null, null, null], // '/archive/betternow-1.png' …
+        'A wellness self-assessment app: you score every area of your life — sleep, fitness, relationships, mindset — mark how much each matters, and watch the gap between where you are and where you want to be. I redesigned the old application into a modern, minimal system of 50+ screens across iPhone and iPad, from wireframes to the final UI and an interactive prototype.',
+      thumb: '/archive/betternow.png',
+      shots: [
+        {
+          src: '/archive/betterNow/screen1.png',
+          title: 'My Scores',
+          text: 'Expanding a score card — details, history, editing, and sharing stack in one sheet.',
+        },
+        {
+          src: '/archive/betterNow/screen2.png',
+          title: 'Dashboard & profile',
+          text: 'Gap results, the BetterNow index over time, and the account menu.',
+        },
+        {
+          src: '/archive/betterNow/screen3.png',
+          title: 'Assessment',
+          text: 'Every life area scored in one list; tapping an item opens score, color, and weekly progress.',
+        },
+        {
+          src: '/archive/betterNow/screen4.png',
+          title: 'Daily check-in',
+          text: 'A one-screen grid for updating past days\u2019 scores at a glance.',
+        },
+        {
+          src: '/archive/betterNow/boarding.png',
+          title: 'Onboarding',
+          text: 'Loading and welcome, set in the brand\u2019s calm photography.',
+        },
+        {
+          src: '/archive/betterNow/wireframe1.png',
+          title: 'Wireframes — score details & dashboard',
+          text: 'The structure was settled in grayscale before any visual design.',
+        },
+        {
+          src: '/archive/betterNow/wireframe2.png',
+          title: 'Wireframes — assessment flow',
+          text: 'Scoring, history, and importance mapped screen by screen.',
+        },
+        {
+          src: '/archive/betterNow/output.mp4',
+          title: 'Interactive prototype',
+          text: 'The full flow in motion, recorded from the clickable prototype (2:15).',
+        },
+      ],
     },
     {
-      title: 'MoveInConnect',
-      meta: 'Sydney • Web platform • 2019',
+      title: 'DisProt',
+      meta: 'BioComputing UP, University of Padua • Scientific database • 2024–25',
       description:
-        'A platform that connects essential services for people moving homes. I designed the full flow for comparing and connecting utilities — clean, quick, responsive across devices.',
-      thumb: '/archive/moveinconnect.png',
-      shots: [null, null, null],
-    },
-    {
-      title: 'Cheap Bills',
-      meta: 'Melbourne • Web platform • 2020',
-      description:
-        'Instant comparison of plans from leading retailers in one place. A deliberately minimal interface for a product whose whole promise is “less hassle”.',
-      thumb: '/archive/software.png',
-      shots: [null, null, null],
+        'The redesign of DisProt, the manually curated database of intrinsically disordered proteins used by researchers worldwide. During my research fellowship I redesigned the whole interface — search, protein entries, the feature viewer, statistics, and training — and built what I designed, working directly with the curators who use it every day.',
+      thumb: '/archive/Disprot.png',
+      shots: [
+        {
+          src: '/archive/disprot/Home.png',
+          title: 'Home & search',
+          text: 'One search bar, live database counts, and browsing by organism or dataset.',
+        },
+        {
+          src: '/archive/disprot/Protein Page.png',
+          title: 'Protein entry',
+          text: 'A protein\u2019s evidence list — every annotation typed, color-coded, and filterable.',
+        },
+        {
+          src: '/archive/disprot/Protein Page-1.png',
+          title: 'Feature viewer',
+          text: 'Disorder regions plotted along the sequence, linked to the evidence below.',
+        },
+        {
+          src: '/archive/disprot/Release.png',
+          title: 'Release statistics',
+          text: 'Annotation counts and amino-acid composition, restructured into readable tables.',
+        },
+        {
+          src: '/archive/disprot/Training.png',
+          title: 'Training',
+          text: 'Courses and recorded tutorials for the curators and users of the database.',
+        },
+      ],
     },
     {
       title: 'Fitness 21',
       meta: 'US • Mobile app • 2019–2020',
       description:
-        'Courses across thousands of categories — fitness, happiness, relaxation — taught by mentors worldwide. I designed the browsing and learning experience.',
+        'An audio-courses app for building better habits: guided workout, meditation, and happiness courses you listen to, with a dashboard that turns listening into streaks, habit scores, and a daily timeline.',
       thumb: '/archive/21fit.png',
-      shots: [null, null, null],
+      shots: [
+        {
+          src: '/archive/21fit/video.mp4',
+          title: 'App in motion',
+          text: 'The flow recorded from the prototype.',
+        },
+        {
+          src: '/archive/21fit/screen1.png',
+          title: 'Course discovery',
+          text: 'Featured courses with a listen-today player, category grids, and a coming-soon feed.',
+        },
+        {
+          src: '/archive/21fit/screen2.png',
+          title: 'Workout & dashboard',
+          text: 'The dark workout theme, and the habit dashboard \u2014 score gauge, listening hours, and a day timeline.',
+        },
+      ],
     },
     {
-      title: 'TullabApp',
-      meta: 'Bahrain • University platform • 2022',
+      title: 'ONYX',
+      meta: 'Hotel client • Booking platform',
       description:
-        'One platform for students and university staff: events, discussions, shared materials, and administrative tools for tracking student performance.',
-      thumb: '/archive/tullabapp.png',
-      shots: [null, null, null],
-    },
-    {
-      title: 'iCause',
-      meta: 'Melbourne • Website • 2020',
-      description:
-        'A community-support organization’s site: events, volunteering, and donations, designed around clear calls to action and the brand’s mission.',
+        'A booking platform for a hotel network built around refundable stays and a members\u2019 loyalty program. I designed the whole funnel \u2014 from the landing page through search, room selection, and rate comparison \u2014 with the booking overview keeping a running total at every step.',
       thumb: '/archive/hotel.png',
-      shots: [null, null, null],
+      shots: [
+        {
+          src: '/archive/hotel/Home.png',
+          title: 'Landing',
+          text: 'One search bar over the promise, trust signals under the fold, and stays browsable by travel style.',
+        },
+        {
+          src: '/archive/hotel/hotels.png',
+          title: 'Search results',
+          text: 'List and live map side by side, with quick filters and scarcity cues on busy hotels.',
+        },
+        {
+          src: '/archive/hotel/room1.png',
+          title: 'Room selection',
+          text: 'Rooms compared at a glance; the overview panel builds the price as you choose.',
+        },
+        {
+          src: '/archive/hotel/room2.png',
+          title: 'Rates & checkout',
+          text: 'Each room expands into flexible, prepaid, and breakfast rates \u2014 member pricing beside every one.',
+        },
+      ],
     },
     {
-      title: 'Favory',
-      meta: 'Argentina • Mobile app • 2018–2019',
+      title: 'APICURON',
+      meta: 'BioComputing UP, University of Padua • Scientific platform • 2024–25',
       description:
-        'An app connecting people who have food to share with people who need it — onboarding, logo, and landing page for iPhone X.',
-      thumb: '/archive/Disprot.png',
-      shots: [null, null, null],
+        'APICURON credits the invisible work of science: it aggregates curation activity from partner databases like DisProt, Reactome, and Pfam, and turns it into profiles, badges, medals, and leaderboards for the biocurators behind them. During my research fellowship I redesigned the platform \u2014 and built what I designed in Angular.',
+      thumb: '/archive/apicuron.png',
+      shots: [
+        {
+          src: '/archive/apicuron/Home.png',
+          title: 'Home',
+          text: 'The pitch in one screen \u2014 what APICURON credits, live platform numbers, top contributors, and the partner resources.',
+        },
+        {
+          src: '/archive/apicuron/Database.png',
+          title: 'Curator profile',
+          text: 'One researcher\u2019s record per database \u2014 scores, medals, badges, and a full log of contributions.',
+        },
+        {
+          src: '/archive/apicuron/Curators.png',
+          title: 'Curators',
+          text: 'Every biocurator as a card \u2014 ORCID, affiliation, and the databases they contribute to, searchable and filterable.',
+        },
+      ],
     },
     {
-      title: 'DomiDocs',
-      meta: 'US • Real-estate platform • 2018–2019',
+      title: 'DOME Registry',
+      meta: 'ELIXIR • BioComputing UP, University of Padua • 2024–25',
       description:
-        'A responsive web platform for property documentation — a modern interface for a famously paper-bound industry.',
+        'DOME is a community effort from the ELIXIR Machine Learning Focus Group to make machine-learning methods in the life sciences transparent and reproducible, and the Registry is its public, searchable database of method descriptions. During my research fellowship I designed the Registry\u2019s web platform — and as with DisProt, built what I designed in Angular.',
+      thumb: '/archive/Dome.png',
+      shots: [
+        {
+          src: '/archive/dome/home.png',
+          title: 'Home',
+          text: 'The Registry in one screen — live counts, latest annotated publications with their DOME scores, and one action: Browse.',
+        },
+        {
+          src: '/archive/dome/Statistic.png',
+          title: 'About DOME',
+          text: 'The recommendations and the Registry explained in one scrolling story, dark theme in the brand\u2019s deep blue and orange.',
+        },
+        {
+          src: '/archive/dome/DomeRecom.png',
+          title: 'Statistics',
+          text: 'Registry-wide numbers, annotated journals, and the DOME-score distribution as living charts.',
+        },
+      ],
+    },
+    {
+      title: 'HouseLord',
+      meta: 'Private client • Property-management platform',
+      description:
+        'A marketing site for a virtual property-management service \u2014 landlords hand over listings, maintenance, and rent collection to a remote team. I designed the full site as a responsive system, every page resolved for desktop and mobile side by side.',
+      thumb: '/archive/houselord.png',
+      shots: [
+        {
+          src: '/archive/houselord/home.png',
+          title: 'Home',
+          text: 'The pitch \u2014 \u201Cproperty management reimagined\u201D \u2014 with services, social proof, and one action repeated: try for free.',
+        },
+        {
+          src: '/archive/houselord/pricing.png',
+          title: 'Pricing',
+          text: 'One plan, stated plainly over the product\u2019s own imagery, with FAQs answering objections on the same page.',
+        },
+        {
+          src: '/archive/houselord/blog.png',
+          title: 'Blog',
+          text: 'Category-filtered articles in a clean list, collapsing to single-column cards on mobile.',
+        },
+        {
+          src: '/archive/houselord/contact us.png',
+          title: 'Contact',
+          text: 'Map, form, and FAQs in one page \u2014 every route to a human kept short.',
+        },
+      ],
+    },
+    {
+      title: 'Hexabot',
+      meta: 'Concept • Mobile app',
+      description:
+        'A command center for a fleet of autonomous robots mining and farming on the Moon. One phone screen runs ten bots: a triage home that surfaces only what needs action, task queues you compose and execute, a live map of every unit, and a voice assistant \u2014 ask what needs attention, assign a task by name, done.',
       thumb: '/archive/Hexa.png',
-      shots: [null, null, null],
+      shots: [
+        {
+          src: '/archive/hexabot/screen1.png',
+          title: 'The system at a glance',
+          text: 'Task assignment, the triage home, the live map, and the voice assistant \u2014 four surfaces, one fleet.',
+        },
+        {
+          src: '/archive/hexabot/screen2.png',
+          title: 'Live map states',
+          text: 'The whole fleet on lunar terrain; filters dim the noise, and a selected bot reports status and distance.',
+        },
+        {
+          src: '/archive/hexabot/screen3.png',
+          title: 'Tasks & triage',
+          text: 'Queues built from task categories \u2014 system, mining, crops \u2014 with reroutes to named locations; home sorts bots by urgency.',
+        },
+        {
+          src: '/archive/hexabot/screen4.png',
+          title: 'Voice command',
+          text: '\u201CWhat bots need my action?\u201D \u2014 the assistant answers with cards, takes an order, and confirms it executed.',
+        },
+      ],
     },
   ],
 };
