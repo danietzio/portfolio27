@@ -75,3 +75,82 @@
     transition: none;
   }
 }
+
+/* ── Availability: a live dot + two words, recruiters' favorite fact ── */
+.nav__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  margin-left: 6px;
+  cursor: default;
+}
+.nav__status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: nav-pulse 2.6s ease-out infinite;
+}
+@keyframes nav-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* ── Resume as the bar's one action: a quiet hairline pill ── */
+.nav__links a.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 16px;
+  color: var(--ink);
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+.nav__links a.nav__cta:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Reading progress: a 2px accent line along the bar's bottom.
+      --scrollp is set by the case-study pages (PillNav); elsewhere
+      it defaults to 0% and the line simply isn't there. ── */
+.nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: var(--scrollp, 0%);
+  background: var(--accent);
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .nav__status {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav__status-dot {
+    animation: none;
+  }
+}
+
+.nav__cta-icon {
+  display: block;
+  opacity: 0.75;
+}
+.nav__links a.nav__cta:hover .nav__cta-icon {
+  opacity: 1;
+}

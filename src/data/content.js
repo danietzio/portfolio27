@@ -26,7 +26,7 @@ export const profile = {
   //    plainly. Nothing else competes with it.
   // 2. intro — ONE dense factual paragraph: role, current chapter,
   //    proof. The **words** are the accent keywords.
-  heroStatement: 'I’m Daniyal. I design the product — then I **build** it.',
+  heroStatement: 'I’m Daniyal. I design the product — then I build the **interface**.',
   headline: 'Product Designer & Design Engineer', // fallback if heroStatement is null
   subline: null,
   credential: null, // folded into intro — one paragraph instead of three lines
@@ -87,7 +87,7 @@ export const experience = [
     year: '2024–25',
     company: 'BioComputing UP Lab, Padova, Italy',
     role: 'Research Fellow',
-    url: 'https://biocomputingup.it',
+    url: null,
     note: 'A funded year engineering protein databases used by working biologists. Taught me what “user” means when the user is a scientist mid-experiment.',
   },
   {
@@ -101,7 +101,7 @@ export const experience = [
     year: '2019–21',
     company: 'Nickelfox Technologies',
     role: 'UI/UX Designer',
-    url: 'https://www.nickelfox.com',
+    url: null,
     note: 'Part of a team ranked among Dribbble’s top 100 worldwide; one of my shots passed 57,000 views. Where I learned craft at speed.', // verify the 57k figure
   },
   {
@@ -117,6 +117,7 @@ export const projects = [
   {
     slug: 'oar-health-member-experience',
     thumb: '/projects/thumbs/oar.webp', // home-page thumbnail — your own design, not a case-study image
+    thumbMobile: '/projects/thumbs/oar-mobile.webp', // taller composition served under 860px
     hook: '23% more people reached care.',
     title: 'Designing the member experience at Oar Health',
     subtitle: 'Oar Health • Telehealth • Product Design',
@@ -139,6 +140,25 @@ export const projects = [
       { value: '23%', label: 'lift in the intake conversion funnel' },
       { value: '4', label: 'product surfaces: dashboard, Care+, intake, messaging' },
       { value: '1', label: 'design system, carried from web to the mobile app' },
+    ],
+
+    // LinkedIn recommendations from the Oar team — quoted verbatim,
+    // verifiable on linkedin.com/in/danial-nasiri
+    testimonials: [
+      {
+        quote:
+          'Daniyal is such a strong product designer. He is quick to understand the user problem and product needs. He always creates multiple versions of each design, making feedback sessions easier and more valuable. Daniyal also consistently works through all the user states and use cases to ensure that his design delivery is complete. He works well with product management, peer product designers, and engineering. Daniyal always is eager to vet designs with engineers, takes in feedback, and then delivers designs that are easy to build. It was such a pleasure to work with Daniyal and I hope to find the opportunity to work together again soon.',
+        name: 'Jen Wirt',
+        role: 'Product Manager, Oar Health', // her title while managing you — she's now Founder & CEO of Coral Care
+        source: 'via LinkedIn',
+      },
+      {
+        quote:
+          'Looking for fresh ideas? Looking to gain movement rapidly in your product design? Daniyal is an excellent choice. I was impressed at how quickly Daniyal identified opportunities surrounding the product. He quickly understood the business and user goals and turned around beautiful work. Daniyal is a genuine teammate willing to listen, learn, guide, and collaborate in lockstep to produce well-balanced and functional product design.',
+        name: 'Frank Vasquez',
+        role: 'Product Designer, Oar Health',
+        source: 'via LinkedIn',
+      },
     ],
 
     nav: [
@@ -1098,7 +1118,7 @@ export const projects = [
       'A working design concept demonstrated end to end: one scenario — reschedule a meeting, delegate the work — completed without ever leaving the canvas.',
 
     metrics: [
-      { value: '7 → 1', label: 'separate services, rethought as one shared canvas' }, // verify count
+      { value: '7 → 1', label: 'separate services, rethought as one shared canvas' },
       { value: '4', label: 'prototyping methods before pixels: paper, storyboards, walkthroughs, video' },
       { value: '3', label: 'capabilities: temporal workflows, cross-app data transfer, personalization' },
     ],
@@ -1475,7 +1495,8 @@ export const projects = [
      ═══════════════════════════════════════════════════════════ */
   {
     slug: 'thinking-machine',
-    thumb: 'projects/thumbs/thinkingMachine.webp', // your banner — "AI that finds money hidden in telecom invoices" / "26 countries, 18 languages → one platform"
+    thumb: '/projects/thumbs/thinkingMachine.webp', // your banner (leading slash added — it was missing)
+    thumbMobile: '/projects/thumbs/thinkingMachine-mobile.webp', // taller composition served under 860px
     hook: 'AI that finds money hidden in telecom invoices.',
     title: 'Designing for density at Thinking Machine',
     subtitle: 'Thinking Machine • B2B AI • Product Design',
@@ -1498,6 +1519,18 @@ export const projects = [
       { value: '18', label: 'languages the AI reads contracts in' }, // ditto
       { value: '2', label: 'engagements — they came back for the navigation' },
       { value: '30–40%', label: 'development time cut by the configurable platform' }, // verify — your CV figure
+    ],
+
+    // Richard's LinkedIn recommendation — quoted verbatim,
+    // verifiable on linkedin.com/in/danial-nasiri
+    testimonials: [
+      {
+        quote:
+          "Daniyal is an extremely talented and customer-focussed designer. From our first interview he came with promising ideas for the project and quickly followed through on implementation. He managed to 'wow' each stakeholder with his ability to take complex concepts and produce elegant designs. I highly recommend him.",
+        name: 'Richard Martin',
+        role: 'Founder & CEO, Thinking Machine',
+        source: 'via LinkedIn',
+      },
     ],
 
     // Thinking Machine's own grammar: working blue for structure and
@@ -1949,6 +1982,7 @@ export const about = {
     'I started in 2016 the way a lot of designers from engineering backgrounds do: by building things first and learning why they worked later. I founded CreativeDannies, my own small studio, and spent three years designing and coding websites and apps for clients from Melbourne to New York. That led to Nickelfox — a team ranked among Dribbble’s top 100 worldwide — and eventually to Toptal, where I’ve worked in the top 3% of freelance designers with teams like Oar Health, Thinking Machine, and Backgammon Galaxy.',
     'Somewhere along the way I decided instinct wasn’t enough. I moved to Italy for an Information Engineering degree at the University of Padua on a full scholarship, wrote a thesis on AI systems for biological databases, and stayed for a funded research year building tools that working biologists actually use. Now I’m in Paris, doing a master’s in Human–Computer Interaction at Université Paris-Saclay and researching the future of collaborative workspaces in Wendy Mackay’s group.',
     'The thread through all of it: I don’t hand off designs, I finish them. At Backgammon Galaxy I redesigned the mobile app, rebuilt the brand, created the design system — and then joined the codebase to close the gap between Figma and production myself. A design isn’t done when the mockup is approved. It’s done when it runs.',
+    'Off the clock, I’m a Counter-Strike player and an unapologetic esports spectator — if there’s a major on, I’ve probably rearranged my week around it.',
   ],
 };
 
@@ -1959,9 +1993,19 @@ export const fun = {
   // swap for hobbies or projects you'd rather show.
   items: [
     {
+      title: 'Cartographer',
+      description:
+        'What I’m building right now: an AI workspace for exploring unfamiliar GitHub repositories — retrieval with grounded citations, investigations that branch on a visual canvas. Next.js, FastAPI, and a local LLM.',
+    },
+    {
+      title: 'Counter-Strike 2',
+      description:
+        'Player and devoted spectator — I follow the pro scene from the majors down to roster drama, in arenas when I can. Designing for Backgammon Galaxy’s competitive community felt familiar for a reason.',
+    },
+    {
       title: 'This website',
       description:
-        'Designed and built in React — one design system, a loading screen, and a keyboard shortcut (press D on any case study).',
+        'Designed by me, built in React with an AI pair programmer — one design system, a loading screen, and a keyboard shortcut (press D on any case study).',
     },
     {
       title: 'Teaching',
@@ -2071,7 +2115,7 @@ export const otherWorks = {
     },
     {
       title: 'Fitness 21',
-      meta: 'US • Mobile app • 2019–2020',
+      meta: 'Health & fitness app • 2019–2020',
       description:
         'An audio-courses app for building better habits: guided workout, meditation, and happiness courses you listen to, with a dashboard that turns listening into streaks, habit scores, and a daily timeline.',
       thumb: '/archive/21fit.webp',
@@ -2201,7 +2245,7 @@ export const otherWorks = {
     },
     {
       title: 'Hexabot',
-      meta: 'Concept • Mobile app',
+      meta: 'Mobile app • 2024',
       description:
         'A command center for a fleet of autonomous robots mining and farming on the Moon. One phone screen runs ten bots: a triage home that surfaces only what needs action, task queues you compose and execute, a live map of every unit, and a voice assistant \u2014 ask what needs attention, assign a task by name, done.',
       thumb: '/archive/Hexa.webp',
@@ -2230,3 +2274,34 @@ export const otherWorks = {
     },
   ],
 };
+
+// ── "Right now" — the footer's living status line ──────────────
+// Computed from PARIS hours (from ≤ hour < to; ranges may wrap
+// past midnight). Edit the lines freely — keep them true-ish and
+// in your own voice; "probably" in the label buys the honesty.
+export const nowStatus = {
+  lines: [
+    { from: 7, to: 9, text: 'on the RER B out to Saclay.' },
+    { from: 9, to: 12, text: 'at the lab, arguing about what “interaction” means.' },
+    { from: 12, to: 14, text: 'at lunch with friends, talking about everything except research.' },
+    { from: 14, to: 18, text: 'in a meeting that could have been a Figma comment.' },
+    { from: 18, to: 20, text: 'on the bus 4506 home, mentally redesigning its ticket machine.' },
+    { from: 20, to: 22, text: 'building Cartographer, my excuse to learn everything at once.' },
+    { from: 22, to: 24, text: 'watching my third “is UX dead” video on YouTube. UX is fine too.' },
+    { from: 0, to: 2, text: 'promoting a Figma page from “final” to “final-final”.' },
+    { from: 2, to: 7, text: 'asleep — dreaming in auto-layout.' },
+  ],
+};
+
+// ── About-page photos ───────────────────────────────────────────
+// Casual shots rendered between the story and "Outside of work".
+// Drop files into /public/about/ and list them here; an empty
+// array hides the section. One photo renders narrow and centered;
+// two or more share a row.
+export const aboutPhotos = [
+  {
+    src: '/about/ewc-arena.webp',
+    alt: 'The Counter-Strike 2 arena at the Esports World Cup, screens counting down over the crowd',
+    caption: 'CS2 at the Esports World Cup 2026, Paris — there for the crowd as much as the game.',
+  },
+];

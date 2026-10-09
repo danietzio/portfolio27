@@ -122,7 +122,13 @@ function OtherWorks() {
       )}
       <div className='ow__grid'>
         {otherWorks.items.map((item) => (
-          <button className='ow-card' key={item.title} onClick={() => setOpen(item)}>
+          <button
+            className='ow-card'
+            key={item.title}
+            onClick={() => setOpen(item)}
+            onPointerMove={trackPointer}
+            onPointerLeave={resetPointer}
+          >
             <span className='ow-card__frame'>
               {item.thumb ? (
                 <img src={item.thumb} alt='' loading='lazy' />
@@ -164,6 +170,18 @@ function useInView() {
     return () => obs.disconnect();
   }, []);
   return ref;
+}
+
+// Cards track the pointer: --mx/--my (0..1) feed the CSS sheen
+// and parallax, so the artwork answers the cursor's position.
+function trackPointer(e) {
+  const r = e.currentTarget.getBoundingClientRect();
+  e.currentTarget.style.setProperty('--mx', ((e.clientX - r.left) / r.width).toFixed(3));
+  e.currentTarget.style.setProperty('--my', ((e.clientY - r.top) / r.height).toFixed(3));
+}
+function resetPointer(e) {
+  e.currentTarget.style.setProperty('--mx', '0.5');
+  e.currentTarget.style.setProperty('--my', '0.5');
 }
 
 // Thumbnail videos play while visible.
@@ -216,9 +234,23 @@ function Door({ project, index }) {
         className={`door door--img door--${project.slug}`}
         style={{ ...paint, '--door-delay': `${(index % 2) * 110}ms` }}
         aria-label={`${company} — read the case study`}
+        onPointerMove={trackPointer}
+        onPointerLeave={resetPointer}
       >
         <span className='door__frame'>
-          {isVideo ? <DoorVideo src={project.thumb} /> : <img src={project.thumb} alt='' loading='lazy' />}
+          {isVideo ? (
+            <DoorVideo src={project.thumb} />
+          ) : (
+            // Art-directed banner: `thumbMobile` in content.js is a
+            // separate composition for small screens (text above the
+            // shot, taller ratio). The browser downloads only the one
+            // it shows. Without thumbMobile, the wide banner serves
+            // all sizes, as before.
+            <picture>
+              {project.thumbMobile && <source media='(max-width: 860px)' srcSet={project.thumbMobile} />}
+              <img src={project.thumb} alt='' loading='lazy' />
+            </picture>
+          )}
         </span>
       </Link>
     );

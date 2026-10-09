@@ -24,10 +24,19 @@ export default function Cursor() {
       if (reduced) el.style.transform = `translate(${x}px, ${y}px)`;
 
       const t = e.target;
-      const card = t.closest?.('.door, .ow-card');
+      const door = t.closest?.('.door');
+      const owCard = t.closest?.('.ow-card');
+      const card = door || owCard;
       const link = t.closest?.('a, button, [role="button"], .zoomable, label');
       const text = t.closest?.('input, textarea, select');
 
+      // the pill names what the click does: case studies open a
+      // page ("View"), archive tiles open the popup ("Open")
+      if (card) {
+        const label = el.querySelector('.cursor2__label');
+        const want = owCard ? 'Open' : 'View';
+        if (label && label.textContent !== want) label.textContent = want;
+      }
       el.classList.toggle('is-view', !!card);
       el.classList.toggle('is-link', !card && !!link && !text);
       document.documentElement.classList.toggle('cursor-native', !!text);

@@ -36,9 +36,30 @@ export default function Nav() {
           <NavLink to='/about' className={({ isActive }) => (isActive ? 'is-active' : '')}>
             About
           </NavLink>
-          <a href={profile.resumeUrl} target='_blank' rel='noreferrer'>
+          {/* the one action the bar points at — download icon, then the word */}
+          <a href={profile.resumeUrl} target='_blank' rel='noreferrer' className='nav__cta'>
+            <svg
+              className='nav__cta-icon'
+              viewBox='0 0 16 16'
+              width='13'
+              height='13'
+              aria-hidden='true'
+              fill='none'
+              stroke='currentColor'
+              strokeWidth='1.6'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            >
+              <path d='M8 2.5v8m0 0 3-3m-3 3-3-3' />
+              <path d='M2.8 13.5h10.4' />
+            </svg>
             Resume
           </a>
+          {/* availability — the most useful thing a navbar can tell a recruiter */}
+          <span className='nav__status'>
+            <span className='nav__status-dot' aria-hidden='true' />
+            Open to roles
+          </span>
         </nav>
       </div>
     </header>

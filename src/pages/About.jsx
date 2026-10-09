@@ -1,4 +1,4 @@
-import { about, fun } from '../data/content.js';
+import { about, fun, aboutPhotos } from '../data/content.js';
 import './Prose.css';
 
 export default function About() {
@@ -8,6 +8,18 @@ export default function About() {
       {about.paragraphs.map((p, i) => (
         <p key={i}>{p}</p>
       ))}
+
+      {/* casual photos — see aboutPhotos in content.js */}
+      {aboutPhotos?.length > 0 && (
+        <div className={`about-photos${aboutPhotos.length === 1 ? ' about-photos--single' : ''}`}>
+          {aboutPhotos.map((photo) => (
+            <figure className='about-photo' key={photo.src}>
+              <img src={photo.src} alt={photo.alt || ''} loading='lazy' />
+              {photo.caption && <figcaption>{photo.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )}
 
       {fun?.items?.length > 0 && (
         <>

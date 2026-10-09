@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, Fragment, useContext, useEffect, useRef, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { projects } from '../data/content.js';
 import './ProjectDetail.css';
@@ -568,7 +568,21 @@ function PillNav({ nav, noteIds = [] }) {
         const sec = document.getElementById(id);
         if (sec && sec.getBoundingClientRect().top <= line) current = id;
       }
-      setActive(current);
+      // Hysteresis: lazy-loading images and reveal animations can
+      // nudge section tops a few pixels across the 35% line, which
+      // made the pill snap back to the previous section for a beat.
+      // Moving FORWARD is instant; moving BACK requires the current
+      // section's top to have clearly dropped below a second, lower
+      // line — a real upward scroll, not layout jitter.
+      setActive((prev) => {
+        if (current === prev || !prev) return current;
+        const ci = nav.findIndex((n) => n.id === current);
+        const pi = nav.findIndex((n) => n.id === prev);
+        if (ci > pi) return current; // forward: always
+        const prevEl = document.getElementById(prev);
+        if (prevEl && prevEl.getBoundingClientRect().top <= window.innerHeight * 0.5) return prev;
+        return current;
+      });
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -708,6 +722,67 @@ function useScrollReveal(deps) {
 }
 
 /* ── page ──────────────────────────────────────────────────── */
+
+// ── Testimonials: what the client said, in their own words ──
+// Renders only when a project carries `testimonials` in content.js.
+// Same visual language as the site's pull-quotes: an accent rule,
+// quiet type, no boxes — quotes stack, they never sit in columns.
+// Each quote reveals word by word as it scrolls into view — the
+// words are already in place (no layout shift), they ink in.
+function TestimonialQuote({ text }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('is-rv');
+          obs.disconnect();
+        }
+      },
+      { rootMargin: '0px 0px -15% 0px' }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <blockquote className='tst__quote' ref={ref}>
+      {text
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((word, i) => (
+          <Fragment key={i}>
+            <span className='tst__w' style={{ '--wd': `${i * 14}ms` }}>
+              {word}
+            </span>{' '}
+          </Fragment>
+        ))}
+    </blockquote>
+  );
+}
+
+function Testimonials({ items }) {
+  if (!items?.length) return null;
+  return (
+    <section className='tst' aria-label='Recommendations'>
+      <p className='case-section__eyebrow'>In their words</p>
+      {items.map((t) => (
+        <figure className='tst__item' key={t.name}>
+          <TestimonialQuote text={t.quote} />
+          <figcaption className='tst__who'>
+            <span className='tst__name'>{t.name}</span>
+            <span className='tst__sep' aria-hidden='true'>
+              —
+            </span>
+            <span className='tst__role'>{t.role}</span>
+            {t.source && <span className='tst__source'>{t.source}</span>}
+          </figcaption>
+        </figure>
+      ))}
+    </section>
+  );
+}
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -952,6 +1027,9 @@ export default function ProjectDetail() {
             </section>
           )}
 
+          {/* ══ TESTIMONIALS ══ */}
+          <Testimonials items={project.testimonials} />
+
           {/* ══ REFLECTION ══ */}
           <section className='case-section case-section--reflection' id={s.reflection.id}>
             <p className='case-section__eyebrow'>Reflection</p>
@@ -973,6 +1051,9 @@ export default function ProjectDetail() {
           ))}
         </div>
       )}
+
+      {/* fallback placement for projects without structured sections */}
+      {!s && <Testimonials items={project.testimonials} />}
 
       {project.nav && (
         <PillNav

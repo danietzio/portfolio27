@@ -809,3 +809,196 @@ a.xp__link:focus-visible .xp__company {
     margin-bottom: 0; /* stacked layout needs no lift */
   }
 }
+
+/* ═══ Archive card labels: never overflow the tile ═══
+   The label row is flex; a long meta (e.g. a university name) used
+   to push past the card's right edge. Name keeps its full width,
+   meta truncates with an ellipsis. */
+.ow-card__name {
+  flex-shrink: 0;
+}
+.ow-card__meta {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═══ Banner doors under 860px: the image rules, not the ratio ═══
+   The 860px block forces every .door to 4/3 — right for the empty
+   color-field cards, wrong for designed banners: the full-width
+   21/9 banner sat in a 4/3 box (empty gap below it, the "gap
+   between first and second project"), and wide banners cropped
+   horizontally, cutting the text baked into their left side.
+   Banner cards instead take the height of their own image —
+   complete, uncropped, no gaps. */
+@media (max-width: 860px) {
+  .door--img,
+  .door--img:first-child {
+    aspect-ratio: auto;
+  }
+  .door--img .door__frame,
+  .door--img:first-child .door__frame {
+    aspect-ratio: auto;
+  }
+  .door--img .door__frame img,
+  .door--img .door__frame video {
+    height: auto;
+  }
+}
+
+/* art-directed thumbs: <picture> wraps the door image — the picture
+   element itself takes no layout of its own */
+.door__frame picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.door__frame picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 860px) {
+  .door--img .door__frame picture img {
+    height: auto;
+  }
+}
+
+/* ═══ Stacked hero (≤860px): use the full width ═══
+   The text measures (19ch statement etc.) are tuned for the
+   two-column layout; once the hero stacks they left a dead gutter
+   on the right. Stacked, the text takes the whole line. */
+@media (max-width: 860px) {
+  .hero__statement,
+  .hero__prev,
+  .hero__intro,
+  .hero--index .hero__intro {
+    max-width: none;
+  }
+}
+/* …and on small phones the portrait centers over the text */
+@media (max-width: 560px) {
+  .hero__portrait {
+    margin-inline: auto;
+  }
+}
+
+/* ═══ Tighter page ending ═══
+   The experience ledger is the page's last word — it shouldn't
+   float a whole screen above the footer. The ledger's own bottom
+   margin goes, and the home page overrides the global .page
+   bottom padding; the footer's top margin provides the one gap. */
+.xp {
+  margin-bottom: 0;
+}
+.page.home {
+  padding-bottom: 16px;
+}
+
+/* ═══ Pointer-aware cards: sheen + parallax ═══
+   --mx/--my (0..1, set from Home.jsx) say where the cursor is on
+   the card. Two answers: a soft light that follows it, and the
+   artwork drifting a few px the other way — just enough depth to
+   feel alive, never enough to distort the designed banner. */
+.door--img .door__frame,
+.ow-card__frame {
+  position: relative;
+}
+.door--img .door__frame::after,
+.ow-card__frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    280px circle at calc(var(--mx, 0.5) * 100%) calc(var(--my, 0.5) * 100%),
+    rgba(255, 255, 255, 0.14),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.door--img:hover .door__frame::after,
+.ow-card:hover .ow-card__frame::after,
+.ow-card:focus-visible .ow-card__frame::after {
+  opacity: 1;
+}
+/* the artwork drifts against the cursor — a quiet parallax */
+.door--img .door__frame img,
+.door--img .door__frame video {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.door--img:hover .door__frame img,
+.door--img:hover .door__frame video {
+  transform: scale(1.03)
+    translate(
+      calc((0.5 - var(--mx, 0.5)) * 10px),
+      calc((0.5 - var(--my, 0.5)) * 8px)
+    );
+}
+/* archive tiles already scale on hover — add the same drift */
+.ow-card:hover .ow-card__frame img,
+.ow-card:focus-visible .ow-card__frame img {
+  transform: scale(1.06)
+    translate(
+      calc((0.5 - var(--mx, 0.5)) * 8px),
+      calc((0.5 - var(--my, 0.5)) * 6px)
+    );
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .door--img .door__frame::after,
+  .ow-card__frame::after {
+    display: none;
+  }
+  .door--img:hover .door__frame img,
+  .door--img:hover .door__frame video,
+  .ow-card:hover .ow-card__frame img {
+    transform: none;
+  }
+}
+
+/* ═══ Shine sweep: hover's opening note ═══
+   One diagonal band of light crosses the artwork when the hover
+   begins — then the pointer-following sheen takes over. Runs once
+   per hover (the animation restarts when :hover re-applies it). */
+.door--img .door__frame::before,
+.ow-card__frame::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 58%
+  );
+  transform: translateX(-130%);
+  opacity: 0;
+}
+.door--img:hover .door__frame::before,
+.ow-card:hover .ow-card__frame::before,
+.ow-card:focus-visible .ow-card__frame::before {
+  animation: card-shine 1.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes card-shine {
+  0% {
+    transform: translateX(-130%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .door--img .door__frame::before,
+  .ow-card__frame::before {
+    display: none;
+  }
+}

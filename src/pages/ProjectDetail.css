@@ -2303,3 +2303,63 @@ kbd {
   font-size: clamp(1.25rem, 2.3vw, 1.9rem);
   line-height: 1.45;
 }
+
+/* ── Testimonials: LinkedIn recommendations close the story ─────
+   Same language as the site's pull-quotes: accent rule, quiet
+   type, no boxes. Each project's accent token colors the rule. */
+.tst {
+  max-width: 820px;
+  margin: clamp(72px, 10vh, 120px) auto clamp(24px, 4vh, 48px);
+}
+.tst .case-section__eyebrow {
+  margin-bottom: 36px;
+}
+.tst__item {
+  margin: 0 0 44px;
+  border-left: 3px solid var(--accent);
+  padding-left: clamp(20px, 3vw, 28px);
+}
+.tst__item:last-child {
+  margin-bottom: 0;
+}
+.tst__quote {
+  margin: 0 0 14px;
+  max-width: 62ch;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.tst__who {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.tst__name {
+  font-weight: 600;
+  color: var(--ink);
+}
+.tst__source {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+/* word-by-word reveal: words hold their place (no reflow) and ink
+   in from faint to full once the quote enters the viewport */
+.tst__w {
+  opacity: 0.13;
+  transition: opacity 0.6s ease;
+  transition-delay: var(--wd, 0ms);
+}
+.tst__quote.is-rv .tst__w {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tst__w {
+    opacity: 1;
+    transition: none;
+  }
+}

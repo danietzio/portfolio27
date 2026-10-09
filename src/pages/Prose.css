@@ -48,3 +48,32 @@
   color: var(--ink-soft);
   font-size: 0.95rem;
 }
+
+/* ── About photos: casual shots between the story and the list ── */
+.about-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 48px 0 56px;
+}
+/* a lone photo stays modest — a snapshot, not a hero */
+.about-photos--single {
+  grid-template-columns: minmax(0, 420px);
+  justify-content: center;
+}
+.about-photo {
+  margin: 0;
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.about-photo figcaption {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  text-align: center;
+}
