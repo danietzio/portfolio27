@@ -116,7 +116,7 @@ export const experience = [
 export const projects = [
   {
     slug: 'oar-health-member-experience',
-    thumb: '/projects/thumbs/oar.png', // home-page thumbnail — your own design, not a case-study image
+    thumb: '/projects/thumbs/oar.webp', // home-page thumbnail — your own design, not a case-study image
     hook: '23% more people reached care.',
     title: 'Designing the member experience at Oar Health',
     subtitle: 'Oar Health • Telehealth • Product Design',
@@ -213,7 +213,7 @@ export const projects = [
               heading: 'Impossible to miss',
               text: 'The welcome overlay and completion tracker walk new members through medical history and ID verification — with Finished and Incomplete stated in words, never color alone.',
               image: {
-                src: '/projects/OarHealth/dashboard1.png', // '/projects/oar/dashboard-setup.png' or .mp4
+                src: '/projects/OarHealth/dashboard1.webp', // '/projects/oar/dashboard-setup.png' or .mp4
                 placeholder:
                   'Setup state — welcome overlay + “1 of 2” tracker with status badges. (Recording works great.)',
               },
@@ -231,7 +231,7 @@ export const projects = [
               heading: 'From flat to state-aware',
               text: 'The old dashboard showed everyone the same thing. The redesign meets you where you are.',
               image: {
-                src: '/projects/OarHealth/dashboard3.png', // '/projects/oar/dashboard-before-after.png'
+                src: '/projects/OarHealth/dashboard3.webp', // '/projects/oar/dashboard-before-after.png'
                 placeholder: 'ONE combined before/after frame — old flat dashboard left, redesign right.',
               },
             },
@@ -240,9 +240,9 @@ export const projects = [
             title: 'Across every screen size',
             cols: 3,
             images: [
-              { src: '/projects/OarHealth/dashboard4.png', placeholder: 'Desktop 1440px' },
-              { src: '/projects/OarHealth/dashboard5.png', placeholder: 'Tablet 1200px' },
-              { src: '/projects/OarHealth/dashboard6.png', placeholder: 'Mobile 375px' },
+              { src: '/projects/OarHealth/dashboard4.webp', placeholder: 'Desktop 1440px' },
+              { src: '/projects/OarHealth/dashboard5.webp', placeholder: 'Tablet 1200px' },
+              { src: '/projects/OarHealth/dashboard6.webp', placeholder: 'Mobile 375px' },
             ],
           },
         },
@@ -264,7 +264,7 @@ export const projects = [
               'Care+, a new second tab designed from scratch: Meetings & Surveys (visit summaries, surveys) and a Help Center (FAQs, blog, guides & tips, contact) in one calm, browsable layout.',
           },
           hero: {
-            src: '/projects/OarHealth/care1.png', // '/projects/oar/careplus-hero.png'
+            src: '/projects/OarHealth/care1.webp', // '/projects/oar/careplus-hero.png'
             placeholder: 'SOLUTION HERO — the final Care+ tab: Meetings & Surveys + Help Center sections.',
             caption: 'Care+: the ongoing work of treatment, one tab away.',
           },
@@ -273,7 +273,7 @@ export const projects = [
               heading: 'From card grid to two clear sections',
               text: 'Sixty frames of exploration moved Care+ from a flat card grid to a two-section layout that separates “my care” from “help me understand.”',
               image: {
-                src: '/projects/OarHealth/care2.png', // '/projects/oar/careplus-iterations.png'
+                src: '/projects/OarHealth/care2.webp', // '/projects/oar/careplus-iterations.png'
                 placeholder: 'ONE combined frame — early Care+ card grid beside the final two-section layout.',
               },
             },
@@ -282,9 +282,9 @@ export const projects = [
             title: 'Inside the hub',
             cols: 3,
             images: [
-              { src: '/projects/OarHealth/care3.png', placeholder: 'Visits Summary' },
-              { src: '/projects/OarHealth/care5.png', placeholder: 'Surveys' },
-              { src: '/projects/OarHealth/care4.png', placeholder: 'Help Center / FAQs' },
+              { src: '/projects/OarHealth/care3.webp', placeholder: 'Visits Summary' },
+              { src: '/projects/OarHealth/care5.webp', placeholder: 'Surveys' },
+              { src: '/projects/OarHealth/care4.webp', placeholder: 'Help Center / FAQs' },
             ],
           },
         },
@@ -306,7 +306,7 @@ export const projects = [
               'Flip the sequence: $15 for the clinical review today, medication charged only after clinical approval. State every total out loud, on the screen, with charge timing on every plan option.',
           },
           hero: {
-            src: '/projects/OarHealth/intake1.png', // '/projects/oar/intake-hero.png'
+            src: '/projects/OarHealth/intake1.webp', // '/projects/oar/intake-hero.png'
             placeholder:
               'SOLUTION HERO — the redesigned “Select Delivery Frequency” screen with per-plan benefits and charge timing.',
             caption: 'Every plan says when you’ll actually be charged.',
@@ -316,7 +316,7 @@ export const projects = [
               heading: 'No mental math',
               text: 'The review screen states the calculated total: $15 due today, the plan billed after approval. In testing, the control group had to work this out themselves.',
               image: {
-                src: '/projects/OarHealth/intake2.png', // '/projects/oar/intake-review.png'
+                src: '/projects/OarHealth/intake2.webp', // '/projects/oar/intake-review.png'
                 placeholder: '“Review Your Order” — $15 due today, plan billed after clinical approval.',
               },
             },
@@ -391,7 +391,7 @@ export const projects = [
             text: 'after shipping the redesign: deferred charge, stated totals, explicit review and delivery timing.',
           },
           hero: {
-            src: '/projects/OarHealth/research.png', // '/projects/oar/research-variant.png'
+            src: '/projects/OarHealth/research.webp', // '/projects/oar/research-variant.png'
             placeholder:
               'STUDY — Variant B test screens with the orange annotation pointers ($15 today / billed after approval).',
             caption: 'The variant under test, annotations and all.',
@@ -415,7 +415,7 @@ export const projects = [
               'Doorknob: a slide-out message center with two channels — Customer Service for membership and accounts, Medical Care for dosage and side effects — with threaded conversation history.',
           },
           hero: {
-            src: '/projects/OarHealth/doorknob.png', // '/projects/oar/doorknob-hero.png' or .mp4 of the panel sliding open
+            src: '/projects/OarHealth/doorknob.webp', // '/projects/oar/doorknob-hero.png' or .mp4 of the panel sliding open
             placeholder:
               'SOLUTION HERO — Doorknob open: illustrated hero, channel selection, inbox. (A recording of the panel sliding open works great.)',
             caption: 'Two channels, one panel, full history.',
@@ -425,7 +425,7 @@ export const projects = [
               heading: 'Each channel asks the right questions',
               text: 'Customer Service opens with a free-form message. Medical Care asks first: have you started your medication, are you experiencing warning symptoms — so the clinical team triages before reading a word.',
               image: {
-                src: '/projects/OarHealth/doorknob3.png',
+                src: '/projects/OarHealth/doorknob3.webp',
                 placeholder:
                   'Channel entry forms — free-form Customer Service beside the structured Medical Care intake.',
               },
@@ -434,7 +434,7 @@ export const projects = [
               heading: 'A conversation, not a ticket',
               text: 'Threaded history with named support, a privacy notice up front, and expectations stated in the thread itself: a response within 72 hours.',
               image: {
-                src: '/projects/OarHealth/doorknob4.png',
+                src: '/projects/OarHealth/doorknob4.webp',
                 placeholder: 'Customer Service thread — privacy note, sent message, expert reply, follow-up.',
               },
             },
@@ -442,7 +442,7 @@ export const projects = [
               heading: 'Clinical answers, readable at a glance',
               text: 'The clinical team delivers treatment plans in the thread — dosage, timing, delivery — with a “Read Full Version” for the detail that doesn’t fit a bubble.',
               image: {
-                src: '/projects/OarHealth/doorknob5.png',
+                src: '/projects/OarHealth/doorknob5.webp',
                 placeholder:
                   'Medical Care thread — treatment plan message with Read Full Version, dose-change follow-up.',
               },
@@ -451,7 +451,7 @@ export const projects = [
               heading: 'It took 287 frames to get it right',
               text: 'It started as a bare activity sidebar. Two full rounds of exploration — including an in-chat medical advisor concept — converged on the channel model.',
               image: {
-                src: '/projects/OarHealth/doorknob2.png',
+                src: '/projects/OarHealth/doorknob2.webp',
                 placeholder: 'ONE combined frame — Doorknob V1 (bare sidebar) beside V2 (full message center).',
               },
             },
@@ -475,7 +475,7 @@ export const projects = [
               'A component library underpinning all of it: status badges that always pair words with color, card patterns, the visit stepper, message components, and type and color tokens — reused from 1440px desktop down to the native app.',
           },
           hero: {
-            src: '/projects/OarHealth/designSystem.png', // '/projects/oar/system-hero.png'
+            src: '/projects/OarHealth/designSystem.webp', // '/projects/oar/system-hero.png'
             placeholder:
               'SOLUTION HERO — a composed sheet of the design system: components, badges, cards, type and color tokens.',
             caption: 'The shared language behind every screen.',
@@ -553,7 +553,7 @@ export const projects = [
         // Team photo — shown only when src is set. Get your
         // teammates' okay before publishing their faces.
         teamPhoto: {
-          src: '/projects/OarHealth/team1.jpeg', // '/projects/OarHealth/team.jpg'
+          src: '/projects/OarHealth/team1.webp', // '/projects/OarHealth/team.webp'
           placeholder: 'OPTIONAL — a photo of the design team (with everyone’s permission).',
           caption: 'The design team behind the member experience.',
         },
@@ -583,7 +583,7 @@ export const projects = [
   // ═══════════════════════════════════════════════════════════
   {
     slug: 'backgammon-galaxy',
-    thumb: '/projects/thumbs/backgammon.png', // home-page thumbnail — your own design, not a case-study image
+    thumb: '/projects/thumbs/backgammon.webp', // home-page thumbnail — your own design, not a case-study image
     hook: 'A 2-star app, rebuilt to 4.3.',
     title: 'Designing — and building — Backgammon Galaxy',
     subtitle: 'Backgammon Galaxy • Gaming • Product Design + Front-end',
@@ -591,7 +591,7 @@ export const projects = [
 
     // '/projects/Backgammon/hero.mp4' — gameplay in motion is the
     // strongest possible cover for a game product.
-    cover: '/projects/Backgammon/cover1.png',
+    cover: '/projects/Backgammon/cover1.webp',
     coverPlaceholder:
       'HERO — gameplay recording (hero.mp4): a live match with the hint arrows firing, or your best board frame.',
 
@@ -703,7 +703,7 @@ export const projects = [
               'A full redesign on the new system: sign-up through lobby, dashboard, messaging, boards, and the coin shop. Landscape first to meet old-app players where they were — then the portrait v3. The rating climbed from about 2 to 4.3.',
           },
           hero: {
-            src: '/projects/Backgammon/mobile1.png', // '/projects/Backgammon/mobile-hero.png'
+            src: '/projects/Backgammon/mobile1.webp', // '/projects/Backgammon/mobile-hero.png'
             placeholder: 'SOLUTION HERO — the mobile lobby, or a lineup of the key mobile screens.',
             caption: 'The lobby: every way to play, one screen.',
           },
@@ -712,7 +712,7 @@ export const projects = [
               heading: 'Landscape first, portrait when it counted',
               text: 'The old app was landscape, so the redesign started there — new branding and system on a format players already knew, shipped sooner. Then V3 rebuilt it in portrait: one-handed, natural, the best design of the three. Knowing when to bridge from the old and when to break from it was the job.',
               image: {
-                src: '/projects/Backgammon/mobile2.png', // '/projects/Backgammon/mobile-v1-v3.png'
+                src: '/projects/Backgammon/mobile2.webp', // '/projects/Backgammon/mobile-v1-v3.png'
                 placeholder: 'ONE combined frame — the landscape V1 beside the portrait V3 of the same screen.',
               },
             },
@@ -720,7 +720,7 @@ export const projects = [
               heading: 'Onboarding that makes the experience unique',
               text: 'New players identify as Newbie through Advanced during sign-up — the foundation for personalized learning and fair matches, captured before the first game.',
               image: {
-                src: '/projects/Backgammon/mobile3.png', // '/projects/Backgammon/mobile-v1-v3.png'
+                src: '/projects/Backgammon/mobile3.webp', // '/projects/Backgammon/mobile-v1-v3.png'
                 placeholder: 'Sign-up → verification → skill-level selection → lobby. Recording works great.',
               },
             },
@@ -728,7 +728,7 @@ export const projects = [
               heading: 'A dashboard that’s yours',
               text: 'Rating, bankroll, current board and avatar, matches, leaderboards — in configurable rows, so a grinder and a casual player see different homes.',
               image: {
-                src: '/projects/Backgammon/mobile4.png', // '/projects/Backgammon/mobile-dashboard.png'
+                src: '/projects/Backgammon/mobile4.webp', // '/projects/Backgammon/mobile-dashboard.png'
                 placeholder: 'Mobile dashboard with configurable rows.',
               },
             },
@@ -736,7 +736,7 @@ export const projects = [
               heading: 'A lot of data, very little screen',
               text: 'The analytics page had far more to say than a phone has room for — ratings, performance, match history, blunders. Most of the design time went into structure: what earns the first screen, what collapses, what waits behind a tap.',
               image: {
-                src: '/projects/Backgammon/mobile5.png', // '/projects/Backgammon/mobile-analytics.png'
+                src: '/projects/Backgammon/mobile5.webp', // '/projects/Backgammon/mobile-analytics.png'
                 placeholder: 'Mobile analytics page — the dense-data layout, or 2–3 screens of its hierarchy.',
               },
             },
@@ -744,7 +744,7 @@ export const projects = [
               heading: 'Messaging, on both platforms',
               text: 'Friends, conversations, player search, invites — designed once as a system, shipped on mobile and web.',
               image: {
-                src: '/projects/Backgammon/mobile6.png', // '/projects/Backgammon/messaging.png'
+                src: '/projects/Backgammon/mobile6.webp', // '/projects/Backgammon/messaging.png'
                 placeholder: 'Messaging — conversation list + chat, mobile and web side by side.',
               },
             },
@@ -753,9 +753,9 @@ export const projects = [
             title: 'Around the app',
             cols: 3,
             images: [
-              { src: '/projects/Backgammon/mobile7.png', placeholder: 'Boards — selection & locked levels' },
-              { src: '/projects/Backgammon/mobile8.png', placeholder: 'Coin shop — bundles & bonuses' },
-              { src: '/projects/Backgammon/mobile9.png', placeholder: 'Profile / social screens' },
+              { src: '/projects/Backgammon/mobile7.webp', placeholder: 'Boards — selection & locked levels' },
+              { src: '/projects/Backgammon/mobile8.webp', placeholder: 'Coin shop — bundles & bonuses' },
+              { src: '/projects/Backgammon/mobile9.webp', placeholder: 'Profile / social screens' },
             ],
           },
           // Animated on scroll: stars fill from 2.0 to 4.3.
@@ -786,7 +786,7 @@ export const projects = [
               'A full redesign under the new branding, with new sections throughout: the quiz, Play vs AI, Analytics, Play a Friend, messaging, and board selection — one visual language across the whole platform.',
           },
           hero: {
-            src: '/projects/Backgammon/cover2.png', // '/projects/Backgammon/web-hero.png'
+            src: '/projects/Backgammon/cover2.webp', // '/projects/Backgammon/web-hero.png'
             placeholder: 'SOLUTION HERO — the redesigned website main page, new branding on full display.',
             caption: 'The new face of the platform.',
           },
@@ -795,7 +795,7 @@ export const projects = [
               heading: 'Old site, new site',
               text: 'Same platform, different decade. One combined before/after shows how far the rebrand moved it.',
               image: {
-                src: '/projects/Backgammon/mobile21.png', // '/projects/Backgammon/web-before-after.png'
+                src: '/projects/Backgammon/mobile21.webp', // '/projects/Backgammon/web-before-after.png'
                 placeholder: 'ONE combined frame — old website beside the redesign.',
               },
             },
@@ -803,7 +803,7 @@ export const projects = [
               heading: 'Chat with your friends and opponents',
               text: 'Real-time conversation built into the platform — talk with your opponent mid-match or pick up a thread with friends, with the same messaging system carried across web and mobile.',
               image: {
-                src: '/projects/Backgammon/mobile22.png', // '/projects/Backgammon/web-analytics.png'
+                src: '/projects/Backgammon/mobile22.webp', // '/projects/Backgammon/web-analytics.png'
                 placeholder: 'Analytics page — charts and match insights.',
               },
             },
@@ -834,7 +834,7 @@ export const projects = [
               'Quiz Academy: Easy to Hard categories, courses of 10 to 50 problems with saved progress, instant “Excellent” / “Nope” feedback before the explanation, and a celebration at the end. Beside it, Play vs AI: opponents from Rookie to Galactic Master with configurable coaching, format, and fees.',
           },
           hero: {
-            src: '/projects/Backgammon/cover3.png', // '/projects/Backgammon/academy-hero.png'
+            src: '/projects/Backgammon/cover3.webp', // '/projects/Backgammon/academy-hero.png'
             placeholder: 'SOLUTION HERO — the Quiz Academy entry: categories, courses, progress states.',
             caption: 'Courses with states, progress, and a reason to come back.',
           },
@@ -843,7 +843,7 @@ export const projects = [
               heading: 'Feedback first, lesson second',
               text: 'Pick a move, get the verdict instantly, then see the correct move and why. The emotional beat lands before the explanation asks for attention.',
               image: {
-                src: '/projects/Backgammon/mobile31.png', // '/projects/Backgammon/quiz-flow.mp4'
+                src: '/projects/Backgammon/mobile31.webp', // '/projects/Backgammon/quiz-flow.mp4'
                 placeholder: 'RECORDING — a quiz problem: answer → “Excellent”/“Nope” → explanation → next.',
               },
             },
@@ -851,7 +851,7 @@ export const projects = [
               heading: 'An opponent for every level',
               text: 'Rookie to Galactic Master, with match format, coaching assistance, hints and pip count all configurable — and membership deciding how much flexibility you get.',
               image: {
-                src: '/projects/Backgammon/mobile32.png', // '/projects/Backgammon/play-vs-ai.png'
+                src: '/projects/Backgammon/mobile32.webp', // '/projects/Backgammon/play-vs-ai.png'
                 placeholder:
                   'Play vs AI — opponent selection + match configuration, Free vs Star entitlements visible.',
               },
@@ -876,7 +876,7 @@ export const projects = [
               'A Hint → Detail system. Request a hint (coins permitting) and suggested-move arrows appear on the board; open Detail for candidate moves, equity, and winning chances. Cube decisions get their own verdicts — from No Double to Cube Blunder — and if you already made the best move, the system says so.',
           },
           hero: {
-            src: '/projects/Backgammon/cover4.png', // '/projects/Backgammon/gameplay-hero.png' or .mp4
+            src: '/projects/Backgammon/cover4.webp', // '/projects/Backgammon/gameplay-hero.png' or .mp4
             placeholder:
               'SOLUTION HERO — the live match screen: board, clocks, ratings, dice, with hint arrows visible. Recording > still.',
             caption: 'Everything a match needs, with coaching one tap away.',
@@ -886,7 +886,7 @@ export const projects = [
               heading: 'Hint, then Detail',
               text: 'Arrows suggest the move; Detail explains it — candidate moves ranked by equity and winning chances. After you move, it resets and the clock never stopped mattering.',
               image: {
-                src: '/projects/Backgammon/mobile41.png', // '/projects/Backgammon/hint-flow.mp4'
+                src: '/projects/Backgammon/mobile41.webp', // '/projects/Backgammon/hint-flow.mp4'
                 placeholder: 'RECORDING — hint requested → arrows appear → Detail panel opens → move made.',
               },
             },
@@ -894,7 +894,7 @@ export const projects = [
               heading: 'Feedback that names the move',
               text: 'Correct, good, error, blunder — and the full cube vocabulary from Excellent Take to Missed Cube. Players learn the language of the game while playing it.',
               image: {
-                src: '/projects/Backgammon/mobile42.png', // '/projects/Backgammon/feedback-states.png'
+                src: '/projects/Backgammon/mobile42.webp', // '/projects/Backgammon/feedback-states.png'
                 placeholder:
                   'Feedback states — correct / good / error / blunder plus cube verdicts, composed on one frame.',
               },
@@ -903,7 +903,7 @@ export const projects = [
               heading: 'One event, three audiences',
               text: 'When a player goes inactive, three people see three different screens: the inactive player gets a countdown, the opponent gets context, the spectator gets an update. Role-specific communication instead of one generic notification.',
               image: {
-                src: '/projects/Backgammon/mobile43.png', // '/projects/Backgammon/inactivity.png'
+                src: '/projects/Backgammon/mobile43.webp', // '/projects/Backgammon/inactivity.png'
                 placeholder:
                   'ONE frame — the inactivity flow from all three perspectives: player, opponent, spectator.',
               },
@@ -928,7 +928,7 @@ export const projects = [
               'A comprehensive component library: 80 component sets, 334 components, 5,000+ instances across the file — covering navigation, inputs and validation, overlays, notifications, gameplay messages, leaderboards, and the analysis sidebar.',
           },
           hero: {
-            src: '/projects/Backgammon/cover5.jpg', // '/projects/Backgammon/system-hero.png'
+            src: '/projects/Backgammon/cover5.webp', // '/projects/Backgammon/system-hero.png'
             placeholder: 'SOLUTION HERO — a composed sheet of the component library: sets, variants, states.',
             caption: 'The shared language of the whole platform.',
           },
@@ -937,7 +937,7 @@ export const projects = [
               heading: 'Built to be built',
               text: 'Because I was also implementing these components in code, the system stayed honest: every variant existed because a screen needed it, named so a developer — me — could find it. The next maturity step I scoped: a semantic token layer and consolidation of legacy variants.',
               image: {
-                src: '/projects/Backgammon/mobile51.png', // '/projects/Backgammon/system-states.png'
+                src: '/projects/Backgammon/mobile51.webp', // '/projects/Backgammon/system-states.png'
                 placeholder:
                   'A state-heavy component set — e.g. dialogs or gameplay messages with all variants visible.',
               },
@@ -946,7 +946,7 @@ export const projects = [
               heading: 'One component, every variant',
               text: 'Each component set carries its full range — sizes, states, platforms — so no screen ever needed a one-off. When a developer reached for a button or a dialog, the exact variant was already there, named and ready.',
               image: {
-                src: '/projects/Backgammon/mobile52.png', // '/projects/Backgammon/system-variants.png'
+                src: '/projects/Backgammon/mobile52.webp', // '/projects/Backgammon/system-variants.png'
                 placeholder:
                   'VARIANTS — one component set opened up: every size, state and platform variant on one frame.',
               },
@@ -973,7 +973,7 @@ export const projects = [
               'Detailed guides for every handoff and every review: annotated screens pointing at precise issues, with numbered steps to follow — spacing values, states, timing — so each round ended closer to 100%, not just different.',
           },
           hero: {
-            src: '/projects/Backgammon/cover6.png', // '/projects/Backgammon/guides1.png'
+            src: '/projects/Backgammon/cover6.webp', // '/projects/Backgammon/guides1.png'
             placeholder:
               'COVER — a full annotated guide page: a screen marked up with numbered pointers and exact corrections.',
             caption: 'Not “fix the spacing” — which element, which value, which step.',
@@ -983,7 +983,7 @@ export const projects = [
               heading: 'Point at the pixel, not the page',
               text: 'Every issue got a numbered pointer on the exact element: the current value, the intended value, and the component it should come from. No translation needed on the other side.',
               image: {
-                src: '/projects/Backgammon/mobile61.png', // '/projects/Backgammon/guides2.png'
+                src: '/projects/Backgammon/mobile61.webp', // '/projects/Backgammon/guides2.png'
                 placeholder:
                   'DETAIL — a close-up of annotated feedback: numbered markers, current vs. intended values.',
               },
@@ -992,7 +992,7 @@ export const projects = [
               heading: 'Steps to follow, in order',
               text: 'Each guide ended as a checklist: do this, then this, verify against that frame. Developers could work through it top to bottom — and when the list was done, the screen matched the design.',
               image: {
-                src: '/projects/Backgammon/mobile62.png', // '/projects/Backgammon/guides3.png'
+                src: '/projects/Backgammon/mobile62.webp', // '/projects/Backgammon/guides3.png'
                 placeholder: 'STEPS — the step-by-step instruction list a developer followed to close a screen.',
               },
             },
@@ -1077,7 +1077,7 @@ export const projects = [
   // ═══════════════════════════════════════════════════════════
   {
     slug: 'la-suite-numerique',
-    thumb: '/projects/thumbs/lasuite.png', // home-page thumbnail — your own design, not a case-study image
+    thumb: '/projects/thumbs/lasuite.webp', // home-page thumbnail — your own design, not a case-study image
     hook: 'Six apps became one canvas.',
     title: 'SuiteFlow: rethinking La Suite Numérique as one canvas',
     subtitle: 'La Suite Numérique • LISN, Université Paris-Saclay • HCI Research',
@@ -1085,7 +1085,7 @@ export const projects = [
 
     // Ideal cover: a recording of the scenario — the poll being
     // dragged into a spreadsheet beats any still.
-    cover: '/projects/LaSuite/cover1.png',
+    cover: '/projects/LaSuite/cover1.webp',
     coverPlaceholder:
       'HERO — the canvas in use: chat, video call, people list and spreadsheet side by side on one surface.',
 
@@ -1173,7 +1173,7 @@ export const projects = [
               'A canvas workspace. The left bar reads like Slack: Teams & People, Conversations, threads. Tabs on top work like a browser — each one its own canvas for its own workflow. The center is new: open a chat, create a spreadsheet beside it, start a call, draft an email, all arranged like a desk.',
           },
           hero: {
-            src: '/projects/LaSuite/cover2.png',
+            src: '/projects/LaSuite/cover2.webp',
             placeholder:
               'HERO — the Intern Meeting canvas: chat, video call people list, and attendance spreadsheet side by side.',
             caption: 'One tab, one task: the chat, the call, and the attendance sheet share a desk.',
@@ -1201,7 +1201,7 @@ export const projects = [
               heading: 'One toolbar for every app',
               text: 'We observed that most La Suite tools share the same core instruments — so we gave them one toolbar. Bold works in the document, the spreadsheet cell, the chat. Alignment lines up text in a doc — and windows on the canvas. Learned once, used everywhere. This is **instrumental interaction** in practice — Michel Beaudouin-Lafon’s model of tools as first-class instruments, decoupled from any single application (CHI 2000).',
               image: {
-                src: '/projects/LaSuite/image21.png', // '/projects/LaSuite/toolbar.png'
+                src: '/projects/LaSuite/image21.webp', // '/projects/LaSuite/toolbar.png'
                 placeholder:
                   'DETAIL — the shared bottom toolbar acting on a document, a spreadsheet, and the canvas itself.',
               },
@@ -1225,14 +1225,14 @@ export const projects = [
             cols: 3,
             images: [
               {
-                src: '/projects/LaSuite/image22.jpg',
+                src: '/projects/LaSuite/image22.webp',
                 placeholder: 'Sticky notes — mapping the six apps into the canvas concept',
               },
               {
-                src: '/projects/LaSuite/image23.jpg',
+                src: '/projects/LaSuite/image23.webp',
                 placeholder: 'Low-fi sketch — first canvas layout, edges vs. middle',
               },
-              { src: '/projects/LaSuite/image24.jpg', placeholder: 'Paper prototype — pieces on the table' },
+              { src: '/projects/LaSuite/image24.webp', placeholder: 'Paper prototype — pieces on the table' },
             ],
           },
         },
@@ -1287,7 +1287,7 @@ export const projects = [
               heading: '3 — The poll becomes a table',
               text: 'Drag the finished poll onto the canvas and it lands as a spreadsheet — the AI reads the content and names the columns itself: Name, Attending. Live rows, not a pasted picture.',
               image: {
-                src: '/projects/LaSuite/scenario3.png', // '/projects/LaSuite/flow3.png'
+                src: '/projects/LaSuite/scenario3.webp', // '/projects/LaSuite/flow3.png'
                 placeholder: 'STEP 3 — the poll as spreadsheet rows, columns auto-named Name / Attending.',
               },
             },
@@ -1319,7 +1319,7 @@ export const projects = [
               heading: 'Then the desk gets cleaned',
               text: 'Select everything the errand produced — chat, sheet, call, email — group it, let the AI suggest its name, and minimize. The canvas is clean; the whole workflow waits in one box, reopenable whenever it’s needed again.',
               image: {
-                src: '/projects/LaSuite/scenario7.png', // '/projects/LaSuite/flow7.png'
+                src: '/projects/LaSuite/scenario7.webp', // '/projects/LaSuite/flow7.png'
                 placeholder: 'CLOSER — the finished services grouped, AI-named, minimized to one tidy box.',
               },
             },
@@ -1374,7 +1374,7 @@ export const projects = [
               heading: 'Access down to a column',
               text: 'Limited access isn’t per-file, it’s per-part: two columns of the spreadsheet, one region of the document. Teresa sees exactly the form she must fill — the rest of the doc stays Ross’s.',
               image: {
-                src: '/projects/LaSuite/image42.png', // '/projects/LaSuite/access.png'
+                src: '/projects/LaSuite/image42.webp', // '/projects/LaSuite/access.png'
                 placeholder:
                   'DETAIL — limit-access on selected spreadsheet columns and a selected region of a document.',
               },
@@ -1383,7 +1383,7 @@ export const projects = [
               heading: 'A timeline the group writes itself',
               text: 'Because the grouped tasks carry deadlines and assignees, the phase renders its own timeline on the rail: Week 2 complete and dimmed behind, Week 3 in progress in front. The project’s history and present, on the same surface.',
               image: {
-                src: '/projects/LaSuite/image43.png',
+                src: '/projects/LaSuite/image43.webp',
                 placeholder:
                   'DETAIL — Week 2 faded behind, the Week 3 “In progress” group in front, timeline rail on the right.',
               },
@@ -1475,7 +1475,7 @@ export const projects = [
      ═══════════════════════════════════════════════════════════ */
   {
     slug: 'thinking-machine',
-    thumb: 'projects/thumbs/thinkingMachine.png', // your banner — "AI that finds money hidden in telecom invoices" / "26 countries, 18 languages → one platform"
+    thumb: 'projects/thumbs/thinkingMachine.webp', // your banner — "AI that finds money hidden in telecom invoices" / "26 countries, 18 languages → one platform"
     hook: 'AI that finds money hidden in telecom invoices.',
     title: 'Designing for density at Thinking Machine',
     subtitle: 'Thinking Machine • B2B AI • Product Design',
@@ -1583,7 +1583,7 @@ export const projects = [
               'A three-step opener: tell us about yourself → see your estimate (in the demo: “we estimate to save you $102.00K, for a flat cost of $52.00K”) → create an account to claim it. The estimate screen itself sells the method, per category: switch off legacy services, de-bundle accounts, match tariffs to existing contracts, spot billing errors.',
           },
           hero: {
-            src: '/projects/ThinkingMachine/cover2.png', // '/projects/ThinkingMachine/onboarding-estimate.png' — the "How Much Can You Save?" screen
+            src: '/projects/ThinkingMachine/cover2.webp', // '/projects/ThinkingMachine/onboarding-estimate.png' — the "How Much Can You Save?" screen
             placeholder:
               'HERO — the estimate screen: Telecom / IT / Cloud tabs, the savings number, the method checklist.',
             caption: 'The first number a visitor sees is their own. (Demo data.)',
@@ -1593,12 +1593,12 @@ export const projects = [
               heading: 'Three ways to hand over your documents',
               text: 'Document intake is really a **trust decision**, so it became three explicit tiers: self-upload your invoices; hand us login credentials and we download them for you; or sign a Letter of Authority and we deal with your vendors directly. Each tier trades effort for delegation — and each ends in a clear confirmation of what happens next.',
               image: {
-                src: '/projects/ThinkingMachine/image21.png', // the three-option chooser with illustrations
+                src: '/projects/ThinkingMachine/image21.webp', // the three-option chooser with illustrations
                 placeholder: 'The three-tier chooser: Self-Upload / Managed File Download / Managed Vendor Requests.',
               },
               // second image for this row — stacks under the first
               image2: {
-                src: '/projects/ThinkingMachine/image211.png', // your second upload screen — rename to match your export
+                src: '/projects/ThinkingMachine/image211.webp', // your second upload screen — rename to match your export
                 placeholder: 'The self-upload flow: drag-and-drop with queued PDFs.',
               },
             },
@@ -1606,7 +1606,7 @@ export const projects = [
               heading: 'The waiting is part of the product',
               text: 'AI analysis of a year of invoices isn’t instant, so the confirmation states say exactly what was received and when the dashboard will be ready — “within 24h–1w” — instead of leaving a silent gap between upload and value.',
               image: {
-                src: '/projects/ThinkingMachine/image22.png', // '/projects/ThinkingMachine/intake-confirmation.png' — "Congratulations, ThinkingMachine is Analysing Documents"
+                src: '/projects/ThinkingMachine/image22.webp', // '/projects/ThinkingMachine/intake-confirmation.png' — "Congratulations, ThinkingMachine is Analysing Documents"
                 placeholder: 'The analysing-documents confirmation with the stated timeframe.',
               },
             },
@@ -1614,7 +1614,7 @@ export const projects = [
               heading: 'A human, one tap away, on every screen',
               text: 'Enterprise buyers want a person reachable before they trust a machine. “Book a Call” lives permanently in the header, help panels repeat it in context, and the support drawer pairs messages with a call code — so the AI platform never feels unstaffed.',
               image: {
-                src: '/projects/ThinkingMachine/image23.png', // '/projects/ThinkingMachine/support.png' — the "We're here to help you" drawer with the call code
+                src: '/projects/ThinkingMachine/image23.webp', // '/projects/ThinkingMachine/support.png' — the "We're here to help you" drawer with the call code
                 placeholder: 'The support drawer: send a message, or call with your support code.',
               },
             },
@@ -1639,7 +1639,7 @@ export const projects = [
               'One dashboard, four states: an illustrated empty state that says why it’s empty; a full skeleton while analysis runs; the ready state — spend tiles, a savings-range chart (demo: £63,524→£138,892 a year), a regions map, the immediate-opportunities table, a live spend history; and a Pro-locked state where blurred rows advertise exactly what an upgrade unlocks.',
           },
           hero: {
-            src: '/projects/ThinkingMachine/cover3.png', // '/projects/ThinkingMachine/dashboard-ready.png'
+            src: '/projects/ThinkingMachine/cover3.webp', // '/projects/ThinkingMachine/dashboard-ready.png'
             placeholder: 'HERO — the ready-state Summary Report, full density.',
             caption: 'The ready state: a year of spending, one screen. (Demo data.)',
           },
@@ -1648,7 +1648,7 @@ export const projects = [
               heading: 'Four states, one truth',
               text: 'Empty, analysing, ready, locked — side by side. Each state tells the user where their data actually is; none of them fakes completeness. The skeleton state alone killed most “is it broken?” support questions before they existed.', // verify that last claim or cut it
               image: {
-                src: '/projects/ThinkingMachine/image31.png', // '/projects/ThinkingMachine/dashboard-states.png' — compose the 4 states in one frame
+                src: '/projects/ThinkingMachine/image31.webp', // '/projects/ThinkingMachine/dashboard-states.png' — compose the 4 states in one frame
                 placeholder: 'ONE combined frame — the dashboard’s empty / skeleton / ready / locked states.',
               },
             },
@@ -1656,11 +1656,11 @@ export const projects = [
               heading: 'A range, not a promise',
               text: 'The headline savings figure is deliberately a **range** — “from £63,524 to £138,892” — with actual vs. plan toggles. Estimates presented as exact numbers get falsified by reality; ranges earn trust they can keep.',
               image: {
-                src: '/projects/ThinkingMachine/image32.png', // '/projects/ThinkingMachine/savings-range.png' — the annual estimated savings chart
+                src: '/projects/ThinkingMachine/image32.webp', // '/projects/ThinkingMachine/savings-range.png' — the annual estimated savings chart
                 placeholder: 'The annual-savings chart with its from–to range and actual/plan toggle.',
               },
               image2: {
-                src: '/projects/ThinkingMachine/image32b.png', // '/projects/ThinkingMachine/savings-range.png' — the annual estimated savings chart
+                src: '/projects/ThinkingMachine/image32b.webp', // '/projects/ThinkingMachine/savings-range.png' — the annual estimated savings chart
                 placeholder: 'The annual-savings chart with its from–to range and actual/plan toggle.',
               },
             },
@@ -1668,7 +1668,7 @@ export const projects = [
               heading: 'Basic and Pro: the paywall that shows, not hides',
               text: 'The free tier isn’t a crippled product — it’s a **preview of a fuller one**. Pro-only modules carry their badge in the sidebar, the locked dashboard blurs real rows instead of hiding them, and the upgrade card names exactly what Annual unlocks. A paywall you can see through converts better than a wall — and it never lies about what’s behind it.',
               image: {
-                src: '/projects/ThinkingMachine/image33.png', // '/projects/ThinkingMachine/pro-locked.png' — the blurred locked dashboard with the "Upgrade to Annual Subscription" card
+                src: '/projects/ThinkingMachine/image33.webp', // '/projects/ThinkingMachine/pro-locked.png' — the blurred locked dashboard with the "Upgrade to Annual Subscription" card
                 placeholder: 'The locked dashboard: blurred rows, the Upgrade-to-Annual card in place.',
               },
             },
@@ -1693,7 +1693,7 @@ export const projects = [
               'Each category opens as a three-tab queue — in the demo, Under Review (100), Approved (30), Rejected (15) — with select-all, approve/reject in bulk, per-service detail down to the invoice line, and a downloadable report for the people not in the room. “Recommendation pending your approval” is the system’s default posture.',
           },
           hero: {
-            src: '/projects/ThinkingMachine/cover4.png', // '/projects/ThinkingMachine/review-queue.png' — Unused Services, Under Review tab, rows + bulk actions
+            src: '/projects/ThinkingMachine/cover4.webp', // '/projects/ThinkingMachine/review-queue.png' — Unused Services, Under Review tab, rows + bulk actions
             placeholder:
               'HERO — the review queue: Under Review / Approved / Rejected tabs, bulk approve-reject, country + provider + amount rows.',
             caption: 'Every row is money; every decision is a person’s. (Demo data.)',
@@ -1703,11 +1703,11 @@ export const projects = [
               heading: 'The AI shows its homework',
               text: 'Every category ships with a **Methodology** page — “how the opportunities are found”: every usage type extracted from invoices, text read in all languages where usage is described rather than shown, monthly charges matched per service, last-used dates traced through historical invoices. Next to it, “How to improve” turns findings into actions.',
               image: {
-                src: '/projects/ThinkingMachine/image41.png', // '/projects/ThinkingMachine/methodology.png'
+                src: '/projects/ThinkingMachine/image41.webp', // '/projects/ThinkingMachine/methodology.png'
                 placeholder: 'The Methodology and How-to-improve pages, side by side.',
               },
               image2: {
-                src: '/projects/ThinkingMachine/image41b.png', // '/projects/ThinkingMachine/methodology.png'
+                src: '/projects/ThinkingMachine/image41b.webp', // '/projects/ThinkingMachine/methodology.png'
                 placeholder: 'The Methodology and How-to-improve pages, side by side.',
               },
             },
@@ -1715,11 +1715,11 @@ export const projects = [
               heading: 'Identified vs. realized',
               text: 'Two modes of the same summary: what the AI has **identified** (demo: $65,000–$123,000 a year across the five categories) and what the client has actually **realized** by approving and acting. The gap between the two numbers is the product’s to-do list.',
               image: {
-                src: '/projects/ThinkingMachine/image42.png', // '/projects/ThinkingMachine/identified-realized.png'
+                src: '/projects/ThinkingMachine/image42.webp', // '/projects/ThinkingMachine/identified-realized.png'
                 placeholder: 'The savings summary in identified mode beside realized mode.',
               },
               image2: {
-                src: '/projects/ThinkingMachine/image42b.png', // '/projects/ThinkingMachine/methodology.png'
+                src: '/projects/ThinkingMachine/image42b.webp', // '/projects/ThinkingMachine/methodology.png'
                 placeholder: 'The savings summary in identified mode beside realized mode.',
               },
             },
@@ -1730,7 +1730,7 @@ export const projects = [
             eyebrow: 'Designed honesty',
             heading: 'A page that admits what the data can’t say',
             text: 'The platform has a **Disclaimer** section — not legal fine print, but charts: spend processed vs. spend whose service-level usage is missing, vendors with only account-level totals, how to read a gap in the bars. It teaches clients to see the limits of the analysis — and exactly which detailed invoices to request to close them. Trust is built faster by a product that shows its blind spots than by one that claims none.',
-            src: '/projects/ThinkingMachine/disclaimer.png', // '/projects/ThinkingMachine/disclaimer.png'
+            src: '/projects/ThinkingMachine/disclaimer.webp', // '/projects/ThinkingMachine/disclaimer.webp'
             placeholder: 'The Disclaimer page: missing-data charts and the guidance for closing the gaps.',
             caption: 'Click to see it full-screen.',
           },
@@ -1753,7 +1753,7 @@ export const projects = [
               'Cost centres start from four templates — Site Billing, Franchise Billing, Complex Contract, or **Build Yourself**. A three-step wizard (basic info → services → allocation) creates hierarchies up to five levels deep, assigns services by family and category with and/or filters, and splits allocation by percentage. The result renders as an expandable tree with GL codes and per-row allocation sliders.',
           },
           hero: {
-            src: '/projects/ThinkingMachine/cover5.png', // '/projects/ThinkingMachine/hierarchy.png' — the Complex Contract expandable tree with sliders
+            src: '/projects/ThinkingMachine/cover5.webp', // '/projects/ThinkingMachine/hierarchy.png' — the Complex Contract expandable tree with sliders
             placeholder:
               'HERO — the cost-centre hierarchy: nested levels, GL codes, allocation sliders, linked services.',
             caption: 'A client’s whole org, assembled from a template and a wizard. (Demo data.)',
@@ -1763,11 +1763,11 @@ export const projects = [
               heading: 'The wizard that replaced a backlog',
               text: 'Create Hierarchy walks three steps: name, levels and allocation; then services chosen by family, category and logical filters; then percentage splits per level. What used to be a change request became a two-minute flow — the pattern behind the **30–40% less development time** the platform delivered.', // verify figure
               image: {
-                src: '/projects/ThinkingMachine/image51.png', // '/projects/ThinkingMachine/wizard.png' — the 3 steps side by side
+                src: '/projects/ThinkingMachine/image51.webp', // '/projects/ThinkingMachine/wizard.png' — the 3 steps side by side
                 placeholder: 'The Create Hierarchy wizard: Basic Info → Services → Allocation.',
               },
               image2: {
-                src: '/projects/ThinkingMachine/image51b.png', // '/projects/ThinkingMachine/wizard.png' — the 3 steps side by side
+                src: '/projects/ThinkingMachine/image51b.webp', // '/projects/ThinkingMachine/wizard.png' — the 3 steps side by side
                 placeholder: 'The Create Hierarchy wizard: Basic Info → Services → Allocation.',
               },
             },
@@ -1775,7 +1775,7 @@ export const projects = [
               heading: 'The rest of the plumbing',
               text: 'The same patterns carry the whole configuration area: user management with role-scoped permissions (admins approve, analysts draft), a document centre with per-file analysis status, and the Database — the raw ledger of vendors, service types and countries behind every number upstairs.',
               image: {
-                src: '/projects/ThinkingMachine/image52.png', // '/projects/ThinkingMachine/config-grid.png' or use the grid below instead
+                src: '/projects/ThinkingMachine/image52.webp', // '/projects/ThinkingMachine/config-grid.png' or use the grid below instead
                 placeholder: 'Users, Documents and Database views — one pattern family.',
               },
             },
@@ -1785,15 +1785,15 @@ export const projects = [
             cols: 3,
             images: [
               {
-                src: '/projects/ThinkingMachine/image53.png',
+                src: '/projects/ThinkingMachine/image53.webp',
                 placeholder: 'users.png — roles & permissions, add-member drawer',
               },
               {
-                src: '/projects/ThinkingMachine/image54.png',
+                src: '/projects/ThinkingMachine/image54.webp',
                 placeholder: 'documents.png — upload centre with per-file Analysing/Analyzed status',
               },
               {
-                src: '/projects/ThinkingMachine/image55.png',
+                src: '/projects/ThinkingMachine/image55.webp',
                 placeholder: 'database.png — the vendors / service types / countries ledger',
               },
             ],
@@ -1817,7 +1817,7 @@ export const projects = [
               'Products traces spend through a **Sankey** — service type to country to vendor to product; Suppliers compares billed cost against account totals per vendor; Services maps the estate on a world map and by cost centre; Usage splits national, international and roaming — down to a map of roaming arcs between countries. Shared filters everywhere: country, service type, date, cost centre.',
           },
           hero: {
-            src: '/projects/ThinkingMachine/cover6.png', // '/projects/ThinkingMachine/sankey.png' — the Products Sankey
+            src: '/projects/ThinkingMachine/cover6.webp', // '/projects/ThinkingMachine/sankey.png' — the Products Sankey
             placeholder:
               'HERO — the Products Sankey: spend flowing from service types through countries and vendors to products.',
             caption: 'Where the money actually flows. (Demo data.)',
@@ -1827,11 +1827,11 @@ export const projects = [
               heading: 'Usage, three zoom levels',
               text: 'By service (gauges and totals), by zone (national / international / roaming), and by location — a world map of roaming arcs showing exactly which routes burn the budget. The deeper the zoom, the more specific the saving.',
               image: {
-                src: '/projects/ThinkingMachine/image61.png', // '/projects/ThinkingMachine/usage-map.png'
+                src: '/projects/ThinkingMachine/image61.webp', // '/projects/ThinkingMachine/usage-map.png'
                 placeholder: 'The usage views: gauge + zone bars + the roaming-arcs world map.',
               },
               image2: {
-                src: '/projects/ThinkingMachine/image61b.png', // '/projects/ThinkingMachine/usage-map.png'
+                src: '/projects/ThinkingMachine/image61b.webp', // '/projects/ThinkingMachine/usage-map.png'
                 placeholder: 'The usage views: gauge + zone bars + the roaming-arcs world map.',
               },
             },
@@ -1839,7 +1839,7 @@ export const projects = [
               heading: 'Tables that expand instead of overwhelm',
               text: 'The services-by-cost-centre view keeps rows one line tall — cost centre, calls, data, count, total — and lets each expand in place for the breakdown. The same progressive-disclosure pattern I later reused for Backgammon Galaxy’s mobile analytics.',
               image: {
-                src: '/projects/ThinkingMachine/image62.png', // '/projects/ThinkingMachine/services-table.png'
+                src: '/projects/ThinkingMachine/image62.webp', // '/projects/ThinkingMachine/services-table.png'
                 placeholder: 'The services-by-cost-centre table with an expanded row.',
               },
             },
@@ -1868,7 +1868,7 @@ export const projects = [
               'A navigation system, not a menu: a task-based sidebar (six verbs, each expanding into categories and pages), a searchable **Site Navigation** directory reachable from every screen, breadcrumbs with per-page tabs, and an “About This Page” explainer on every single page — so no screen is ever a dead end.',
           },
           hero: {
-            src: '/projects/ThinkingMachine/cover7.png', // '/projects/ThinkingMachine/sitenav.png' — the Site Navigation directory (the Version 19 screen)
+            src: '/projects/ThinkingMachine/cover7.webp', // '/projects/ThinkingMachine/sitenav.png' — the Site Navigation directory (the Version 19 screen)
             placeholder:
               'HERO — the Site Navigation directory: destinations grouped by task (Overview / Optimize / Negotiate / Database), category chips, search.',
             caption: 'The whole platform on one page: grouped by task, tagged by category, searchable. (Demo data.)',
@@ -1878,7 +1878,7 @@ export const projects = [
               heading: 'Organized by verb, not by module',
               text: 'The new sidebar names what the client is doing, not what the software contains: **Overview, Optimize, Negotiate, Audit, Workflow, Database**. Each verb expands into its categories — Spend, Telecom, IT Hardware — and their pages: a two-level tree that holds the grown platform without burying it. The same six verbs structure the directory, so the sidebar and the map always agree.',
               image: {
-                src: '/projects/ThinkingMachine/image71.png', // '/projects/ThinkingMachine/sidebar.png' — a page with the expanded tree sidebar + breadcrumbs
+                src: '/projects/ThinkingMachine/image71.webp', // '/projects/ThinkingMachine/sidebar.png' — a page with the expanded tree sidebar + breadcrumbs
                 placeholder: 'The task-verb sidebar expanded, with breadcrumbs and per-page tabs above the content.',
               },
             },
@@ -1886,12 +1886,12 @@ export const projects = [
               heading: 'No page is a dead end',
               text: 'Every page carries its own wayfinding: breadcrumbs back to its service, an **About This Page** explainer, and guided walkthroughs — “How the filtering works”, step by step, with previous and next — written into the interface itself. And when wayfinding isn’t enough, the escape hatches are always in reach: “Can’t find the page you’re looking for?”, “Ask AI Expert”, “Get insights from this table”. The documentation lives where the confusion happens.',
               image: {
-                src: '/projects/ThinkingMachine/image72.png', // '/projects/ThinkingMachine/walkthrough.png' — the About This Page + How-the-filtering-works modals
+                src: '/projects/ThinkingMachine/image72.webp', // '/projects/ThinkingMachine/walkthrough.png' — the About This Page + How-the-filtering-works modals
                 placeholder:
                   'The in-context help: About This Page and a guided walkthrough modal over the live screen.',
               },
               image2: {
-                src: '/projects/ThinkingMachine/image72b.png', // '/projects/ThinkingMachine/helpers.png' — the orange contextual buttons
+                src: '/projects/ThinkingMachine/image72b.webp', // '/projects/ThinkingMachine/helpers.png' — the orange contextual buttons
                 placeholder:
                   'The escape hatches: “Can’t find the page?”, “Ask AI Expert”, “Get insights from this table”.',
               },
@@ -1900,11 +1900,11 @@ export const projects = [
               heading: 'The redesign underneath',
               text: 'Solving navigation honestly meant touching everything it connects, so Phase 2 grew into a new version of the platform: a rebuilt document pipeline shown as a live stepper — unzip, convert, duplicate-check, each stage with its own progress and states — and a theme system that let the whole product ship **white-labeled** under a partner’s brand.',
               image: {
-                src: '/projects/ThinkingMachine/image73.png', // '/projects/ThinkingMachine/pipeline.png' — the stepper: Unzip → Convert → Duplicate Check with progress
+                src: '/projects/ThinkingMachine/image73.webp', // '/projects/ThinkingMachine/pipeline.png' — the stepper: Unzip → Convert → Duplicate Check with progress
                 placeholder: 'The document pipeline as a stepper, each stage with live progress and its own state.',
               },
               image2: {
-                src: '/projects/ThinkingMachine/image73b.png', // '/projects/ThinkingMachine/pipeline.png' — the stepper: Unzip → Convert → Duplicate Check with progress
+                src: '/projects/ThinkingMachine/image73b.webp', // '/projects/ThinkingMachine/pipeline.png' — the stepper: Unzip → Convert → Duplicate Check with progress
                 placeholder: 'The document pipeline as a stepper, each stage with live progress and its own state.',
               },
             },
@@ -1914,15 +1914,15 @@ export const projects = [
             cols: 3,
             images: [
               {
-                src: '/projects/ThinkingMachine/image74.png',
+                src: '/projects/ThinkingMachine/image74.webp',
                 placeholder: 'launcher-v2.png — the six-group directory variant (with Audit & Workflow)',
               },
               {
-                src: '/projects/ThinkingMachine/image75.png',
+                src: '/projects/ThinkingMachine/image75.webp',
                 placeholder: 'summary-states.png — the rebuilt summary in its loading and ready states',
               },
               {
-                src: '/projects/ThinkingMachine/image76.png',
+                src: '/projects/ThinkingMachine/image76.webp',
                 placeholder: 'whitelabel.png — the same screens themed for a partner brand',
               }, // confirm you may show the partner's name before exporting; crop or retheme if not
             ],
@@ -1991,40 +1991,40 @@ export const otherWorks = {
       meta: 'One Item, Inc. • iOS & iPad app • 2017–2018',
       description:
         'A wellness self-assessment app: you score every area of your life — sleep, fitness, relationships, mindset — mark how much each matters, and watch the gap between where you are and where you want to be. I redesigned the old application into a modern, minimal system of 50+ screens across iPhone and iPad, from wireframes to the final UI and an interactive prototype.',
-      thumb: '/archive/betternow.png',
+      thumb: '/archive/betternow.webp',
       shots: [
         {
-          src: '/archive/betterNow/screen1.png',
+          src: '/archive/betterNow/screen1.webp',
           title: 'My Scores',
           text: 'Expanding a score card — details, history, editing, and sharing stack in one sheet.',
         },
         {
-          src: '/archive/betterNow/screen2.png',
+          src: '/archive/betterNow/screen2.webp',
           title: 'Dashboard & profile',
           text: 'Gap results, the BetterNow index over time, and the account menu.',
         },
         {
-          src: '/archive/betterNow/screen3.png',
+          src: '/archive/betterNow/screen3.webp',
           title: 'Assessment',
           text: 'Every life area scored in one list; tapping an item opens score, color, and weekly progress.',
         },
         {
-          src: '/archive/betterNow/screen4.png',
+          src: '/archive/betterNow/screen4.webp',
           title: 'Daily check-in',
           text: 'A one-screen grid for updating past days\u2019 scores at a glance.',
         },
         {
-          src: '/archive/betterNow/boarding.png',
+          src: '/archive/betterNow/boarding.webp',
           title: 'Onboarding',
           text: 'Loading and welcome, set in the brand\u2019s calm photography.',
         },
         {
-          src: '/archive/betterNow/wireframe1.png',
+          src: '/archive/betterNow/wireframe1.webp',
           title: 'Wireframes — score details & dashboard',
           text: 'The structure was settled in grayscale before any visual design.',
         },
         {
-          src: '/archive/betterNow/wireframe2.png',
+          src: '/archive/betterNow/wireframe2.webp',
           title: 'Wireframes — assessment flow',
           text: 'Scoring, history, and importance mapped screen by screen.',
         },
@@ -2040,30 +2040,30 @@ export const otherWorks = {
       meta: 'BioComputing UP, University of Padua • Scientific database • 2024–25',
       description:
         'The redesign of DisProt, the manually curated database of intrinsically disordered proteins used by researchers worldwide. During my research fellowship I redesigned the whole interface — search, protein entries, the feature viewer, statistics, and training — and built what I designed, working directly with the curators who use it every day.',
-      thumb: '/archive/Disprot.png',
+      thumb: '/archive/Disprot.webp',
       shots: [
         {
-          src: '/archive/disprot/Home.png',
+          src: '/archive/disprot/Home.webp',
           title: 'Home & search',
           text: 'One search bar, live database counts, and browsing by organism or dataset.',
         },
         {
-          src: '/archive/disprot/Protein Page.png',
+          src: '/archive/disprot/Protein Page.webp',
           title: 'Protein entry',
           text: 'A protein\u2019s evidence list — every annotation typed, color-coded, and filterable.',
         },
         {
-          src: '/archive/disprot/Protein Page-1.png',
+          src: '/archive/disprot/Protein Page-1.webp',
           title: 'Feature viewer',
           text: 'Disorder regions plotted along the sequence, linked to the evidence below.',
         },
         {
-          src: '/archive/disprot/Release.png',
+          src: '/archive/disprot/Release.webp',
           title: 'Release statistics',
           text: 'Annotation counts and amino-acid composition, restructured into readable tables.',
         },
         {
-          src: '/archive/disprot/Training.png',
+          src: '/archive/disprot/Training.webp',
           title: 'Training',
           text: 'Courses and recorded tutorials for the curators and users of the database.',
         },
@@ -2074,7 +2074,7 @@ export const otherWorks = {
       meta: 'US • Mobile app • 2019–2020',
       description:
         'An audio-courses app for building better habits: guided workout, meditation, and happiness courses you listen to, with a dashboard that turns listening into streaks, habit scores, and a daily timeline.',
-      thumb: '/archive/21fit.png',
+      thumb: '/archive/21fit.webp',
       shots: [
         {
           src: '/archive/21fit/video.mp4',
@@ -2082,12 +2082,12 @@ export const otherWorks = {
           text: 'The flow recorded from the prototype.',
         },
         {
-          src: '/archive/21fit/screen1.png',
+          src: '/archive/21fit/screen1.webp',
           title: 'Course discovery',
           text: 'Featured courses with a listen-today player, category grids, and a coming-soon feed.',
         },
         {
-          src: '/archive/21fit/screen2.png',
+          src: '/archive/21fit/screen2.webp',
           title: 'Workout & dashboard',
           text: 'The dark workout theme, and the habit dashboard \u2014 score gauge, listening hours, and a day timeline.',
         },
@@ -2098,25 +2098,25 @@ export const otherWorks = {
       meta: 'Hotel client • Booking platform',
       description:
         'A booking platform for a hotel network built around refundable stays and a members\u2019 loyalty program. I designed the whole funnel \u2014 from the landing page through search, room selection, and rate comparison \u2014 with the booking overview keeping a running total at every step.',
-      thumb: '/archive/hotel.png',
+      thumb: '/archive/hotel.webp',
       shots: [
         {
-          src: '/archive/hotel/Home.png',
+          src: '/archive/hotel/Home.webp',
           title: 'Landing',
           text: 'One search bar over the promise, trust signals under the fold, and stays browsable by travel style.',
         },
         {
-          src: '/archive/hotel/hotels.png',
+          src: '/archive/hotel/hotels.webp',
           title: 'Search results',
           text: 'List and live map side by side, with quick filters and scarcity cues on busy hotels.',
         },
         {
-          src: '/archive/hotel/room1.png',
+          src: '/archive/hotel/room1.webp',
           title: 'Room selection',
           text: 'Rooms compared at a glance; the overview panel builds the price as you choose.',
         },
         {
-          src: '/archive/hotel/room2.png',
+          src: '/archive/hotel/room2.webp',
           title: 'Rates & checkout',
           text: 'Each room expands into flexible, prepaid, and breakfast rates \u2014 member pricing beside every one.',
         },
@@ -2127,20 +2127,20 @@ export const otherWorks = {
       meta: 'BioComputing UP, University of Padua • Scientific platform • 2024–25',
       description:
         'APICURON credits the invisible work of science: it aggregates curation activity from partner databases like DisProt, Reactome, and Pfam, and turns it into profiles, badges, medals, and leaderboards for the biocurators behind them. During my research fellowship I redesigned the platform \u2014 and built what I designed in Angular.',
-      thumb: '/archive/apicuron.png',
+      thumb: '/archive/apicuron.webp',
       shots: [
         {
-          src: '/archive/apicuron/Home.png',
+          src: '/archive/apicuron/Home.webp',
           title: 'Home',
           text: 'The pitch in one screen \u2014 what APICURON credits, live platform numbers, top contributors, and the partner resources.',
         },
         {
-          src: '/archive/apicuron/Database.png',
+          src: '/archive/apicuron/Database.webp',
           title: 'Curator profile',
           text: 'One researcher\u2019s record per database \u2014 scores, medals, badges, and a full log of contributions.',
         },
         {
-          src: '/archive/apicuron/Curators.png',
+          src: '/archive/apicuron/Curators.webp',
           title: 'Curators',
           text: 'Every biocurator as a card \u2014 ORCID, affiliation, and the databases they contribute to, searchable and filterable.',
         },
@@ -2151,20 +2151,20 @@ export const otherWorks = {
       meta: 'ELIXIR • BioComputing UP, University of Padua • 2024–25',
       description:
         'DOME is a community effort from the ELIXIR Machine Learning Focus Group to make machine-learning methods in the life sciences transparent and reproducible, and the Registry is its public, searchable database of method descriptions. During my research fellowship I designed the Registry\u2019s web platform — and as with DisProt, built what I designed in Angular.',
-      thumb: '/archive/Dome.png',
+      thumb: '/archive/Dome.webp',
       shots: [
         {
-          src: '/archive/dome/home.png',
+          src: '/archive/dome/home.webp',
           title: 'Home',
           text: 'The Registry in one screen — live counts, latest annotated publications with their DOME scores, and one action: Browse.',
         },
         {
-          src: '/archive/dome/Statistic.png',
+          src: '/archive/dome/Statistic.webp',
           title: 'About DOME',
           text: 'The recommendations and the Registry explained in one scrolling story, dark theme in the brand\u2019s deep blue and orange.',
         },
         {
-          src: '/archive/dome/DomeRecom.png',
+          src: '/archive/dome/DomeRecom.webp',
           title: 'Statistics',
           text: 'Registry-wide numbers, annotated journals, and the DOME-score distribution as living charts.',
         },
@@ -2175,25 +2175,25 @@ export const otherWorks = {
       meta: 'Private client • Property-management platform',
       description:
         'A marketing site for a virtual property-management service \u2014 landlords hand over listings, maintenance, and rent collection to a remote team. I designed the full site as a responsive system, every page resolved for desktop and mobile side by side.',
-      thumb: '/archive/houselord.png',
+      thumb: '/archive/houselord.webp',
       shots: [
         {
-          src: '/archive/houselord/home.png',
+          src: '/archive/houselord/home.webp',
           title: 'Home',
           text: 'The pitch \u2014 \u201Cproperty management reimagined\u201D \u2014 with services, social proof, and one action repeated: try for free.',
         },
         {
-          src: '/archive/houselord/pricing.png',
+          src: '/archive/houselord/pricing.webp',
           title: 'Pricing',
           text: 'One plan, stated plainly over the product\u2019s own imagery, with FAQs answering objections on the same page.',
         },
         {
-          src: '/archive/houselord/blog.png',
+          src: '/archive/houselord/blog.webp',
           title: 'Blog',
           text: 'Category-filtered articles in a clean list, collapsing to single-column cards on mobile.',
         },
         {
-          src: '/archive/houselord/contact us.png',
+          src: '/archive/houselord/contact us.webp',
           title: 'Contact',
           text: 'Map, form, and FAQs in one page \u2014 every route to a human kept short.',
         },
@@ -2204,25 +2204,25 @@ export const otherWorks = {
       meta: 'Concept • Mobile app',
       description:
         'A command center for a fleet of autonomous robots mining and farming on the Moon. One phone screen runs ten bots: a triage home that surfaces only what needs action, task queues you compose and execute, a live map of every unit, and a voice assistant \u2014 ask what needs attention, assign a task by name, done.',
-      thumb: '/archive/Hexa.png',
+      thumb: '/archive/Hexa.webp',
       shots: [
         {
-          src: '/archive/hexabot/screen1.png',
+          src: '/archive/hexabot/screen1.webp',
           title: 'The system at a glance',
           text: 'Task assignment, the triage home, the live map, and the voice assistant \u2014 four surfaces, one fleet.',
         },
         {
-          src: '/archive/hexabot/screen2.png',
+          src: '/archive/hexabot/screen2.webp',
           title: 'Live map states',
           text: 'The whole fleet on lunar terrain; filters dim the noise, and a selected bot reports status and distance.',
         },
         {
-          src: '/archive/hexabot/screen3.png',
+          src: '/archive/hexabot/screen3.webp',
           title: 'Tasks & triage',
           text: 'Queues built from task categories \u2014 system, mining, crops \u2014 with reroutes to named locations; home sorts bots by urgency.',
         },
         {
-          src: '/archive/hexabot/screen4.png',
+          src: '/archive/hexabot/screen4.webp',
           title: 'Voice command',
           text: '\u201CWhat bots need my action?\u201D \u2014 the assistant answers with cards, takes an order, and confirms it executed.',
         },
