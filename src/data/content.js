@@ -1961,7 +1961,7 @@ export const fun = {
     {
       title: 'This website',
       description:
-        'Designed and built by hand — React, one design system, and a keyboard shortcut (press D on any case study).',
+        'Designed and built in React — one design system, a loading screen, and a keyboard shortcut (press D on any case study).',
     },
     {
       title: 'Teaching',

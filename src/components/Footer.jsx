@@ -16,7 +16,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="footer__legal">
-          © {new Date().getFullYear()} {profile.name} · Designed &amp; built by hand
+          © {new Date().getFullYear()} {profile.name}
         </p>
       </div>
     </footer>

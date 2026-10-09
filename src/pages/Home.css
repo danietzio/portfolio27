@@ -770,9 +770,7 @@ a.xp__link:focus-visible .xp__company {
   color: var(--ink-soft);
 }
 
-/* ── Archive grid: equal columns regardless of image size ──
-   bare 1fr lets a huge thumb force its column wider; minmax(0,1fr)
-   makes every track truly equal */
+/* ── Archive grid: equal columns regardless of image size ── */
 .ow__grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -784,5 +782,30 @@ a.xp__link:focus-visible .xp__company {
 @media (max-width: 700px) {
   .ow__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── Hero tune-up: photo rides up to the text's floor line, and the
+   whole hero compresses so the first project card peeks into the
+   first viewport ── */
+.hero--index {
+  padding-top: clamp(20px, 3.5vh, 44px); /* trimmed hard — the nav already gives breathing room */
+  margin-bottom: clamp(32px, 6vh, 60px); /* was 48–96 */
+}
+.hero__text {
+  padding-bottom: clamp(28px, 5vh, 56px); /* was 56–104 */
+}
+/* same offset as the text's padding-bottom = photo bottom aligns
+   with the status line; the raspberry arch travels with it */
+.hero__portrait {
+  margin-bottom: clamp(28px, 5vh, 56px);
+}
+@media (max-width: 860px) {
+  .hero--index,
+  .hero--portrait {
+    padding-top: 36px;
+  }
+  .hero__portrait {
+    margin-bottom: 0; /* stacked layout needs no lift */
   }
 }
