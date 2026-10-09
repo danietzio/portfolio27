@@ -1002,3 +1002,59 @@ a.xp__link:focus-visible .xp__company {
     display: none;
   }
 }
+
+/* ═══ Popup shots: a shimmer while the media loads ═══
+   The wrapper holds a soft animated sheen and a provisional
+   height; the image fades in over it when it has real pixels.
+   A slow connection sees "loading", never a blank hole. */
+.ow-shot__media {
+  display: block;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(100deg, #eceae3 40%, #f7f5f0 50%, #eceae3 60%);
+  background-size: 200% 100%;
+  animation: shot-shimmer 1.3s linear infinite;
+  min-height: clamp(140px, 24vh, 260px);
+}
+@keyframes shot-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+.ow-shot__media img,
+.ow-shot__media video {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.ow-shot__media.is-loaded {
+  animation: none;
+  background: none;
+  min-height: 0;
+}
+.ow-shot__media.is-loaded img,
+.ow-shot__media.is-loaded video {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ow-shot__media {
+    animation: none;
+    background: #eceae3;
+  }
+}
+
+/* ═══ Focus ring in the site's own voice ═══
+   Esc-closing the popup returns focus to the tile — keyboard users
+   need to see that, but the browser's default black rectangle
+   isn't ours. A soft accent ring, offset off the artwork. */
+.ow-card:focus {
+  outline: none;
+}
+.ow-card:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--hi, #c01d5c) 55%, transparent);
+  outline-offset: 4px;
+  border-radius: 14px;
+}

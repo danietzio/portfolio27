@@ -264,7 +264,7 @@ function Lightbox({ item, onClose }) {
 
 // Any video on the page plays while it's on screen and pauses
 // when scrolled past.
-function ScrollVideo({ src, label }) {
+function ScrollVideo({ src, label, onReady }) {
   const ref = useRef(null);
   useEffect(() => {
     const el = ref.current;
@@ -282,26 +282,40 @@ function ScrollVideo({ src, label }) {
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
-  return <video ref={ref} src={src} loop muted playsInline preload='metadata' aria-label={label} />;
+  return (
+    <video
+      ref={ref}
+      src={src}
+      loop
+      muted
+      playsInline
+      preload='metadata'
+      aria-label={label}
+      onLoadedData={onReady}
+    />
+  );
 }
 
 function Media({ image, plain = false }) {
   const openLightbox = useContext(LightboxContext);
   const [failed, setFailed] = useState(false);
+  // shimmer until the media has real pixels (see .media-ld)
+  const [loaded, setLoaded] = useState(false);
   const isVideo = /\.(mp4|webm)$/i.test(image.src || '');
   const media = image.src && !failed ? (
     <button
       type='button'
-      className='zoomable'
+      className={`zoomable media-ld${loaded ? ' is-loaded' : ''}`}
       onClick={() => openLightbox(image)}
       aria-label={`Enlarge: ${image.caption || 'design'}`}
     >
       {isVideo ? (
-        <ScrollVideo src={image.src} label={image.caption || ''} />
+        <ScrollVideo src={image.src} label={image.caption || ''} onReady={() => setLoaded(true)} />
       ) : (
         <img
           src={image.src}
           alt={image.caption || image.placeholder || ''}
+          onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
         />
       )}
@@ -327,6 +341,7 @@ function Media({ image, plain = false }) {
 function CoverMedia({ project }) {
   const ref = useRef(null);
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el || el.tagName !== 'VIDEO') return;
@@ -354,25 +369,31 @@ function CoverMedia({ project }) {
   }
   if (/\.(mp4|webm)$/i.test(project.cover)) {
     return (
-      <video
-        ref={ref}
-        className='project-detail__cover'
-        src={project.cover}
-        loop
-        muted
-        playsInline
-        preload='metadata'
-        aria-label={project.title}
-      />
+      <span className={`media-ld${loaded ? ' is-loaded' : ''}`}>
+        <video
+          ref={ref}
+          className='project-detail__cover'
+          src={project.cover}
+          loop
+          muted
+          playsInline
+          preload='metadata'
+          aria-label={project.title}
+          onLoadedData={() => setLoaded(true)}
+        />
+      </span>
     );
   }
   return (
-    <img
-      className='project-detail__cover'
-      src={project.cover}
-      alt={project.title}
-      onError={() => setFailed(true)}
-    />
+    <span className={`media-ld${loaded ? ' is-loaded' : ''}`}>
+      <img
+        className='project-detail__cover'
+        src={project.cover}
+        alt={project.title}
+        onLoad={() => setLoaded(true)}
+        onError={() => setFailed(true)}
+      />
+    </span>
   );
 }
 

@@ -44,6 +44,30 @@ function Rise({ text }) {
   });
 }
 
+// A popup shot shows a shimmering placeholder until its media has
+// actually loaded — so a slow image reads as "coming", not broken.
+function ShotMedia({ src, alt }) {
+  const [loaded, setLoaded] = useState(false);
+  const isVideo = /\.(mp4|webm)$/i.test(src);
+  return (
+    <span className={`ow-shot__media${loaded ? ' is-loaded' : ''}`}>
+      {isVideo ? (
+        <video
+          src={src}
+          controls
+          muted
+          loop
+          playsInline
+          preload='metadata'
+          onLoadedData={() => setLoaded(true)}
+        />
+      ) : (
+        <img src={src} alt={alt} loading='lazy' onLoad={() => setLoaded(true)} />
+      )}
+    </span>
+  );
+}
+
 // ── Archive: the other-works grid + its popup ────────────────
 // The popup mounts only while open, so its shots never weigh on
 // the home page; Esc, backdrop, or × closes it.
@@ -78,7 +102,6 @@ function WorkModal({ item, onClose }) {
             .map((shot, i) => {
               const s = typeof shot === 'string' ? { src: shot } : shot;
               if (!s.src) return null;
-              const isVideo = /\.(mp4|webm)$/i.test(s.src);
               return (
                 <figure className='ow-shot' key={s.src}>
                   {(s.title || s.text) && (
@@ -87,11 +110,7 @@ function WorkModal({ item, onClose }) {
                       {s.text && <span className='ow-shot__text'>{s.text}</span>}
                     </figcaption>
                   )}
-                  {isVideo ? (
-                    <video src={s.src} controls muted loop playsInline preload='metadata' />
-                  ) : (
-                    <img src={s.src} alt={s.title || `${item.title} — shot ${i + 1}`} loading='lazy' />
-                  )}
+                  <ShotMedia src={s.src} alt={s.title || `${item.title} — shot ${i + 1}`} />
                 </figure>
               );
             })}

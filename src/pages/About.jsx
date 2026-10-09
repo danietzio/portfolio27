@@ -1,5 +1,19 @@
+import { useState } from 'react';
 import { about, fun, aboutPhotos } from '../data/content.js';
 import './Prose.css';
+
+// same loading shimmer as everywhere else (.media-ld)
+function AboutPhoto({ photo }) {
+  const [loaded, setLoaded] = useState(false);
+  return (
+    <figure className='about-photo'>
+      <span className={`media-ld${loaded ? ' is-loaded' : ''}`}>
+        <img src={photo.src} alt={photo.alt || ''} loading='lazy' onLoad={() => setLoaded(true)} />
+      </span>
+      {photo.caption && <figcaption>{photo.caption}</figcaption>}
+    </figure>
+  );
+}
 
 export default function About() {
   return (
@@ -13,10 +27,7 @@ export default function About() {
       {aboutPhotos?.length > 0 && (
         <div className={`about-photos${aboutPhotos.length === 1 ? ' about-photos--single' : ''}`}>
           {aboutPhotos.map((photo) => (
-            <figure className='about-photo' key={photo.src}>
-              <img src={photo.src} alt={photo.alt || ''} loading='lazy' />
-              {photo.caption && <figcaption>{photo.caption}</figcaption>}
-            </figure>
+            <AboutPhoto photo={photo} key={photo.src} />
           ))}
         </div>
       )}

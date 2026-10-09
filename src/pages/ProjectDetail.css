@@ -2363,3 +2363,56 @@ kbd {
     transition: none;
   }
 }
+
+/* ═══ .media-ld — the site-wide loading shimmer ═══
+   Wraps any image or video that may take a moment: a soft sweep in
+   the PAGE'S OWN theme tokens (cream on Oar, navy-soft on
+   Backgammon…) holds the space, and the media fades in over it
+   once it has real pixels. Used by case-study Media + CoverMedia,
+   the archive popup, and the About photos. */
+.media-ld {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(
+    100deg,
+    var(--accent-soft, #eceae3) 40%,
+    var(--bg, #f7f5f0) 50%,
+    var(--accent-soft, #eceae3) 60%
+  );
+  background-size: 200% 100%;
+  animation: media-shimmer 1.3s linear infinite;
+  min-height: clamp(120px, 20vh, 240px);
+}
+@keyframes media-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+.media-ld > img,
+.media-ld > video {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.media-ld.is-loaded {
+  animation: none;
+  background: none;
+  min-height: 0;
+  overflow: visible;
+  border-radius: 0;
+}
+.media-ld.is-loaded > img,
+.media-ld.is-loaded > video {
+  opacity: 1;
+}
+/* the zoomable button doubles as the wrapper on case studies */
+button.media-ld {
+  width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  .media-ld {
+    animation: none;
+    background: var(--accent-soft, #eceae3);
+  }
+}
