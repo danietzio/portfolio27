@@ -2420,3 +2420,21 @@ button.media-ld {
     background: var(--accent-soft, #eceae3);
   }
 }
+
+/* ═══ Pill nav on phones: tighter pills, soft scroll hint ═══
+   More sections fit, the bar hugs the viewport, and momentum
+   scrolling feels native; the auto-centered active pill (JS)
+   does the rest of the wayfinding. */
+@media (max-width: 700px) {
+  .pill-nav {
+    max-width: calc(100vw - 24px);
+    gap: 2px;
+    padding: 5px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  .pill-nav a {
+    font-size: 0.74rem;
+    padding: 7px 11px;
+  }
+}

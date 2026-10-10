@@ -618,6 +618,20 @@ function PillNav({ nav, noteIds = [] }) {
     };
   }, [nav]);
 
+  // The pill bar scrolls horizontally when sections don't fit
+  // (phones). Keep the active pill in view — it both shows where
+  // you are and teaches that the bar scrolls.
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav || nav.scrollWidth <= nav.clientWidth) return;
+    const el = nav.querySelector('a.is-active');
+    if (!el) return;
+    nav.scrollTo({
+      left: el.offsetLeft - (nav.clientWidth - el.offsetWidth) / 2,
+      behavior: 'smooth',
+    });
+  }, [active]);
+
   return (
     <>
       <div
