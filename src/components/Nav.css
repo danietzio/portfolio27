@@ -122,20 +122,6 @@
   color: var(--accent);
 }
 
-/* ── Reading progress: a 2px accent line along the bar's bottom.
-      --scrollp is set by the case-study pages (PillNav); elsewhere
-      it defaults to 0% and the line simply isn't there. ── */
-.nav::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  height: 2px;
-  width: var(--scrollp, 0%);
-  background: var(--accent);
-  pointer-events: none;
-}
-
 @media (max-width: 700px) {
   .nav__status {
     display: none;
