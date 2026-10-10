@@ -32,7 +32,7 @@ export const profile = {
   credential: null, // folded into intro — one paragraph instead of three lines
   tagline: 'Designer since 2016, engineer by training — I design products and then build them to the pixel.',
   email: 'daniyal.nasiri-bavil@universite-paris-saclay.fr', // or your personal one
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/Daniyal-Nasiri-Bavil-Resume.pdf', // rename the file in /public to match
   // Your transparent-background portrait (PNG/WebP), shown top-right
   // of the hero. Drop the file into /public and set the path;
   // null hides the slot and the text takes the full width.
