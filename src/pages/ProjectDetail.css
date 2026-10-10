@@ -2393,7 +2393,11 @@ kbd {
 .media-ld > img,
 .media-ld > video {
   opacity: 0;
-  transition: opacity 0.35s ease;
+  /* carry the zoom's transform easing too — this rule outranks
+     .zoomable img, and a transition list replaces, never merges */
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .media-ld.is-loaded {
   animation: none;
