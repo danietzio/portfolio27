@@ -2374,7 +2374,7 @@ kbd {
   display: block;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px; /* match .zoomable so loaded media keeps the site's corner */
   background: linear-gradient(
     100deg,
     var(--accent-soft, #eceae3) 40%,
@@ -2403,8 +2403,8 @@ kbd {
   animation: none;
   background: none;
   min-height: 0;
-  overflow: visible;
-  border-radius: 0;
+  /* radius STAYS — resetting it squared the corners of loaded
+     images (the Oar team photo's bottom edge) */
 }
 .media-ld.is-loaded > img,
 .media-ld.is-loaded > video {
@@ -2436,5 +2436,51 @@ button.media-ld {
   .pill-nav a {
     font-size: 0.74rem;
     padding: 7px 11px;
+  }
+}
+
+/* ═══ Showcase rows on phones: heading first, then its image ═══
+   Stacked, the DOM order (media, then text) made every image sit
+   ABOVE its own heading — readers tied it to the previous block.
+   Text leads on mobile, and the desktop min-height that padded
+   empty space around short images goes. */
+@media (max-width: 720px) {
+  .showcase-row__text {
+    order: -1;
+  }
+  .showcase-row__media {
+    min-height: 0;
+  }
+  .showcase {
+    gap: 44px;
+  }
+}
+
+/* ═══ Pill nav: manual swiping, guaranteed ═══
+   The bar always accepted horizontal scroll; this makes it
+   explicit and comfortable — horizontal pans stay inside the bar
+   (no page bounce, no accidental vertical scroll), and pills
+   settle on clean positions after a flick. */
+.pill-nav {
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+}
+.pill-nav a {
+  scroll-snap-align: center;
+}
+
+/* ═══ Keep the pill bar OUT of the iOS gesture zone ═══
+   Horizontal swipes within ~34px of the bottom edge belong to the
+   system (app switcher), so Safari never delivers them to the bar.
+   env(safe-area-inset-bottom) lifts it above that zone on phones
+   with a home indicator; elsewhere it resolves to 0 and nothing
+   changes. */
+.pill-nav {
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+}
+@media (max-width: 720px) {
+  .pill-nav {
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   }
 }

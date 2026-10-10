@@ -1058,3 +1058,28 @@ a.xp__link:focus-visible .xp__company {
   outline-offset: 4px;
   border-radius: 14px;
 }
+
+/* ═══ FINAL mobile door sizing — supersedes the earlier auto-height
+   experiments above. The frame owns the shape: every banner card
+   under 860px is exactly the mobile-export ratio (3338:2414), and
+   the artwork fills it. All thumbs are exported at this same ratio,
+   so nothing is cropped — and no image file can ever make one card
+   taller than another again. ═══ */
+@media (max-width: 860px) {
+  .door--img,
+  .door--img:first-child {
+    aspect-ratio: auto;
+  }
+  .door--img .door__frame,
+  .door--img:first-child .door__frame {
+    aspect-ratio: 3338 / 2414;
+  }
+  .door--img .door__frame img,
+  .door--img .door__frame video,
+  .door--img .door__frame picture,
+  .door--img .door__frame picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
