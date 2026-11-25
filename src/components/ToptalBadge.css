@@ -1,0 +1,100 @@
+/* Toptal "Top 3% Talent" badge — styles scoped under .tt-badge so the
+   original one-letter class names (.a, .b, .h…) can't collide with the
+   rest of the site. Font (proxima-nova) is loaded in index.html. */
+.tt-badge-wrap {
+  display: flex;
+  justify-content: center;
+  margin: clamp(56px, 9vh, 96px) 0 24px;
+}
+.tt-badge {
+  --tt-hex: polygon(50% 0, 100% 24%, 100% 76%, 50% 100%, 0 76%, 0 24%);
+  font-family: proxima-nova, Arial, sans-serif;
+  display: inline-block;
+  background: #25a9ef;
+  padding: 6px;
+  clip-path: var(--tt-hex);
+}
+.tt-badge__inner {
+  width: 200px;
+  padding: 24px 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(153deg, #0667ff 18%, #204ecf 40%, #0f256e 80%);
+  clip-path: var(--tt-hex);
+  box-shadow: 0 28px 50px rgba(6, 30, 96, 0.35);
+}
+.tt-badge__title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1;
+  font-family: inherit;
+  letter-spacing: normal;
+}
+.tt-badge__rule {
+  width: 120px;
+  height: 1px;
+  background: #25a9ef;
+}
+.tt-badge__by {
+  font-size: 16px;
+  opacity: 0.8;
+  margin-bottom: -6px;
+}
+.tt-badge__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 20px;
+  border-radius: 6px;
+  background: #296bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 2px;
+}
+
+/* ── Seal variant: pinned over the hero portrait ──────────────
+   Sits on the lower-left edge of the arch, half over the curve,
+   tilted a touch like a stamp. Scaled down so it accents the
+   photo instead of competing with the face. */
+.tt-badge-wrap--seal {
+  position: absolute;
+  left: -4%;
+  bottom: 3%;
+  margin: 0;
+  z-index: 2;
+  transform: rotate(-8deg) scale(0.78);
+  transform-origin: bottom left;
+  transition: transform 0.25s ease;
+}
+.tt-badge-wrap--seal:hover {
+  transform: rotate(0deg) scale(0.82);
+}
+.tt-badge-wrap--seal .tt-badge__inner {
+  box-shadow: none;
+}
+/* clip-path also clips a filter on the same element, so the
+   shadow lives on the unclipped wrapper */
+.tt-badge-wrap--seal {
+  filter: drop-shadow(0 14px 22px rgba(6, 30, 96, 0.28));
+}
+@media (max-width: 860px) {
+  .tt-badge-wrap--seal {
+    left: -8%;
+    bottom: 0;
+    transform: rotate(-8deg) scale(0.48);
+  }
+  .tt-badge-wrap--seal:hover {
+    transform: rotate(0deg) scale(0.51);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tt-badge-wrap--seal { transition: none; }
+}

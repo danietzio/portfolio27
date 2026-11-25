@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { profile, projects, experience, otherWorks } from '../data/content.js';
+import ToptalBadge from '../components/ToptalBadge.jsx';
 import './Home.css';
 
 // **word** inside hero copy renders as an accent-colored word —
@@ -344,8 +345,10 @@ export default function Home() {
         </div>
         </div>
         {profile.portrait && (
-          <div className='hero__portrait hero__line' style={{ '--d': '100ms' }} aria-hidden='true'>
+          <div className='hero__portrait hero__line' style={{ '--d': '100ms' }}>
             <img src={profile.portrait} alt='' />
+            {/* Toptal seal pinned to the arch's lower-left edge */}
+            <ToptalBadge className='tt-badge-wrap--seal' />
           </div>
         )}
       </section>
